@@ -11,8 +11,6 @@ __pycache__/
 .idea/
 
 # Dataset / generated files
-data/raw/*
-data/processed/*
 
 # Keep directories
 !data/raw/.gitkeep
