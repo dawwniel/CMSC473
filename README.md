@@ -43,6 +43,28 @@ The project is currently focused on:
 - Testing MiniLM sentence embeddings
 - Preparing the training pipeline
 
+## Testing the Roblox roundtrip
+
+`EmitCount` is stored as a `ParticleEmitter` attribute. In the JSONL file it is
+`emitter.attributes.EmitCount`. Zero means continuous emission; a positive
+integer is the burst count.
+
+With the dataset place open in Studio, run this from the `CMSC473` directory:
+
+```sh
+python scripts/build_roundtrip_command.py --suite both
+```
+
+Paste the generated `roblox/tests/roundtrip_command.lua` into Studio's Command
+Bar. The results appear in Output. The test exports each emitter, imports it
+into a temporary folder, compares its properties and attributes, and checks
+that exporting it again produces the same JSONL row and hash. It also checks
+which records the batch exporter includes. The test does not change the place.
+
+Use `--limit 100` to check a smaller batch, or add `--offset 100 --limit 100`
+for the next batch. Rebuild the command after changing the exporter, importer,
+or tests.
+
 ## Project Structure
 
 ```text

@@ -11,6 +11,7 @@ __pycache__/
 .idea/
 
 # Dataset / generated files
+roblox/tests/roundtrip_command.lua
 
 # Keep directories
 !data/raw/.gitkeep

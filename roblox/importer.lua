@@ -91,6 +91,10 @@ local ATTRIBUTE_TYPES = {
 	Font = true, EnumItem = true,
 }
 
+local function validEmitCount(count)
+	return type(count) == "number" and count >= 0 and count < math.huge and count % 1 == 0
+end
+
 -- Prompt GUI used when a record has prompt text but no prompt_gui node.
 -- Matches the style of the existing dataset entries.
 local function defaultPromptNode(text)
@@ -649,8 +653,8 @@ function Importer.validate(record)
 	end
 
 	local emitCount = record.emitter.attributes and record.emitter.attributes.EmitCount
-	if emitCount ~= nil and type(emitCount) ~= "number" then
-		table.insert(errors, "emitter.attributes.EmitCount: must be a number")
+	if emitCount ~= nil and not validEmitCount(emitCount) then
+		table.insert(errors, "emitter.attributes.EmitCount: must be a nonnegative integer")
 	elseif record.playback_mode ~= nil and record.playback_mode ~= Importer.playbackMode(record) then
 		table.insert(warnings, "playback_mode doesn't match EmitCount")
 	end
@@ -677,7 +681,7 @@ function Importer.emitCount(source)
 	else
 		count = source:GetAttribute("EmitCount")
 	end
-	return type(count) == "number" and count or 0
+	return validEmitCount(count) and count or 0
 end
 
 function Importer.playbackMode(source)

@@ -354,6 +354,24 @@ test("validate/attributes must be attribute-compatible", function()
 	hasError(errors, "untagged")
 end)
 
+test("validate/EmitCount accepts zero or a whole burst count", function()
+	for _, count in ipairs({ 0, 1, 24 }) do
+		local record = minimalRecord()
+		record.emitter.attributes.EmitCount = count
+		local ok, errors = Importer.validate(record)
+		check(ok, table.concat(errors, " || "))
+		eq(Importer.emitCount(record), count)
+	end
+	for _, count in ipairs({ -1, 1.5, math.huge }) do
+		local record = minimalRecord()
+		record.emitter.attributes.EmitCount = count
+		local ok, errors = Importer.validate(record)
+		check(not ok, "invalid EmitCount accepted: " .. tostring(count))
+		hasError(errors, "EmitCount: must be a nonnegative integer")
+		eq(Importer.emitCount(record), 0)
+	end
+end)
+
 test("validate/path must match names", function()
 	local record = minimalRecord()
 	record.path = { "Tests", "Wrong", "Other" }
