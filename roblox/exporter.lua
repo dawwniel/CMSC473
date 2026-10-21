@@ -26,6 +26,7 @@ local Exporter = {}
 Exporter.FORMAT_VERSION = 1
 Exporter.DECIMALS = 6
 Exporter.SPLIT_ATTRIBUTE = "Split"
+Exporter.SPLITS = { train = true, validation = true, test = true, generalization_test = true }
 Exporter.EXCLUDED_SPLITS = { review = true }
 Exporter.PROMPT_NAME = "Prompt"
 
@@ -66,6 +67,10 @@ local HttpService = game:GetService("HttpService")
 
 local function isFinite(n)
 	return n == n and n ~= math.huge and n ~= -math.huge
+end
+
+local function validEmitCount(count)
+	return type(count) == "number" and isFinite(count) and count >= 0 and count % 1 == 0
 end
 
 local encoders = {}
@@ -372,6 +377,12 @@ local function findPrompt(attachment)
 	return nil
 end
 
+local function hasPromptText(attachment)
+	local prompt = findPrompt(attachment)
+	local label = prompt and prompt:FindFirstChildWhichIsA("TextLabel")
+	return label and label.Text:match("%S") ~= nil
+end
+
 -- The Split value an emitter's record belongs to, or nil, reason.
 function Exporter.splitOf(emitter)
 	local parent = emitter.Parent
@@ -381,6 +392,9 @@ function Exporter.splitOf(emitter)
 	end
 	if type(split) ~= "string" or not split:match("^[%w_%-]+$") then
 		return nil, "invalid"
+	end
+	if not Exporter.SPLITS[split] and not Exporter.EXCLUDED_SPLITS[split] then
+		return nil, "unknown"
 	end
 	return split, nil
 end
@@ -413,7 +427,7 @@ function Exporter.serialize(emitter, root)
 			record.prompt = label.Text
 		end
 	end
-	if not record.prompt then
+	if not record.prompt or not record.prompt:match("%S") then
 		table.insert(warnings, id .. ": no prompt text")
 	end
 
@@ -430,7 +444,10 @@ function Exporter.serialize(emitter, root)
 	end
 	record.split = Exporter.splitOf(emitter)
 	local emitCount = emitter:GetAttribute("EmitCount")
-	record.playback_mode = (type(emitCount) == "number" and emitCount > 0) and "burst" or "continuous"
+	if not validEmitCount(emitCount) then
+		table.insert(warnings, id .. ": EmitCount must be a nonnegative integer")
+	end
+	record.playback_mode = (validEmitCount(emitCount) and emitCount > 0) and "burst" or "continuous"
 
 	return record, warnings
 end
@@ -484,6 +501,10 @@ function Exporter.exportBatch(root, offset, limit)
 			table.insert(result.skipped, { id = entry.id, reason = "Split " .. reason })
 		elseif Exporter.EXCLUDED_SPLITS[split] then
 			table.insert(result.skipped, { id = entry.id, reason = "excluded split " .. split })
+		elseif not validEmitCount(entry.emitter:GetAttribute("EmitCount")) then
+			table.insert(result.skipped, { id = entry.id, reason = "invalid EmitCount" })
+		elseif not hasPromptText(entry.emitter.Parent) then
+			table.insert(result.skipped, { id = entry.id, reason = "missing prompt text" })
 		else
 			local record, warnings = Exporter.serialize(entry.emitter, root)
 			local ok, line = pcall(Exporter.encodeLine, record)
@@ -502,7 +523,7 @@ function Exporter.exportBatch(root, offset, limit)
 	return result
 end
 
--- Counts and checks for the export report. Reads attributes only, so it's fast.
+-- Counts and checks for the export report.
 function Exporter.scan(root)
 	local report = {
 		total = 0,
@@ -522,6 +543,10 @@ function Exporter.scan(root)
 			report.skipped["Split " .. reason] = (report.skipped["Split " .. reason] or 0) + 1
 		elseif Exporter.EXCLUDED_SPLITS[split] then
 			report.skipped["excluded " .. split] = (report.skipped["excluded " .. split] or 0) + 1
+		elseif not validEmitCount(entry.emitter:GetAttribute("EmitCount")) then
+			report.skipped["invalid EmitCount"] = (report.skipped["invalid EmitCount"] or 0) + 1
+		elseif not hasPromptText(entry.emitter.Parent) then
+			report.skipped["missing prompt text"] = (report.skipped["missing prompt text"] or 0) + 1
 		else
 			report.splits[split] = (report.splits[split] or 0) + 1
 			local path = string.split(entry.id, "/")

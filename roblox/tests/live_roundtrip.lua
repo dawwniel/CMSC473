@@ -1,4 +1,11 @@
 -- Runs against the emitters in the open place without adding instances to it.
+local HttpService = game:GetService("HttpService")
+
+local function describe(Exporter, value)
+	local encoded, err = Exporter.encodeValue(value)
+	return err and tostring(value) or HttpService:JSONEncode(encoded)
+end
+
 return function(Exporter, Importer, root, options)
 	assert(Exporter and Importer, "pass the exporter and importer modules")
 	assert(root, "pass the dataset root, e.g. workspace.Particles.Dataset")
@@ -39,6 +46,9 @@ return function(Exporter, Importer, root, options)
 		local ok, err = pcall(function()
 			local record, exportWarnings = Exporter.serialize(original, root)
 			assert(#exportWarnings == 0, "export warnings: " .. table.concat(exportWarnings, " | "))
+			for _, name in ipairs(Exporter.PROPERTIES.ParticleEmitter) do
+				assert(record.emitter.properties[name] ~= nil, "export omitted " .. name)
+			end
 			local line = Exporter.encodeLine(record)
 			local split = Exporter.splitOf(original)
 			if split and not Exporter.EXCLUDED_SPLITS[split] then
@@ -52,6 +62,7 @@ return function(Exporter, Importer, root, options)
 			assert(valid, "invalid export: " .. table.concat(validationErrors, " | "))
 
 			local count = original:GetAttribute("EmitCount")
+			assert(count ~= nil, "EmitCount attribute is missing")
 			local exportedCount = parsed.emitter.attributes and parsed.emitter.attributes.EmitCount
 			assert(exportedCount == count, "EmitCount changed during export")
 			assert(Importer.emitCount(parsed) == (count or 0), "playback count changed")
@@ -66,7 +77,21 @@ return function(Exporter, Importer, root, options)
 			assert(clonedEmitter and clonedEmitter:IsA("ParticleEmitter"), "rebuilt emitter is missing")
 			assert(clonedEmitter:GetAttribute("EmitCount") == count, "EmitCount changed during import")
 			for name in pairs(record.emitter.properties or {}) do
-				assert(Importer.valuesEqual(original[name], clonedEmitter[name]), "property changed: " .. name)
+				local before, after = original[name], clonedEmitter[name]
+				if not Importer.valuesEqual(before, after) then
+					error(name .. ": expected " .. describe(Exporter, before) .. ", got " .. describe(Exporter, after))
+				end
+			end
+			local sourceAttributes = original:GetAttributes()
+			local rebuiltAttributes = clonedEmitter:GetAttributes()
+			for name, before in pairs(sourceAttributes) do
+				local after = rebuiltAttributes[name]
+				if not Importer.valuesEqual(before, after) then
+					error("attribute " .. name .. ": expected " .. describe(Exporter, before) .. ", got " .. describe(Exporter, after))
+				end
+			end
+			for name in pairs(rebuiltAttributes) do
+				assert(sourceAttributes[name] ~= nil, "unexpected attribute: " .. name)
 			end
 			local sourceDiff = Importer.apply(parsed, original.Parent)
 			assert(#sourceDiff.errors == 0 and #sourceDiff.changes == 0, "export differs from source")

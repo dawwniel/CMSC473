@@ -45,6 +45,11 @@ The project is currently focused on:
 
 ## Testing the Roblox roundtrip
 
+The JSONL fields and supported emitter properties are listed in
+[`docs/particle_schema.md`](docs/particle_schema.md). Python code can read a
+split with `ParticleDataset("train")` from `src.data.dataset`.
+Run `python -m unittest discover -s tests -v` to validate the saved JSONL files.
+
 `EmitCount` is stored as a `ParticleEmitter` attribute. In the JSONL file it is
 `emitter.attributes.EmitCount`. Zero means continuous emission; a positive
 integer is the burst count.
@@ -70,6 +75,7 @@ or tests.
 ```text
 CMSC473/
 ├── data/
+├── docs/
 ├── roblox/
 ├── scripts/
 ├── src/

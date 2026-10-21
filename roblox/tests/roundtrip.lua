@@ -372,6 +372,15 @@ test("validate/EmitCount accepts zero or a whole burst count", function()
 	end
 end)
 
+test("validate/emitter must be a ParticleEmitter", function()
+	local record = minimalRecord()
+	record.emitter.class = "Folder"
+	record.emitter.properties = {}
+	local ok, errors = Importer.validate(record)
+	check(not ok)
+	hasError(errors, "emitter.class: expected ParticleEmitter")
+end)
+
 test("validate/path must match names", function()
 	local record = minimalRecord()
 	record.path = { "Tests", "Wrong", "Other" }
@@ -437,6 +446,18 @@ for _, record in ipairs(samples) do
 		eq(#Importer.apply(record, built).changes, 0, "diff against rebuilt")
 	end)
 end
+
+test("deserializeEmitter/builds a standalone emitter", function()
+	local emitter, report = Importer.deserializeEmitter(BURST)
+	track(emitter)
+	check(emitter, table.concat(report.errors, " || "))
+	eq(emitter.Parent, nil)
+	eq(emitter.ClassName, "ParticleEmitter")
+	eq(emitter:GetAttribute("EmitCount"), 1)
+	for name in pairs(BURST.emitter.properties) do
+		same(emitter[name], liveEmitter(BURST)[name], name)
+	end
+end)
 
 test("deserialize/review entry has no PromptAlternates", function()
 	eq(REVIEW.attachment.attributes.PromptAlternates, nil)

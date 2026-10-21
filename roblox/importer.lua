@@ -649,7 +649,7 @@ function Importer.validate(record)
 	end
 
 	if record.emitter.class ~= "ParticleEmitter" then
-		table.insert(warnings, "emitter.class is " .. record.emitter.class .. ", not ParticleEmitter")
+		table.insert(errors, "emitter.class: expected ParticleEmitter")
 	end
 
 	local emitCount = record.emitter.attributes and record.emitter.attributes.EmitCount
@@ -835,6 +835,23 @@ function Importer.deserialize(record, options)
 	end
 	record = Importer.migrate(record)
 	return buildTree(recordTree(record), report, record.id, options), report
+end
+
+-- Builds just the emitter. The returned instance has no parent.
+function Importer.deserializeEmitter(record, options)
+	local attachment, report = Importer.deserialize(record, options)
+	if not attachment then
+		return nil, report
+	end
+	local emitter = attachment:FindFirstChild(record.emitter.name)
+	if not emitter or not emitter:IsA("ParticleEmitter") then
+		table.insert(report.errors, "record did not build a ParticleEmitter")
+		attachment:Destroy()
+		return nil, report
+	end
+	emitter.Parent = nil
+	attachment:Destroy()
+	return emitter, report
 end
 
 --------------------------------------------------------------------------------
