@@ -1,18 +1,28 @@
-from sentence_transformers import SentenceTransformer
+"""Encode and cache MiniLM embeddings for every split.
 
-model = SentenceTransformer("all-MiniLM-L6-v2")
+Run from the CMSC473 directory:
 
-prompts = [
-    "fast blue magical sparks",
-    "slow floating smoke",
-    "large fiery explosion",
-]
+    python scripts/test_embedding.py
+"""
 
-embeddings = model.encode(prompts)
+from __future__ import annotations
 
-print("Shape:", embeddings.shape)
+import sys
+from pathlib import Path
 
-for prompt, embedding in zip(prompts, embeddings):
-    print(prompt)
-    print(embedding[:10])
-    print()
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+from src.data.schema import SPLITS
+from src.models.encoder import TextEncoder, split_embeddings
+
+
+def main() -> None:
+    encoder = TextEncoder()
+    print(f"{encoder.model_name} on {encoder.device}, {encoder.dim} dimensions")
+    for split in sorted(SPLITS):
+        embeddings = split_embeddings(split, encoder)
+        print(f"{split}: {len(embeddings)} prompts, shape {tuple(embeddings.vectors.shape)}")
+
+
+if __name__ == "__main__":
+    main()
