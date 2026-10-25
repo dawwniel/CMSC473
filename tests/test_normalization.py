@@ -99,6 +99,19 @@ class FitTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "train records only"):
             Normalizer().fit(TRAIN + OTHERS["validation"])
 
+    def test_other_splits_match_train_constants(self):
+        # A constant is dropped from the targets, so a different value elsewhere can't be predicted.
+        for split, rows in OTHERS.items():
+            for record in rows:
+                targets = encode_targets(record["emitter"])
+                for group, constants in NORMALIZER.constants.items():
+                    for name, value in constants.items():
+                        got = getattr(targets, group)[name]
+                        if isinstance(got, float) and np.isnan(got):
+                            continue
+                        with self.subTest(split=split, row=record["id"], field=name):
+                            self.assertEqual(got, value)
+
     def test_zero_variance_column_is_a_constant(self):
         rows = copy.deepcopy(TRAIN)
         for row in rows:

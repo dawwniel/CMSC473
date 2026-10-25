@@ -1,0 +1,703 @@
+{
+  "version": 1,
+  "k": 8,
+  "continuous": [
+    {
+      "name": "Brightness",
+      "mean": 1.4079978099556987,
+      "std": 0.7168739985276777
+    },
+    {
+      "name": "Drag",
+      "mean": 0.7477088754249386,
+      "std": 0.8306944645923272
+    },
+    {
+      "name": "LightEmission",
+      "mean": 0.7453292806484296,
+      "std": 0.3649426652499623
+    },
+    {
+      "name": "LightInfluence",
+      "mean": 0.07163120567375887,
+      "std": 0.18909123511262677
+    },
+    {
+      "name": "Rate",
+      "mean": 2.508930878746935,
+      "std": 0.7763477081457334
+    },
+    {
+      "name": "ShapePartial",
+      "mean": 0.7010872048815346,
+      "std": 0.1891201476180084
+    },
+    {
+      "name": "TimeScale",
+      "mean": 0.9587537993920973,
+      "std": 0.12831448501669077
+    },
+    {
+      "name": "VelocityInheritance",
+      "mean": 0.014184397163120567,
+      "std": 0.1182505815640643
+    },
+    {
+      "name": "ZOffset",
+      "mean": 0.5065129645390071,
+      "std": 1.4067082059222915
+    },
+    {
+      "name": "EmitCount",
+      "mean": 1.8401166910842142,
+      "std": 0.9945226376694017
+    },
+    {
+      "name": "FlipbookFramerate.min",
+      "mean": 1.8153788437298708,
+      "std": 1.2984948591309022
+    },
+    {
+      "name": "FlipbookFramerate.max",
+      "mean": 1.8745224306147767,
+      "std": 1.3449422720581665
+    },
+    {
+      "name": "Lifetime.min",
+      "mean": 0.617223000230469,
+      "std": 0.24873311805923307
+    },
+    {
+      "name": "Lifetime.max",
+      "mean": 0.797093923063842,
+      "std": 0.25801255241456666
+    },
+    {
+      "name": "Rotation.min",
+      "mean": -279.4326241134752,
+      "std": 275.3483236941876
+    },
+    {
+      "name": "Rotation.max",
+      "mean": 296.16312056737587,
+      "std": 267.33257169326447
+    },
+    {
+      "name": "RotSpeed.min",
+      "mean": -1.016993454122374,
+      "std": 1.94274739343722
+    },
+    {
+      "name": "RotSpeed.max",
+      "mean": 1.0870994120191468,
+      "std": 1.820614966557129
+    },
+    {
+      "name": "Speed.min",
+      "mean": 0.8634368438047605,
+      "std": 1.068683407858444
+    },
+    {
+      "name": "Speed.max",
+      "mean": 1.1798326440515825,
+      "std": 1.2171276479144408
+    },
+    {
+      "name": "Acceleration.x",
+      "mean": -0.025498960256050446,
+      "std": 0.33135000670276693
+    },
+    {
+      "name": "Acceleration.y",
+      "mean": 0.03842024252505655,
+      "std": 0.8710454162087715
+    },
+    {
+      "name": "Acceleration.z",
+      "mean": -0.04047595932446011,
+      "std": 0.47891800932200174
+    },
+    {
+      "name": "SpreadAngle.x",
+      "mean": 24.62320162107396,
+      "std": 99.718437344284
+    },
+    {
+      "name": "SpreadAngle.y",
+      "mean": 60.1855116514691,
+      "std": 90.76178749739901
+    },
+    {
+      "name": "Size.value.0",
+      "mean": 0.9198617489808837,
+      "std": 0.821340957235465
+    },
+    {
+      "name": "Size.value.1",
+      "mean": 1.3250497941648465,
+      "std": 0.6163172520086823
+    },
+    {
+      "name": "Size.value.2",
+      "mean": 1.476040331511635,
+      "std": 0.5602650047173179
+    },
+    {
+      "name": "Size.value.3",
+      "mean": 1.53108497975587,
+      "std": 0.578484975501913
+    },
+    {
+      "name": "Size.value.4",
+      "mean": 1.5271290035318132,
+      "std": 0.6137371218578258
+    },
+    {
+      "name": "Size.value.5",
+      "mean": 1.479898121648118,
+      "std": 0.6723298365860225
+    },
+    {
+      "name": "Size.value.6",
+      "mean": 1.3938104539460303,
+      "std": 0.7696894206768081
+    },
+    {
+      "name": "Size.value.7",
+      "mean": 1.2333577604749035,
+      "std": 0.9529708107809587
+    },
+    {
+      "name": "Size.envelope.0",
+      "mean": 0.18963867152832897,
+      "std": 0.49702436596715077
+    },
+    {
+      "name": "Size.envelope.1",
+      "mean": 0.2662156804763383,
+      "std": 0.5401728778047968
+    },
+    {
+      "name": "Size.envelope.2",
+      "mean": 0.27769971625304724,
+      "std": 0.5414976555956034
+    },
+    {
+      "name": "Size.envelope.3",
+      "mean": 0.2780252194119008,
+      "std": 0.5394952821351882
+    },
+    {
+      "name": "Size.envelope.4",
+      "mean": 0.2682710015631384,
+      "std": 0.5291943158005369
+    },
+    {
+      "name": "Size.envelope.5",
+      "mean": 0.2533727544685701,
+      "std": 0.5175380880558161
+    },
+    {
+      "name": "Size.envelope.6",
+      "mean": 0.2344165337885024,
+      "std": 0.509114047679326
+    },
+    {
+      "name": "Size.envelope.7",
+      "mean": 0.2051325787430211,
+      "std": 0.5101815248629576
+    },
+    {
+      "name": "Squash.value.0",
+      "mean": 0.06213812056737588,
+      "std": 0.37826681158916986
+    },
+    {
+      "name": "Squash.value.1",
+      "mean": 0.0496100259849378,
+      "std": 0.3345828213108999
+    },
+    {
+      "name": "Squash.value.2",
+      "mean": 0.0374405433657906,
+      "std": 0.3058894658945153
+    },
+    {
+      "name": "Squash.value.3",
+      "mean": 0.026967049723147177,
+      "std": 0.2953467713553631
+    },
+    {
+      "name": "Squash.value.4",
+      "mean": 0.014937500604372527,
+      "std": 0.30553974990648985
+    },
+    {
+      "name": "Squash.value.5",
+      "mean": 0.004397509983321788,
+      "std": 0.3340714968344619
+    },
+    {
+      "name": "Squash.value.6",
+      "mean": -0.0068711208948639265,
+      "std": 0.3771273608936042
+    },
+    {
+      "name": "Squash.value.7",
+      "mean": -0.018139751773049648,
+      "std": 0.4302571608884334
+    },
+    {
+      "name": "Squash.envelope.0",
+      "mean": 0.014983609929078013,
+      "std": 0.07685409870249386
+    },
+    {
+      "name": "Squash.envelope.1",
+      "mean": 0.01607499817167095,
+      "std": 0.078005686591245
+    },
+    {
+      "name": "Squash.envelope.2",
+      "mean": 0.017166386414263882,
+      "std": 0.07988436126061302
+    },
+    {
+      "name": "Squash.envelope.3",
+      "mean": 0.018257774656856816,
+      "std": 0.08244043054052085
+    },
+    {
+      "name": "Squash.envelope.4",
+      "mean": 0.020027989544327968,
+      "std": 0.08685032777278778
+    },
+    {
+      "name": "Squash.envelope.5",
+      "mean": 0.02248716087825174,
+      "std": 0.09562312233443569
+    },
+    {
+      "name": "Squash.envelope.6",
+      "mean": 0.024946332212175515,
+      "std": 0.10750418449025093
+    },
+    {
+      "name": "Squash.envelope.7",
+      "mean": 0.027405503546099295,
+      "std": 0.1215857060185244
+    },
+    {
+      "name": "Transparency.value.0",
+      "mean": 0.5353322482269505,
+      "std": 0.45360509478110816
+    },
+    {
+      "name": "Transparency.value.1",
+      "mean": 0.2653013805975514,
+      "std": 0.26755285861413536
+    },
+    {
+      "name": "Transparency.value.2",
+      "mean": 0.21128575517014098,
+      "std": 0.1856356735203186
+    },
+    {
+      "name": "Transparency.value.3",
+      "mean": 0.19005510674363327,
+      "std": 0.1671956306177124
+    },
+    {
+      "name": "Transparency.value.4",
+      "mean": 0.23497490723093833,
+      "std": 0.20545076493409833
+    },
+    {
+      "name": "Transparency.value.5",
+      "mean": 0.3383498061980138,
+      "std": 0.24480521431161797
+    },
+    {
+      "name": "Transparency.value.6",
+      "mean": 0.5422100123249564,
+      "std": 0.3118002705679015
+    },
+    {
+      "name": "Transparency.value.7",
+      "mean": 0.7822695035460994,
+      "std": 0.41089483528721915
+    },
+    {
+      "name": "Transparency.envelope.0",
+      "mean": 0.0008094326241134752,
+      "std": 0.009577335966598002
+    },
+    {
+      "name": "Transparency.envelope.1",
+      "mean": 0.00120791840002836,
+      "std": 0.010711284904066096
+    },
+    {
+      "name": "Transparency.envelope.2",
+      "mean": 0.0016064041759432449,
+      "std": 0.012263195355303229
+    },
+    {
+      "name": "Transparency.envelope.3",
+      "mean": 0.001867406609688107,
+      "std": 0.01371402376121415
+    },
+    {
+      "name": "Transparency.envelope.4",
+      "mean": 0.0016444497670541137,
+      "std": 0.011368971870351748
+    },
+    {
+      "name": "Transparency.envelope.5",
+      "mean": 0.0014047745361733853,
+      "std": 0.01048055447636783
+    },
+    {
+      "name": "Transparency.envelope.6",
+      "mean": 0.0005739841086291681,
+      "std": 0.005469751108897652
+    },
+    {
+      "name": "Color.r.0",
+      "mean": 0.6591576352583587,
+      "std": 0.3150187328666705
+    },
+    {
+      "name": "Color.g.0",
+      "mean": 0.5510851185410335,
+      "std": 0.27129359300071426
+    },
+    {
+      "name": "Color.b.0",
+      "mean": 0.6376962715298886,
+      "std": 0.37258585316634507
+    },
+    {
+      "name": "Color.r.1",
+      "mean": 0.6530685343769667,
+      "std": 0.31144030601766615
+    },
+    {
+      "name": "Color.g.1",
+      "mean": 0.559513873828383,
+      "std": 0.2725821844178202
+    },
+    {
+      "name": "Color.b.1",
+      "mean": 0.6303692529937203,
+      "std": 0.36842989552338645
+    },
+    {
+      "name": "Color.r.2",
+      "mean": 0.6484132863736346,
+      "std": 0.31608723635173
+    },
+    {
+      "name": "Color.g.2",
+      "mean": 0.5612872958936833,
+      "std": 0.2747529621578958
+    },
+    {
+      "name": "Color.b.2",
+      "mean": 0.626826578248243,
+      "std": 0.36882572005915265
+    },
+    {
+      "name": "Color.r.3",
+      "mean": 0.6469647330854567,
+      "std": 0.3194805011581132
+    },
+    {
+      "name": "Color.g.3",
+      "mean": 0.5432412472094398,
+      "std": 0.2826494348495251
+    },
+    {
+      "name": "Color.b.3",
+      "mean": 0.6337931432678964,
+      "std": 0.36965796507543625
+    },
+    {
+      "name": "Color.r.4",
+      "mean": 0.6560575993886704,
+      "std": 0.3112302832389031
+    },
+    {
+      "name": "Color.g.4",
+      "mean": 0.5485283336935626,
+      "std": 0.2771995172338064
+    },
+    {
+      "name": "Color.b.4",
+      "mean": 0.6279850615997018,
+      "std": 0.3686901069835898
+    },
+    {
+      "name": "Color.r.5",
+      "mean": 0.6618101620570216,
+      "std": 0.31086730132198104
+    },
+    {
+      "name": "Color.g.5",
+      "mean": 0.5513762306305819,
+      "std": 0.2776807097927152
+    },
+    {
+      "name": "Color.b.5",
+      "mean": 0.6246109561964915,
+      "std": 0.36986902812452355
+    },
+    {
+      "name": "Color.r.6",
+      "mean": 0.652338875954271,
+      "std": 0.31741956973924373
+    },
+    {
+      "name": "Color.g.6",
+      "mean": 0.543107218193977,
+      "std": 0.2853934355481267
+    },
+    {
+      "name": "Color.b.6",
+      "mean": 0.6323299999860182,
+      "std": 0.36913899971143527
+    },
+    {
+      "name": "Color.r.7",
+      "mean": 0.6673663009118541,
+      "std": 0.31440183340643685
+    },
+    {
+      "name": "Color.g.7",
+      "mean": 0.5478827122593718,
+      "std": 0.28354306975346466
+    },
+    {
+      "name": "Color.b.7",
+      "mean": 0.6384829706180344,
+      "std": 0.37312354818651283
+    }
+  ],
+  "categories": [
+    {
+      "name": "EmissionDirection",
+      "classes": [
+        "<UNK>",
+        "Back",
+        "Bottom",
+        "Front",
+        "Left",
+        "Right",
+        "Top"
+      ],
+      "fallback": "Top"
+    },
+    {
+      "name": "FlipbookLayout",
+      "classes": [
+        "<UNK>",
+        "Grid2x2",
+        "Grid4x4",
+        "Grid8x8",
+        "None"
+      ],
+      "fallback": "Grid4x4"
+    },
+    {
+      "name": "FlipbookMode",
+      "classes": [
+        "<UNK>",
+        "Loop",
+        "OneShot",
+        "Random"
+      ],
+      "fallback": "OneShot"
+    },
+    {
+      "name": "Orientation",
+      "classes": [
+        "<UNK>",
+        "FacingCamera",
+        "FacingCameraWorldUp",
+        "VelocityParallel"
+      ],
+      "fallback": "FacingCamera"
+    },
+    {
+      "name": "Shape",
+      "classes": [
+        "<UNK>",
+        "Box",
+        "Disc",
+        "Sphere"
+      ],
+      "fallback": "Box"
+    },
+    {
+      "name": "ShapeInOut",
+      "classes": [
+        "<UNK>",
+        "InAndOut",
+        "Outward"
+      ],
+      "fallback": "Outward"
+    },
+    {
+      "name": "ShapeStyle",
+      "classes": [
+        "<UNK>",
+        "Surface",
+        "Volume"
+      ],
+      "fallback": "Volume"
+    },
+    {
+      "name": "Texture",
+      "classes": [
+        "<UNK>",
+        "http://www.roblox.com/asset/?id=11425255052",
+        "http://www.roblox.com/asset/?id=12757089364",
+        "http://www.roblox.com/asset/?id=12758468376",
+        "http://www.roblox.com/asset/?id=12800351103",
+        "http://www.roblox.com/asset/?id=12823974848",
+        "http://www.roblox.com/asset/?id=14559977179",
+        "http://www.roblox.com/asset/?id=14709236536",
+        "http://www.roblox.com/asset/?id=14709263628",
+        "http://www.roblox.com/asset/?id=14709268503",
+        "http://www.roblox.com/asset/?id=14776390707",
+        "http://www.roblox.com/asset/?id=17730607886",
+        "http://www.roblox.com/asset/?id=17730653813",
+        "http://www.roblox.com/asset/?id=9867695043",
+        "rbxassetid://10247047209",
+        "rbxassetid://10248712647",
+        "rbxassetid://10352563514",
+        "rbxassetid://10365553480",
+        "rbxassetid://10527344199",
+        "rbxassetid://10598374841",
+        "rbxassetid://1084962479",
+        "rbxassetid://1084999891",
+        "rbxassetid://11425255052",
+        "rbxassetid://11446801985",
+        "rbxassetid://11492870634",
+        "rbxassetid://11499447365",
+        "rbxassetid://11627077002",
+        "rbxassetid://11627083142",
+        "rbxassetid://11645464752",
+        "rbxassetid://11844017484",
+        "rbxassetid://11846336638",
+        "rbxassetid://11862032588",
+        "rbxassetid://11866744589",
+        "rbxassetid://11871320339",
+        "rbxassetid://11895782540",
+        "rbxassetid://11910560348",
+        "rbxassetid://11932690139",
+        "rbxassetid://11974712699",
+        "rbxassetid://11974778836",
+        "rbxassetid://12132298913",
+        "rbxassetid://12159555294",
+        "rbxassetid://12160798454",
+        "rbxassetid://12205224161",
+        "rbxassetid://12360035207",
+        "rbxassetid://12414215754",
+        "rbxassetid://12805007943",
+        "rbxassetid://12817881196",
+        "rbxassetid://12865691168",
+        "rbxassetid://12942158384",
+        "rbxassetid://13032290778",
+        "rbxassetid://13181197865",
+        "rbxassetid://13312871240",
+        "rbxassetid://13414392494",
+        "rbxassetid://13417032203",
+        "rbxassetid://13444403078",
+        "rbxassetid://134546616390489",
+        "rbxassetid://13457263922",
+        "rbxassetid://13487538321",
+        "rbxassetid://13675373197",
+        "rbxassetid://13675402560",
+        "rbxassetid://13712004355",
+        "rbxassetid://13712007292",
+        "rbxassetid://13795304468",
+        "rbxassetid://13832097149",
+        "rbxassetid://13953700240",
+        "rbxassetid://13953717713",
+        "rbxassetid://14006234837",
+        "rbxassetid://14035694679",
+        "rbxassetid://14197086122",
+        "rbxassetid://14261754295",
+        "rbxassetid://14354336687",
+        "rbxassetid://14366190868",
+        "rbxassetid://14442131728",
+        "rbxassetid://14452364031",
+        "rbxassetid://14471362207",
+        "rbxassetid://14480839965",
+        "rbxassetid://14590103902",
+        "rbxassetid://14635791850",
+        "rbxassetid://14635800069",
+        "rbxassetid://14727016281",
+        "rbxassetid://14844096558",
+        "rbxassetid://14960943986",
+        "rbxassetid://15011297518",
+        "rbxassetid://15021706755",
+        "rbxassetid://15081467386",
+        "rbxassetid://15154476954",
+        "rbxassetid://15294279094",
+        "rbxassetid://15424632147",
+        "rbxassetid://15630080561",
+        "rbxassetid://15734513138",
+        "rbxassetid://15740276373",
+        "rbxassetid://15783260299",
+        "rbxassetid://15923930072",
+        "rbxassetid://15990457929",
+        "rbxassetid://15999331354",
+        "rbxassetid://16083817816",
+        "rbxassetid://16083855593",
+        "rbxassetid://16083872452",
+        "rbxassetid://16084593884",
+        "rbxassetid://16154385929",
+        "rbxassetid://16511734784",
+        "rbxassetid://16708557658",
+        "rbxassetid://16865427962",
+        "rbxassetid://16878191468",
+        "rbxassetid://16892247104",
+        "rbxassetid://17317368055",
+        "rbxassetid://18923842774",
+        "rbxassetid://6900421398",
+        "rbxassetid://695499847",
+        "rbxassetid://7216848960",
+        "rbxassetid://7845168136",
+        "rbxassetid://8030734851",
+        "rbxassetid://8048608283",
+        "rbxassetid://8242018934",
+        "rbxassetid://8511527728",
+        "rbxassetid://8731728937",
+        "rbxassetid://89269419999864",
+        "rbxassetid://9146886834",
+        "rbxassetid://9687958728",
+        "rbxassetid://9732664178",
+        "rbxassetid://9742491830",
+        "rbxassetid://9973574373"
+      ],
+      "fallback": "http://www.roblox.com/asset/?id=14709263628"
+    }
+  ],
+  "flags": [
+    "FlipbookStartRandom",
+    "LockedToPart",
+    "Burst"
+  ],
+  "constants": {
+    "continuous": {
+      "Transparency.envelope.7": 0.0
+    },
+    "categories": {},
+    "flags": {
+      "Enabled": true,
+      "WindAffectsDrag": false
+    }
+  }
+}

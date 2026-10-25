@@ -98,3 +98,44 @@ normalization statistics; those must be fitted on `train` only.
 The saved files currently have 987 train, 212 validation, 211 test, and 260
 generalization test rows. The last split holds out 26 complete base effects.
 The loader reads these assignments as written and never reshuffles them.
+
+## Model tensors
+
+`python scripts/prepare_data.py` fits a `Normalizer` on `train`, saves it to
+`data/processed/normalizer.json`, and caches MiniLM prompt embeddings in
+`data/processed/embeddings/<split>.pt`. Validation, test, and
+generalization test rows are only transformed with the saved train
+statistics. The embedding caches are rebuilt when the model name or a split's
+prompts change.
+
+`ParticleTensorDataset` returns one item per prompt. Train uses the main
+prompt and both `PromptAlternates` (2,961 items); the other splits use only
+the main prompt, so each effect is scored once. Each item has:
+
+| Key | Shape | Type | Meaning |
+| --- | --- | --- | --- |
+| `embedding` | 384 | float32 | Unit-length `all-MiniLM-L6-v2` prompt embedding |
+| `continuous` | 96 | float32 | Train-standardized values, in `Normalizer.continuous` order |
+| `continuous_mask` | 96 | float32 | 0 for a column that doesn't apply; its value is then 0 |
+| `categories` | 8 | int64 | Class index per field, in `Normalizer.categories` order; 0 is `<UNK>` |
+| `flags` | 3 | float32 | `FlipbookStartRandom`, `LockedToPart`, `Burst` |
+
+Continuous columns are the numbers, both ends of each `NumberRange`, vector
+axes, and each curve resampled at 8 even times (`Size`, `Squash`, and
+`Transparency` value and envelope; `Color` red, green, and blue). Skewed
+values use `log1p`, or a signed `log1p` when they can be negative, before
+standardizing. `Rate` is masked for burst emitters and `EmitCount` for
+continuous ones. Fields with one value in train, such as `Enabled`, are
+stored as constants and aren't model targets.
+
+The category heads are `EmissionDirection`, `FlipbookLayout`, `FlipbookMode`,
+`Orientation`, `Shape`, `ShapeInOut`, `ShapeStyle`, and `Texture`. A label not
+seen in train maps to `<UNK>` and decodes to the most common train value; the
+generalization test has 10 such textures. `Normalizer.inverse_transform`
+turns a prediction back into an emitter that `validate_emitter` accepts.
+
+A few columns are almost always zero in train, such as `Acceleration.x` and
+`Transparency.envelope.0`, so their rare non-zero values standardize to about
+|z| = 12. The targets are left unclipped so they decode exactly; training
+should use a masked Huber (SmoothL1) loss rather than plain MSE so these
+columns don't dominate.

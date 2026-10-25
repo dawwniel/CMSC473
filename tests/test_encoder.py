@@ -91,6 +91,19 @@ class EncoderTests(unittest.TestCase):
         expected = self.encoder.encode(record_prompts(record))
         torch.testing.assert_close(fresh[record["row_hash"], 0], expected[0], atol=1e-5, rtol=1e-4)
 
+    def test_batches_from_real_embeddings(self):
+        from src.models.encoder import split_embeddings
+
+        normalizer = Normalizer().fit(ParticleDataset("train").records)
+        with tempfile.TemporaryDirectory() as directory:
+            embeddings = split_embeddings("validation", self.encoder, directory)
+        dataset = ParticleTensorDataset("validation", normalizer, embeddings)
+        batch = next(iter(torch.utils.data.DataLoader(dataset, batch_size=8)))
+        self.assertEqual(batch["embedding"].shape, (8, self.encoder.dim))
+        self.assertEqual(batch["embedding"].dtype, torch.float32)
+        torch.testing.assert_close(batch["embedding"].norm(dim=1), torch.ones(8))
+        self.assertEqual(batch["continuous"].shape, (8, len(normalizer.continuous)))
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -54,6 +54,11 @@ Run `python -m unittest discover -s tests -v` to validate the saved JSONL files.
 `emitter.attributes.EmitCount`. Zero means continuous emission; a positive
 integer is the burst count.
 
+Run `python scripts/prepare_data.py` to fit the normalizer on train and cache
+MiniLM embeddings for every split; the tensor layout is in
+[`docs/particle_schema.md`](docs/particle_schema.md#model-tensors). Set
+`RUN_SLOW=1` to include the MiniLM tests.
+
 With the dataset place open in Studio, run this from the `CMSC473` directory:
 
 ```sh
