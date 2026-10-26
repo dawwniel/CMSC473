@@ -54,8 +54,7 @@ Run `python -m unittest discover -s tests -v` to validate the saved JSONL files.
 `emitter.attributes.EmitCount`. Zero means continuous emission; a positive
 integer is the burst count.
 
-Run `python scripts/prepare_data.py` to fit the normalizer on train and cache
-MiniLM embeddings for every split; the tensor layout is in
+The tensor layout is in
 [`docs/particle_schema.md`](docs/particle_schema.md#model-tensors). Set
 `RUN_SLOW=1` to include the MiniLM tests.
 
@@ -74,6 +73,36 @@ which records the batch exporter includes. The test does not change the place.
 Use `--limit 100` to check a smaller batch, or add `--offset 100 --limit 100`
 for the next batch. Rebuild the command after changing the exporter, importer,
 or tests.
+
+## First model
+
+`python scripts/train.py` trains a small MLP on frozen MiniLM embeddings. It
+predicts burst mode, `EmitCount` or `Rate`, `Speed`, `Lifetime`, and `Brightness`.
+Other emitter fields use train-only defaults. The script uses `train` for
+fitting and `validation` for early stopping; it does not load `test` or
+`generalization_test`. It saves a checkpoint and six validation examples under
+`checkpoints/`.
+
+After training, run `python scripts/predict.py "fast blue magical sparks"` to
+write an importer-compatible record to `checkpoints/prediction.jsonl`. This is
+an initial baseline; texture, color, and curve prediction are later work.
+To check the six validation previews in Studio, run
+`python scripts/build_prediction_check.py` and paste the generated
+`checkpoints/import_check.lua` into the Command Bar. The check creates and
+destroys detached emitters; it does not change the place.
+Use `--input checkpoints/prediction.jsonl` to check a custom prompt instead.
+
+To see one prediction in Studio, run `python scripts/build_prediction_preview.py`
+after `predict.py`. Copy `checkpoints/preview_command.lua` into Studio's Command
+Bar. It puts a temporary preview 25 studs in front of the camera, and fires
+burst effects three times. Delete `Workspace.Prompt2ParticlesPreview` when
+finished. The command does not modify the dataset.
+
+Run `python scripts/evaluate.py` to score the saved checkpoint on `test` and
+`generalization_test`. It writes `checkpoints/evaluation.json` and compares
+the model with a constant emitter built from train statistics. MAE uses the
+decoded emitter values in Roblox units. `active_mae` reports `Rate` on
+continuous effects and `EmitCount` on burst effects; mode mistakes still count.
 
 ## Project Structure
 
