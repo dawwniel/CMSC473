@@ -1,0 +1,23 @@
+[
+  {"id":"AcidSplash/N016_V01_Base/ParticleEmitter","prompts":["A bright green splash of acid bursts out and disappears.","Acid sprays outward in a quick vivid green splash."]},
+  {"id":"AmbientGlow/F145_V01_Base/ParticleEmitter","prompts":["A soft lavender light drifts upward and flickers out.","A faint purple ambient glow floats up before fading."]},
+  {"id":"AmbientGlow/F149_V01_Base/ParticleEmitter","prompts":["Little star-shaped lights float upward and twinkle.","A cluster of glowing stars rises gently and flickers."]},
+  {"id":"AuraWaves/F129_V01_Base/ParticleEmitter","prompts":["A light blue energy wave shimmers in place and fades.","A soft airy wave of blue energy glows briefly."]},
+  {"id":"BleedDrops/N006_V01_Base/ParticleEmitter","prompts":["A loose spray of dark red blood drops falls quickly.","Crimson droplets scatter and drop after a hit."]},
+  {"id":"ColoredSmoke/F032_V01_Base/ParticleEmitter","prompts":["Violet smoke billows outward and fades as it moves.","A rolling cloud of purple smoke moves quickly away."]},
+  {"id":"DebrisBurst/N014_V01_Base/ParticleEmitter","prompts":["Little chunks of debris fly out and fall to the ground.","A burst of angular rubble scatters and drops."]},
+  {"id":"DustClouds/F117_V01_Base/ParticleEmitter","prompts":["A gray-brown dust cloud pushes outward and fades.","Dust kicks up in a fast brown puff."]},
+  {"id":"ElectricPulses/F049_V01_Base/ParticleEmitter","prompts":["A green electric pulse flickers in one spot and fades.","A brief green surge of electricity shimmers in place."]},
+  {"id":"ElectricSurges/F052_V01_Base/ParticleEmitter","prompts":["Angular red electric lines pulse and disappear.","A jagged red lattice of electricity flickers briefly."]},
+  {"id":"ExplosionBursts/F080_V01_Base/ParticleEmitter","prompts":["A thin orange crescent flashes out from an explosion.","A quick orange explosion arc bursts and fades."]},
+  {"id":"FireArcs/F006_V01_Base/ParticleEmitter","prompts":["An orange ring of fire flickers in place and fades.","A circular orange flame shimmers briefly."]},
+  {"id":"HealingGlow/F071_V01_Base/ParticleEmitter","prompts":["A warm orange healing glow holds in one spot then fades.","A soft amber healing light shimmers and disappears."]},
+  {"id":"HealthHearts/N015_V01_Base/ParticleEmitter","prompts":["Small pink hearts float upward and fade away.","A few glowing pink healing hearts rise gently."]},
+  {"id":"ImpactSparks/F041_V01_Base/ParticleEmitter","prompts":["Tiny impact sparks shoot out fast and vanish.","A quick spray of bright sparks scatters after a hit."]},
+  {"id":"MagicCircles/F064_V01_Base/ParticleEmitter","prompts":["A magic circle appears, holds its shape, and fades.","A steady circular spell symbol glows briefly."]},
+  {"id":"PortalRing/N010_V01_Base/ParticleEmitter","prompts":["Bright portal rings expand outward from one point.","A glowing portal ring grows and fades near its source."]},
+  {"id":"RainDrops/N011_V01_Base/ParticleEmitter","prompts":["Long rain streaks fall rapidly through the air.","A steady sheet of narrow raindrops comes down fast."]},
+  {"id":"RotFumes/N005_V01_Base/ParticleEmitter","prompts":["Murky green rot fumes curl up and fade.","A plume of sickly green vapor rises from decay."]},
+  {"id":"ShadowSmoke/N017_V01_Base/ParticleEmitter","prompts":["Dark purple shadow smoke curls upward and vanishes.","A cloud of violet-black wisps drifts up slowly."]},
+  {"id":"WaterBubbles/F097_V01_Base/ParticleEmitter","prompts":["Small water bubbles rise gently and fade.","A few clear bubbles float upward through water."]}
+]

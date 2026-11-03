@@ -12,6 +12,7 @@ __pycache__/
 
 # Dataset / generated files
 roblox/tests/roundtrip_command.lua
+roblox/*.rbxl.lock
 
 # Keep directories
 !data/raw/.gitkeep

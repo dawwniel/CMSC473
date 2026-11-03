@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import copy
+import hashlib
 import json
 import random
 import sys
@@ -153,6 +154,9 @@ def main():
     args.checkpoint.parent.mkdir(parents=True, exist_ok=True)
     torch.save({
         "model": best_state,
+        "train_fingerprint": hashlib.sha256(
+            "\n".join(record["row_hash"] for record in train_records).encode()
+        ).hexdigest(),
         "encoder_name": encoder.model_name,
         "embedding_dim": encoder.dim,
         "hidden_dim": args.hidden_dim,

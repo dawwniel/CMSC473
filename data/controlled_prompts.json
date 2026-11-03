@@ -1,0 +1,14 @@
+[
+  {"low":"Slow blue sparks drifting outward","high":"Fast blue sparks shooting outward","measure":"Speed.max"},
+  {"low":"A small orange flame rising upward","high":"A large orange flame rising upward","measure":"Size.max"},
+  {"low":"A few green poison particles floating upward","high":"Many green poison particles floating upward","measure":"Density"},
+  {"low":"A short-lived purple magic glow","high":"A long-lasting purple magic glow","measure":"Lifetime.max"},
+  {"low":"A narrow spray of water droplets","high":"A wide spray of water droplets","measure":"SpreadAngle.max"},
+  {"low":"Tiny white snowflakes falling slowly","high":"Large white snowflakes falling slowly","measure":"Size.max"},
+  {"low":"A slow red blood spray","high":"A fast red blood spray","measure":"Speed.max"},
+  {"low":"A sparse shower of yellow sparks","high":"A dense shower of yellow sparks","measure":"Density"},
+  {"low":"A brief orange explosion flash","high":"A lingering orange explosion flash","measure":"Lifetime.max"},
+  {"low":"A small blue aura shimmering in place","high":"A large blue aura shimmering in place","measure":"Size.max"},
+  {"low":"A faint purple magic mist","high":"A bright purple magic mist","measure":"Brightness"},
+  {"low":"A thin gray smoke puff","high":"A thick gray smoke puff","measure":"Size.max"}
+]

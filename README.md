@@ -104,6 +104,49 @@ the model with a constant emitter built from train statistics. MAE uses the
 decoded emitter values in Roblox units. `active_mae` reports `Rate` on
 continuous effects and `EmitCount` on burst effects; mode mistakes still count.
 
+## Full model
+
+`python scripts/audit_prompts.py` checks for identical wording attached to
+different emitter settings. The current train and validation prompts were
+refined in the Studio place and JSONL files; test and generalization prompts
+were left untouched.
+
+Run `python scripts/train_full.py` to train the model for all variable emitter
+targets, including texture, enums, number and color sequences, and
+`EmitCount`. It uses train for fitting and validation to select the checkpoint.
+Run `python scripts/train.py` too if you want a fresh comparison with the
+seven-value model. Both checkpoints are saved under `checkpoints/`, which is
+ignored by Git.
+
+`python scripts/evaluate_full.py` evaluates test and generalization_test
+separately against the seven-value model, a train-only constant, and MiniLM
+nearest neighbor. It writes per-property errors and six review predictions per
+split to `checkpoints/`. Results and limitations are in
+[`docs/full_model.md`](docs/full_model.md).
+
+To try a prompt and build Studio check commands:
+
+```sh
+python scripts/predict_full.py "small blue sparks that shoot outward and fade"
+python scripts/build_prediction_check.py --input checkpoints/full_prediction.jsonl
+python scripts/build_prediction_preview.py --input checkpoints/full_prediction.jsonl
+```
+
+The importer check creates and destroys a detached emitter. The preview
+command creates a visible temporary effect in Studio.
+
+For repeated prompts without Command Bar pasting, use the small Studio plugin
+and local model server. Setup and use are in
+[`docs/studio_plugin.md`](docs/studio_plugin.md).
+
+Recent held-out-base development experiments, the 12 controlled prompt checks,
+and the visual review workflow are in
+[`docs/model_development.md`](docs/model_development.md). The category-aware
+experiment did not improve the development scores. The local server uses the
+full checkpoint with a texture-only nearest-neighbor fallback for uncertain
+texture predictions. Report-ready comparisons with the baselines are in
+[`docs/evaluation_results.md`](docs/evaluation_results.md).
+
 ## Project Structure
 
 ```text

@@ -16,18 +16,20 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input", type=Path, default=ROOT / "checkpoints/prediction.jsonl")
     parser.add_argument("--output", type=Path, default=ROOT / "checkpoints/preview_command.lua")
+    parser.add_argument("--index", type=int, default=0, help="0-based record number within the JSONL file")
     args = parser.parse_args()
 
     rows = args.input.read_text(encoding="utf-8")
     records = [json.loads(line) for line in rows.splitlines() if line.strip()]
-    if len(records) != 1:
-        parser.error("preview input must contain exactly one JSONL record")
+    if not 0 <= args.index < len(records):
+        parser.error(f"index must be between 0 and {len(records) - 1}")
+    selected = json.dumps(records[args.index], separators=(",", ":"))
 
     importer = (ROOT / "roblox/importer.lua").read_text(encoding="utf-8")
     command = (
         "-- Paste into Roblox Studio's Command Bar. Delete the preview folder when done.\n"
         f"local Importer = (function()\n{importer}\nend)()\n"
-        f"local records, problems = Importer.parseJsonl({lua_string(rows)})\n"
+        f"local records, problems = Importer.parseJsonl({lua_string(selected)})\n"
         'assert(#problems == 0 and #records == 1, "expected one valid prediction")\n'
         'local record = records[1]\n'
         'local attachment, report = Importer.deserialize(record)\n'
