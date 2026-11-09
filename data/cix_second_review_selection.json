@@ -1,0 +1,14 @@
+{
+  "purpose": "visual description pass across eight additional texture families",
+  "selected_before_review": true,
+  "effect_ids": [
+    "N380", "N381", "N382", "N383", "N384",
+    "N256", "N257", "N258", "N259", "N260",
+    "N229", "N230", "N231", "N232", "N233",
+    "N125", "N126", "N127", "N128", "N129",
+    "N141", "N142", "N143", "N144", "N145",
+    "N440", "N441", "N442", "N443", "N444",
+    "N321", "N322", "N323", "N545", "N546",
+    "N253", "N254", "N347", "N348", "N351"
+  ]
+}

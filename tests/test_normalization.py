@@ -175,7 +175,8 @@ class RoundTripTests(unittest.TestCase):
         )
         self.assertEqual(unknown, 10)
         self.assertEqual(NORMALIZER.classes["Texture"][0], UNKNOWN)
-        self.assertEqual(len(NORMALIZER.classes["Texture"]), 122)
+        textures = {row["emitter"]["properties"]["Texture"] for row in TRAIN}
+        self.assertEqual(len(NORMALIZER.classes["Texture"]), len(textures) + 1)
 
     def test_decoded_values_are_clamped(self):
         record = continuous_row()

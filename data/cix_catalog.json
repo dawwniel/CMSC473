@@ -1,0 +1,4983 @@
+{
+  "source": "CIX Library V5.1 Studio gallery",
+  "captured": "2026-11-08",
+  "note": "galleryImage is the ImageButton thumbnail; verify actual emitter Texture before training",
+  "entries": [
+    {
+      "galleryImages": [
+        "rbxassetid://14200333672"
+      ],
+      "kind": "FlipBook",
+      "name": "Alphabet1",
+      "galleryImage": "rbxassetid://14200333672"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12800352088"
+      ],
+      "kind": "FlipBook",
+      "name": "Bat1",
+      "galleryImage": "rbxassetid://12800352088"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636196262"
+      ],
+      "kind": "FlipBook",
+      "name": "Beam1",
+      "galleryImage": "rbxassetid://18636196262"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633513873"
+      ],
+      "kind": "FlipBook",
+      "name": "Beam2",
+      "galleryImage": "rbxassetid://18633513873"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636230705"
+      ],
+      "kind": "FlipBook",
+      "name": "BlackDust1",
+      "galleryImage": "rbxassetid://18636230705"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785598053"
+      ],
+      "kind": "FlipBook",
+      "name": "BlackFire1",
+      "galleryImage": "rbxassetid://18785598053"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636192031"
+      ],
+      "kind": "FlipBook",
+      "name": "BlackLightning1",
+      "galleryImage": "rbxassetid://18636192031"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636197617"
+      ],
+      "kind": "FlipBook",
+      "name": "BlackLightning2",
+      "galleryImage": "rbxassetid://18636197617"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785582074"
+      ],
+      "kind": "FlipBook",
+      "name": "BlackLightning3",
+      "galleryImage": "rbxassetid://18785582074"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://17524678762"
+      ],
+      "kind": "FlipBook",
+      "name": "Blood1",
+      "galleryImage": "rbxassetid://17524678762"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://16865817861"
+      ],
+      "kind": "FlipBook",
+      "name": "Bubble1",
+      "galleryImage": "rbxassetid://16865817861"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785610811"
+      ],
+      "kind": "FlipBook",
+      "name": "Bubble2",
+      "galleryImage": "rbxassetid://18785610811"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785610468"
+      ],
+      "kind": "FlipBook",
+      "name": "Bubble3",
+      "galleryImage": "rbxassetid://18785610468"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785610161"
+      ],
+      "kind": "FlipBook",
+      "name": "Bubble4",
+      "galleryImage": "rbxassetid://18785610161"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785609733"
+      ],
+      "kind": "FlipBook",
+      "name": "Bubble5",
+      "galleryImage": "rbxassetid://18785609733"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785608842"
+      ],
+      "kind": "FlipBook",
+      "name": "Bubble6",
+      "galleryImage": "rbxassetid://18785608842"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785613709"
+      ],
+      "kind": "FlipBook",
+      "name": "Bubble7",
+      "galleryImage": "rbxassetid://18785613709"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://9295449811"
+      ],
+      "kind": "FlipBook",
+      "name": "Bubble8",
+      "galleryImage": "rbxassetid://9295449811"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://11362067232"
+      ],
+      "kind": "FlipBook",
+      "name": "Buturfly1",
+      "galleryImage": "rbxassetid://11362067232"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12800350363"
+      ],
+      "kind": "FlipBook",
+      "name": "Buturfly2",
+      "galleryImage": "rbxassetid://12800350363"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633499158"
+      ],
+      "kind": "FlipBook",
+      "name": "CartoonSmoke1",
+      "galleryImage": "rbxassetid://18633499158"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636235094"
+      ],
+      "kind": "FlipBook",
+      "name": "CartoonSmoke2",
+      "galleryImage": "rbxassetid://18636235094"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636224780"
+      ],
+      "kind": "FlipBook",
+      "name": "CartoonSmoke3",
+      "galleryImage": "rbxassetid://18636224780"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636215808"
+      ],
+      "kind": "FlipBook",
+      "name": "CartoonSmoke4",
+      "galleryImage": "rbxassetid://18636215808"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636187189"
+      ],
+      "kind": "FlipBook",
+      "name": "CartoonSmoke5",
+      "galleryImage": "rbxassetid://18636187189"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636186433"
+      ],
+      "kind": "FlipBook",
+      "name": "CartoonSmoke6",
+      "galleryImage": "rbxassetid://18636186433"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636187007"
+      ],
+      "kind": "FlipBook",
+      "name": "CartoonSmoke7",
+      "galleryImage": "rbxassetid://18636187007"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785571176"
+      ],
+      "kind": "FlipBook",
+      "name": "ChromaticShockwave1",
+      "galleryImage": "rbxassetid://18785571176"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://16877842776"
+      ],
+      "kind": "FlipBook",
+      "name": "Circle2",
+      "galleryImage": "rbxassetid://16877842776"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633496459"
+      ],
+      "kind": "FlipBook",
+      "name": "Circle3",
+      "galleryImage": "rbxassetid://18633496459"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636227789"
+      ],
+      "kind": "FlipBook",
+      "name": "Circle4",
+      "galleryImage": "rbxassetid://18636227789"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12350056117"
+      ],
+      "kind": "FlipBook",
+      "name": "Cloud1",
+      "galleryImage": "rbxassetid://12350056117"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785606980"
+      ],
+      "kind": "FlipBook",
+      "name": "CloudFade1",
+      "galleryImage": "rbxassetid://18785606980"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785607402"
+      ],
+      "kind": "FlipBook",
+      "name": "CloudFade2",
+      "galleryImage": "rbxassetid://18785607402"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785575813"
+      ],
+      "kind": "FlipBook",
+      "name": "Crack1",
+      "galleryImage": "rbxassetid://18785575813"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636205252"
+      ],
+      "kind": "FlipBook",
+      "name": "Crescent1",
+      "galleryImage": "rbxassetid://18636205252"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://16142397363"
+      ],
+      "kind": "FlipBook",
+      "name": "CursedEnergy1",
+      "galleryImage": "rbxassetid://16142397363"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636173119"
+      ],
+      "kind": "FlipBook",
+      "name": "CursedEnergy2",
+      "galleryImage": "rbxassetid://18636173119"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14904853757"
+      ],
+      "kind": "FlipBook",
+      "name": "CursedEnergy3",
+      "galleryImage": "rbxassetid://14904853757"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636212507"
+      ],
+      "kind": "FlipBook",
+      "name": "DarkEnergy1",
+      "galleryImage": "rbxassetid://18636212507"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636219464"
+      ],
+      "kind": "FlipBook",
+      "name": "Debris1",
+      "galleryImage": "rbxassetid://18636219464"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636217938"
+      ],
+      "kind": "FlipBook",
+      "name": "Debris2",
+      "galleryImage": "rbxassetid://18636217938"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://16693839254"
+      ],
+      "kind": "FlipBook",
+      "name": "Dolphin1",
+      "galleryImage": "rbxassetid://16693839254"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636215221"
+      ],
+      "kind": "FlipBook",
+      "name": "Explosion1",
+      "galleryImage": "rbxassetid://18636215221"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785576313"
+      ],
+      "kind": "FlipBook",
+      "name": "Explosion2",
+      "galleryImage": "rbxassetid://18785576313"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785569853"
+      ],
+      "kind": "FlipBook",
+      "name": "Explosion3",
+      "galleryImage": "rbxassetid://18785569853"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12800351745"
+      ],
+      "kind": "FlipBook",
+      "name": "Eye1",
+      "galleryImage": "rbxassetid://12800351745"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://15269497616"
+      ],
+      "kind": "FlipBook",
+      "name": "Fire1",
+      "galleryImage": "rbxassetid://15269497616"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636212769"
+      ],
+      "kind": "FlipBook",
+      "name": "Fire10",
+      "galleryImage": "rbxassetid://18636212769"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636214505"
+      ],
+      "kind": "FlipBook",
+      "name": "Fire11",
+      "galleryImage": "rbxassetid://18636214505"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636211050"
+      ],
+      "kind": "FlipBook",
+      "name": "Fire12",
+      "galleryImage": "rbxassetid://18636211050"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785621899"
+      ],
+      "kind": "FlipBook",
+      "name": "Fire13",
+      "galleryImage": "rbxassetid://18785621899"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785613254"
+      ],
+      "kind": "FlipBook",
+      "name": "Fire14",
+      "galleryImage": "rbxassetid://18785613254"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785598391"
+      ],
+      "kind": "FlipBook",
+      "name": "Fire15",
+      "galleryImage": "rbxassetid://18785598391"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785597430"
+      ],
+      "kind": "FlipBook",
+      "name": "Fire16",
+      "galleryImage": "rbxassetid://18785597430"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785596433"
+      ],
+      "kind": "FlipBook",
+      "name": "Fire17",
+      "galleryImage": "rbxassetid://18785596433"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785597108"
+      ],
+      "kind": "FlipBook",
+      "name": "Fire18",
+      "galleryImage": "rbxassetid://18785597108"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12437246241"
+      ],
+      "kind": "FlipBook",
+      "name": "Fire19",
+      "galleryImage": "rbxassetid://12437246241"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://16841991986"
+      ],
+      "kind": "FlipBook",
+      "name": "Fire2",
+      "galleryImage": "rbxassetid://16841991986"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785581662"
+      ],
+      "kind": "FlipBook",
+      "name": "Fire20",
+      "galleryImage": "rbxassetid://18785581662"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785581839"
+      ],
+      "kind": "FlipBook",
+      "name": "Fire21",
+      "galleryImage": "rbxassetid://18785581839"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785612980"
+      ],
+      "kind": "FlipBook",
+      "name": "Fire22",
+      "galleryImage": "rbxassetid://18785612980"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785594487"
+      ],
+      "kind": "FlipBook",
+      "name": "Fire23",
+      "galleryImage": "rbxassetid://18785594487"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14008134527"
+      ],
+      "kind": "FlipBook",
+      "name": "Fire3",
+      "galleryImage": "rbxassetid://14008134527"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633514512"
+      ],
+      "kind": "FlipBook",
+      "name": "Fire4",
+      "galleryImage": "rbxassetid://18633514512"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636227559"
+      ],
+      "kind": "FlipBook",
+      "name": "Fire5",
+      "galleryImage": "rbxassetid://18636227559"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785570089"
+      ],
+      "kind": "FlipBook",
+      "name": "Fire6",
+      "galleryImage": "rbxassetid://18785570089"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://13335693944"
+      ],
+      "kind": "FlipBook",
+      "name": "Fire7",
+      "galleryImage": "rbxassetid://13335693944"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636213396"
+      ],
+      "kind": "FlipBook",
+      "name": "Fire8",
+      "galleryImage": "rbxassetid://18636213396"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636213648"
+      ],
+      "kind": "FlipBook",
+      "name": "Fire9",
+      "galleryImage": "rbxassetid://18636213648"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636210791"
+      ],
+      "kind": "FlipBook",
+      "name": "Flare1",
+      "galleryImage": "rbxassetid://18636210791"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785566377"
+      ],
+      "kind": "FlipBook",
+      "name": "Flare2",
+      "galleryImage": "rbxassetid://18785566377"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785589924"
+      ],
+      "kind": "FlipBook",
+      "name": "Gear1",
+      "galleryImage": "rbxassetid://18785589924"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636210791"
+      ],
+      "kind": "FlipBook",
+      "name": "Geomostry1",
+      "galleryImage": "rbxassetid://18636210791"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636204916"
+      ],
+      "kind": "FlipBook",
+      "name": "Geomostry2",
+      "galleryImage": "rbxassetid://18636204916"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636212277"
+      ],
+      "kind": "FlipBook",
+      "name": "Geomostry3",
+      "galleryImage": "rbxassetid://18636212277"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://9293679454"
+      ],
+      "kind": "FlipBook",
+      "name": "Heart1",
+      "galleryImage": "rbxassetid://9293679454"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785584468"
+      ],
+      "kind": "FlipBook",
+      "name": "Heart2",
+      "galleryImage": "rbxassetid://18785584468"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633588420"
+      ],
+      "kind": "FlipBook",
+      "name": "Hieroglyph1",
+      "galleryImage": "rbxassetid://18633588420"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://11910560348"
+      ],
+      "kind": "FlipBook",
+      "name": "Hieroglyph2",
+      "galleryImage": "rbxassetid://11910560348"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://10713705343"
+      ],
+      "kind": "FlipBook",
+      "name": "Hieroglyph3",
+      "galleryImage": "rbxassetid://10713705343"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://16879949189"
+      ],
+      "kind": "FlipBook",
+      "name": "Impact1",
+      "galleryImage": "rbxassetid://16879949189"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785604636"
+      ],
+      "kind": "FlipBook",
+      "name": "Impact10",
+      "galleryImage": "rbxassetid://18785604636"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785604254"
+      ],
+      "kind": "FlipBook",
+      "name": "Impact11",
+      "galleryImage": "rbxassetid://18785604254"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785603917"
+      ],
+      "kind": "FlipBook",
+      "name": "Impact12",
+      "galleryImage": "rbxassetid://18785603917"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785603434"
+      ],
+      "kind": "FlipBook",
+      "name": "Impact13",
+      "galleryImage": "rbxassetid://18785603434"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://16879953929"
+      ],
+      "kind": "FlipBook",
+      "name": "Impact2",
+      "galleryImage": "rbxassetid://16879953929"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://16879957895"
+      ],
+      "kind": "FlipBook",
+      "name": "Impact3",
+      "galleryImage": "rbxassetid://16879957895"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://16880018662"
+      ],
+      "kind": "FlipBook",
+      "name": "Impact4",
+      "galleryImage": "rbxassetid://16880018662"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://16880024457"
+      ],
+      "kind": "FlipBook",
+      "name": "Impact5",
+      "galleryImage": "rbxassetid://16880024457"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://16879962690"
+      ],
+      "kind": "FlipBook",
+      "name": "Impact6",
+      "galleryImage": "rbxassetid://16879962690"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://16880037488"
+      ],
+      "kind": "FlipBook",
+      "name": "Impact7",
+      "galleryImage": "rbxassetid://16880037488"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://16880058174"
+      ],
+      "kind": "FlipBook",
+      "name": "Impact8",
+      "galleryImage": "rbxassetid://16880058174"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636202770"
+      ],
+      "kind": "FlipBook",
+      "name": "Impact9",
+      "galleryImage": "rbxassetid://18636202770"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785616627"
+      ],
+      "kind": "FlipBook",
+      "name": "Kanji1",
+      "galleryImage": "rbxassetid://18785616627"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785576783"
+      ],
+      "kind": "FlipBook",
+      "name": "Kanji2",
+      "galleryImage": "rbxassetid://18785576783"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785586846"
+      ],
+      "kind": "FlipBook",
+      "name": "Leaf1",
+      "galleryImage": "rbxassetid://18785586846"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://11492870634"
+      ],
+      "kind": "FlipBook",
+      "name": "Lightning1",
+      "galleryImage": "rbxassetid://11492870634"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785591759"
+      ],
+      "kind": "FlipBook",
+      "name": "Lightning10",
+      "galleryImage": "rbxassetid://18785591759"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785592095"
+      ],
+      "kind": "FlipBook",
+      "name": "Lightning11",
+      "galleryImage": "rbxassetid://18785592095"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14197083420"
+      ],
+      "kind": "FlipBook",
+      "name": "Lightning12",
+      "galleryImage": "rbxassetid://14197083420"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785593206"
+      ],
+      "kind": "FlipBook",
+      "name": "Lightning13",
+      "galleryImage": "rbxassetid://18785593206"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14197126377"
+      ],
+      "kind": "FlipBook",
+      "name": "Lightning14",
+      "galleryImage": "rbxassetid://14197126377"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14197120140"
+      ],
+      "kind": "FlipBook",
+      "name": "Lightning15",
+      "galleryImage": "rbxassetid://14197120140"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14197089978"
+      ],
+      "kind": "FlipBook",
+      "name": "Lightning16",
+      "galleryImage": "rbxassetid://14197089978"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14197095046"
+      ],
+      "kind": "FlipBook",
+      "name": "Lightning17",
+      "galleryImage": "rbxassetid://14197095046"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636198803"
+      ],
+      "kind": "FlipBook",
+      "name": "Lightning2",
+      "galleryImage": "rbxassetid://18636198803"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636199141"
+      ],
+      "kind": "FlipBook",
+      "name": "Lightning3",
+      "galleryImage": "rbxassetid://18636199141"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636199424"
+      ],
+      "kind": "FlipBook",
+      "name": "Lightning4",
+      "galleryImage": "rbxassetid://18636199424"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636199630"
+      ],
+      "kind": "FlipBook",
+      "name": "Lightning5",
+      "galleryImage": "rbxassetid://18636199630"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12800314277"
+      ],
+      "kind": "FlipBook",
+      "name": "Lightning6",
+      "galleryImage": "rbxassetid://12800314277"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636198521"
+      ],
+      "kind": "FlipBook",
+      "name": "Lightning7",
+      "galleryImage": "rbxassetid://18636198521"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14197086122"
+      ],
+      "kind": "FlipBook",
+      "name": "Lightning8",
+      "galleryImage": "rbxassetid://14197086122"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785601380"
+      ],
+      "kind": "FlipBook",
+      "name": "Lightning9",
+      "galleryImage": "rbxassetid://18785601380"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636180104"
+      ],
+      "kind": "FlipBook",
+      "name": "Line1",
+      "galleryImage": "rbxassetid://18636180104"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636171981"
+      ],
+      "kind": "FlipBook",
+      "name": "MagicCircle1",
+      "galleryImage": "rbxassetid://18636171981"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12285599556"
+      ],
+      "kind": "FlipBook",
+      "name": "Number1",
+      "galleryImage": "rbxassetid://12285599556"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://16879534356"
+      ],
+      "kind": "FlipBook",
+      "name": "RandomCircle1",
+      "galleryImage": "rbxassetid://16879534356"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://16879534356"
+      ],
+      "kind": "FlipBook",
+      "name": "Ray1",
+      "galleryImage": "rbxassetid://16879534356"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12181028481"
+      ],
+      "kind": "FlipBook",
+      "name": "Rock1",
+      "galleryImage": "rbxassetid://12181028481"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785579011"
+      ],
+      "kind": "FlipBook",
+      "name": "Shard1",
+      "galleryImage": "rbxassetid://18785579011"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14261754295"
+      ],
+      "kind": "FlipBook",
+      "name": "Shockwave1",
+      "galleryImage": "rbxassetid://14261754295"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785579537"
+      ],
+      "kind": "FlipBook",
+      "name": "Shockwave10",
+      "galleryImage": "rbxassetid://18785579537"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785623379"
+      ],
+      "kind": "FlipBook",
+      "name": "Shockwave11",
+      "galleryImage": "rbxassetid://18785623379"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14050610023"
+      ],
+      "kind": "FlipBook",
+      "name": "Shockwave2",
+      "galleryImage": "rbxassetid://14050610023"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636174744"
+      ],
+      "kind": "FlipBook",
+      "name": "Shockwave3",
+      "galleryImage": "rbxassetid://18636174744"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636176162"
+      ],
+      "kind": "FlipBook",
+      "name": "Shockwave4",
+      "galleryImage": "rbxassetid://18636176162"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636169676"
+      ],
+      "kind": "FlipBook",
+      "name": "Shockwave5",
+      "galleryImage": "rbxassetid://18636169676"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636213095"
+      ],
+      "kind": "FlipBook",
+      "name": "Shockwave6",
+      "galleryImage": "rbxassetid://18636213095"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785601912"
+      ],
+      "kind": "FlipBook",
+      "name": "Shockwave7",
+      "galleryImage": "rbxassetid://18785601912"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14050611407"
+      ],
+      "kind": "FlipBook",
+      "name": "Shockwave8",
+      "galleryImage": "rbxassetid://14050611407"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785578584"
+      ],
+      "kind": "FlipBook",
+      "name": "Shockwave9",
+      "galleryImage": "rbxassetid://18785578584"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633509792"
+      ],
+      "kind": "FlipBook",
+      "name": "Skull1",
+      "galleryImage": "rbxassetid://18633509792"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://16892056384"
+      ],
+      "kind": "FlipBook",
+      "name": "Slash1",
+      "galleryImage": "rbxassetid://16892056384"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785598751"
+      ],
+      "kind": "FlipBook",
+      "name": "Slash10",
+      "galleryImage": "rbxassetid://18785598751"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785577575"
+      ],
+      "kind": "FlipBook",
+      "name": "Slash11",
+      "galleryImage": "rbxassetid://18785577575"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785594156"
+      ],
+      "kind": "FlipBook",
+      "name": "Slash12",
+      "galleryImage": "rbxassetid://18785594156"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785590249"
+      ],
+      "kind": "FlipBook",
+      "name": "Slash13",
+      "galleryImage": "rbxassetid://18785590249"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14106674607"
+      ],
+      "kind": "FlipBook",
+      "name": "Slash2",
+      "galleryImage": "rbxassetid://14106674607"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785577036"
+      ],
+      "kind": "FlipBook",
+      "name": "Slash3",
+      "galleryImage": "rbxassetid://18785577036"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636221056"
+      ],
+      "kind": "FlipBook",
+      "name": "Slash4",
+      "galleryImage": "rbxassetid://18636221056"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636220850"
+      ],
+      "kind": "FlipBook",
+      "name": "Slash5",
+      "galleryImage": "rbxassetid://18636220850"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636214921"
+      ],
+      "kind": "FlipBook",
+      "name": "Slash6",
+      "galleryImage": "rbxassetid://18636214921"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785572252"
+      ],
+      "kind": "FlipBook",
+      "name": "Slash7",
+      "galleryImage": "rbxassetid://18785572252"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636188965"
+      ],
+      "kind": "FlipBook",
+      "name": "Slash8",
+      "galleryImage": "rbxassetid://18636188965"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785612277"
+      ],
+      "kind": "FlipBook",
+      "name": "Slash9",
+      "galleryImage": "rbxassetid://18785612277"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://11336710093"
+      ],
+      "kind": "FlipBook",
+      "name": "Smoke1",
+      "galleryImage": "rbxassetid://11336710093"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636209395"
+      ],
+      "kind": "FlipBook",
+      "name": "Smoke10",
+      "galleryImage": "rbxassetid://18636209395"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636201037"
+      ],
+      "kind": "FlipBook",
+      "name": "Smoke11",
+      "galleryImage": "rbxassetid://18636201037"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636202603"
+      ],
+      "kind": "FlipBook",
+      "name": "Smoke12",
+      "galleryImage": "rbxassetid://18636202603"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636186806"
+      ],
+      "kind": "FlipBook",
+      "name": "Smoke13",
+      "galleryImage": "rbxassetid://18636186806"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636187379"
+      ],
+      "kind": "FlipBook",
+      "name": "Smoke14",
+      "galleryImage": "rbxassetid://18636187379"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636182475"
+      ],
+      "kind": "FlipBook",
+      "name": "Smoke15",
+      "galleryImage": "rbxassetid://18636182475"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636175316"
+      ],
+      "kind": "FlipBook",
+      "name": "Smoke16",
+      "galleryImage": "rbxassetid://18636175316"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636175112"
+      ],
+      "kind": "FlipBook",
+      "name": "Smoke17",
+      "galleryImage": "rbxassetid://18636175112"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785585969"
+      ],
+      "kind": "FlipBook",
+      "name": "Smoke18",
+      "galleryImage": "rbxassetid://18785585969"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785595933"
+      ],
+      "kind": "FlipBook",
+      "name": "Smoke19",
+      "galleryImage": "rbxassetid://18785595933"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://11627083142"
+      ],
+      "kind": "FlipBook",
+      "name": "Smoke2",
+      "galleryImage": "rbxassetid://11627083142"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://13992327687"
+      ],
+      "kind": "FlipBook",
+      "name": "Smoke20",
+      "galleryImage": "rbxassetid://13992327687"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12799115725"
+      ],
+      "kind": "FlipBook",
+      "name": "Smoke21",
+      "galleryImage": "rbxassetid://12799115725"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14186189742"
+      ],
+      "kind": "FlipBook",
+      "name": "Smoke22",
+      "galleryImage": "rbxassetid://14186189742"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://11355845008"
+      ],
+      "kind": "FlipBook",
+      "name": "Smoke23",
+      "galleryImage": "rbxassetid://11355845008"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14052682097"
+      ],
+      "kind": "FlipBook",
+      "name": "Smoke24",
+      "galleryImage": "rbxassetid://14052682097"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14050551379"
+      ],
+      "kind": "FlipBook",
+      "name": "Smoke25",
+      "galleryImage": "rbxassetid://14050551379"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://11355816590"
+      ],
+      "kind": "FlipBook",
+      "name": "Smoke26",
+      "galleryImage": "rbxassetid://11355816590"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12221915979"
+      ],
+      "kind": "FlipBook",
+      "name": "Smoke27",
+      "galleryImage": "rbxassetid://12221915979"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14050526759"
+      ],
+      "kind": "FlipBook",
+      "name": "Smoke28",
+      "galleryImage": "rbxassetid://14050526759"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12800351571"
+      ],
+      "kind": "FlipBook",
+      "name": "Smoke29",
+      "galleryImage": "rbxassetid://12800351571"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://13712000835"
+      ],
+      "kind": "FlipBook",
+      "name": "Smoke3",
+      "galleryImage": "rbxassetid://13712000835"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://11362424823"
+      ],
+      "kind": "FlipBook",
+      "name": "Smoke4",
+      "galleryImage": "rbxassetid://11362424823"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://13992202083"
+      ],
+      "kind": "FlipBook",
+      "name": "Smoke5",
+      "galleryImage": "rbxassetid://13992202083"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636223093"
+      ],
+      "kind": "FlipBook",
+      "name": "Smoke6",
+      "galleryImage": "rbxassetid://18636223093"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636187379"
+      ],
+      "kind": "FlipBook",
+      "name": "Smoke7",
+      "galleryImage": "rbxassetid://18636187379"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://16172858603"
+      ],
+      "kind": "FlipBook",
+      "name": "Smoke8",
+      "galleryImage": "rbxassetid://16172858603"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18190738464"
+      ],
+      "kind": "FlipBook",
+      "name": "Smoke9",
+      "galleryImage": "rbxassetid://18190738464"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636184459"
+      ],
+      "kind": "FlipBook",
+      "name": "SnowFlakes1",
+      "galleryImage": "rbxassetid://18636184459"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636186229"
+      ],
+      "kind": "FlipBook",
+      "name": "SnowFlakes2",
+      "galleryImage": "rbxassetid://18636186229"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://16156987629"
+      ],
+      "kind": "FlipBook",
+      "name": "Sparkle1",
+      "galleryImage": "rbxassetid://16156987629"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14197067494"
+      ],
+      "kind": "FlipBook",
+      "name": "Sparkle2",
+      "galleryImage": "rbxassetid://14197067494"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636184172"
+      ],
+      "kind": "FlipBook",
+      "name": "Splash1",
+      "galleryImage": "rbxassetid://18636184172"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785600668"
+      ],
+      "kind": "FlipBook",
+      "name": "Splash2",
+      "galleryImage": "rbxassetid://18785600668"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785576032"
+      ],
+      "kind": "FlipBook",
+      "name": "Splash3",
+      "galleryImage": "rbxassetid://18785576032"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636236254"
+      ],
+      "kind": "FlipBook",
+      "name": "Star1",
+      "galleryImage": "rbxassetid://18636236254"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636180533"
+      ],
+      "kind": "FlipBook",
+      "name": "Star2",
+      "galleryImage": "rbxassetid://18636180533"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636174415"
+      ],
+      "kind": "FlipBook",
+      "name": "Star3",
+      "galleryImage": "rbxassetid://18636174415"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636174146"
+      ],
+      "kind": "FlipBook",
+      "name": "Star4",
+      "galleryImage": "rbxassetid://18636174146"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785599191"
+      ],
+      "kind": "FlipBook",
+      "name": "Star5",
+      "galleryImage": "rbxassetid://18785599191"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785593530"
+      ],
+      "kind": "FlipBook",
+      "name": "Star6",
+      "galleryImage": "rbxassetid://18785593530"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785574140"
+      ],
+      "kind": "FlipBook",
+      "name": "Star7",
+      "galleryImage": "rbxassetid://18785574140"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785572896"
+      ],
+      "kind": "FlipBook",
+      "name": "Star8",
+      "galleryImage": "rbxassetid://18785572896"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785623712"
+      ],
+      "kind": "FlipBook",
+      "name": "Swirl1",
+      "galleryImage": "rbxassetid://18785623712"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636205531"
+      ],
+      "kind": "FlipBook",
+      "name": "Swirl2",
+      "galleryImage": "rbxassetid://18636205531"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636178979"
+      ],
+      "kind": "FlipBook",
+      "name": "Swirl3",
+      "galleryImage": "rbxassetid://18636178979"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785607761"
+      ],
+      "kind": "FlipBook",
+      "name": "Swirl4",
+      "galleryImage": "rbxassetid://18785607761"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785580119"
+      ],
+      "kind": "FlipBook",
+      "name": "Swirl5",
+      "galleryImage": "rbxassetid://18785580119"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636173393"
+      ],
+      "kind": "FlipBook",
+      "name": "Triangle1",
+      "galleryImage": "rbxassetid://18636173393"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785580326"
+      ],
+      "kind": "FlipBook",
+      "name": "Triangle2",
+      "galleryImage": "rbxassetid://18785580326"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://16866073152"
+      ],
+      "kind": "FlipBook",
+      "name": "Water1",
+      "galleryImage": "rbxassetid://16866073152"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://16865820080"
+      ],
+      "kind": "FlipBook",
+      "name": "Water2",
+      "galleryImage": "rbxassetid://16865820080"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://15990457929"
+      ],
+      "kind": "FlipBook",
+      "name": "Water3",
+      "galleryImage": "rbxassetid://15990457929"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14945581435"
+      ],
+      "kind": "FlipBook",
+      "name": "Water4",
+      "galleryImage": "rbxassetid://14945581435"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636210474"
+      ],
+      "kind": "FlipBook",
+      "name": "Water5",
+      "galleryImage": "rbxassetid://18636210474"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785614598"
+      ],
+      "kind": "FlipBook",
+      "name": "Water6",
+      "galleryImage": "rbxassetid://18785614598"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://16869292205"
+      ],
+      "kind": "FlipBook",
+      "name": "WaterRipple1",
+      "galleryImage": "rbxassetid://16869292205"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://11669838662"
+      ],
+      "kind": "FlipBook",
+      "name": "WaterRipple2",
+      "galleryImage": "rbxassetid://11669838662"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636193318"
+      ],
+      "kind": "FlipBook",
+      "name": "WaterRipple3",
+      "galleryImage": "rbxassetid://18636193318"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636169969"
+      ],
+      "kind": "FlipBook",
+      "name": "WaterRipple4",
+      "galleryImage": "rbxassetid://18636169969"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785591454"
+      ],
+      "kind": "FlipBook",
+      "name": "WaterRipple5",
+      "galleryImage": "rbxassetid://18785591454"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://16865869553"
+      ],
+      "kind": "FlipBook",
+      "name": "WaterSplash1",
+      "galleryImage": "rbxassetid://16865869553"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636170224"
+      ],
+      "kind": "FlipBook",
+      "name": "WaterSplash2",
+      "galleryImage": "rbxassetid://18636170224"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785612594"
+      ],
+      "kind": "FlipBook",
+      "name": "WaterSplash3",
+      "galleryImage": "rbxassetid://18785612594"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785565061"
+      ],
+      "kind": "FlipBook",
+      "name": "WaterSplash4",
+      "galleryImage": "rbxassetid://18785565061"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636199771"
+      ],
+      "kind": "FlipBook",
+      "name": "Wave1",
+      "galleryImage": "rbxassetid://18636199771"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636190481"
+      ],
+      "kind": "Particle",
+      "name": "???%1",
+      "galleryImage": "rbxassetid://18636190481"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14198043798"
+      ],
+      "kind": "Particle",
+      "name": "Arrow1",
+      "galleryImage": "rbxassetid://14198043798"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://6700009498"
+      ],
+      "kind": "Particle",
+      "name": "Atom1",
+      "galleryImage": "rbxassetid://6700009498"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://6700008769"
+      ],
+      "kind": "Particle",
+      "name": "Atom2",
+      "galleryImage": "rbxassetid://6700008769"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633584740"
+      ],
+      "kind": "Particle",
+      "name": "Aura1",
+      "galleryImage": "rbxassetid://18633584740"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://358965513"
+      ],
+      "kind": "Particle",
+      "name": "Aura2",
+      "galleryImage": "rbxassetid://358965513"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://867619398"
+      ],
+      "kind": "Particle",
+      "name": "Ball1",
+      "galleryImage": "rbxassetid://867619398"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://1084982817"
+      ],
+      "kind": "Particle",
+      "name": "Ball2",
+      "galleryImage": "rbxassetid://1084982817"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://13712004842"
+      ],
+      "kind": "Particle",
+      "name": "BlackHole1",
+      "galleryImage": "rbxassetid://13712004842"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636234866"
+      ],
+      "kind": "Particle",
+      "name": "BlackHole2",
+      "galleryImage": "rbxassetid://18636234866"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216854379"
+      ],
+      "kind": "Particle",
+      "name": "BlurBall1",
+      "galleryImage": "rbxassetid://7216854379"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216854285"
+      ],
+      "kind": "Particle",
+      "name": "BlurBall2",
+      "galleryImage": "rbxassetid://7216854285"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216854486"
+      ],
+      "kind": "Particle",
+      "name": "BlurBall3",
+      "galleryImage": "rbxassetid://7216854486"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://8610473870"
+      ],
+      "kind": "Particle",
+      "name": "Bubble1",
+      "galleryImage": "rbxassetid://8610473870"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12363678136"
+      ],
+      "kind": "Particle",
+      "name": "Bubble10",
+      "galleryImage": "rbxassetid://12363678136"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12363676565"
+      ],
+      "kind": "Particle",
+      "name": "Bubble11",
+      "galleryImage": "rbxassetid://12363676565"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12363676005"
+      ],
+      "kind": "Particle",
+      "name": "Bubble12",
+      "galleryImage": "rbxassetid://12363676005"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12363673826"
+      ],
+      "kind": "Particle",
+      "name": "Bubble13",
+      "galleryImage": "rbxassetid://12363673826"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12363673327"
+      ],
+      "kind": "Particle",
+      "name": "Bubble14",
+      "galleryImage": "rbxassetid://12363673327"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12363673584"
+      ],
+      "kind": "Particle",
+      "name": "Bubble15",
+      "galleryImage": "rbxassetid://12363673584"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://249902641"
+      ],
+      "kind": "Particle",
+      "name": "Bubble2",
+      "galleryImage": "rbxassetid://249902641"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://10423605602"
+      ],
+      "kind": "Particle",
+      "name": "Bubble3",
+      "galleryImage": "rbxassetid://10423605602"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://6201773939"
+      ],
+      "kind": "Particle",
+      "name": "Bubble5",
+      "galleryImage": "rbxassetid://6201773939"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12363672748"
+      ],
+      "kind": "Particle",
+      "name": "Bubble6",
+      "galleryImage": "rbxassetid://12363672748"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12363678832"
+      ],
+      "kind": "Particle",
+      "name": "Bubble7",
+      "galleryImage": "rbxassetid://12363678832"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://9376967285"
+      ],
+      "kind": "Particle",
+      "name": "Bubble8",
+      "galleryImage": "rbxassetid://9376967285"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12363677118"
+      ],
+      "kind": "Particle",
+      "name": "Bubble9",
+      "galleryImage": "rbxassetid://12363677118"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7083340510"
+      ],
+      "kind": "Particle",
+      "name": "Bublbe4",
+      "galleryImage": "rbxassetid://7083340510"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633497505"
+      ],
+      "kind": "Particle",
+      "name": "CartoonImpact1",
+      "galleryImage": "rbxassetid://18633497505"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633498655"
+      ],
+      "kind": "Particle",
+      "name": "CartoonImpact2",
+      "galleryImage": "rbxassetid://18633498655"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633494432"
+      ],
+      "kind": "Particle",
+      "name": "CartoonImpact3",
+      "galleryImage": "rbxassetid://18633494432"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633498139"
+      ],
+      "kind": "Particle",
+      "name": "CartoonSmoke1",
+      "galleryImage": "rbxassetid://18633498139"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://6590251003"
+      ],
+      "kind": "Particle",
+      "name": "CartoonStar1",
+      "galleryImage": "rbxassetid://6590251003"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636224157"
+      ],
+      "kind": "Particle",
+      "name": "CartoonStar2",
+      "galleryImage": "rbxassetid://18636224157"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636172625"
+      ],
+      "kind": "Particle",
+      "name": "ChromaticShockwave1",
+      "galleryImage": "rbxassetid://18636172625"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785579836"
+      ],
+      "kind": "Particle",
+      "name": "ChromaticShockwave2",
+      "galleryImage": "rbxassetid://18785579836"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216856158"
+      ],
+      "kind": "Particle",
+      "name": "Circle1",
+      "galleryImage": "rbxassetid://7216856158"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216856276"
+      ],
+      "kind": "Particle",
+      "name": "Circle2",
+      "galleryImage": "rbxassetid://7216856276"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216856402"
+      ],
+      "kind": "Particle",
+      "name": "Circle3",
+      "galleryImage": "rbxassetid://7216856402"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216856024"
+      ],
+      "kind": "Particle",
+      "name": "Circle4",
+      "galleryImage": "rbxassetid://7216856024"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633587916"
+      ],
+      "kind": "Particle",
+      "name": "Circle5",
+      "galleryImage": "rbxassetid://18633587916"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633497174"
+      ],
+      "kind": "Particle",
+      "name": "Circle6",
+      "galleryImage": "rbxassetid://18633497174"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785617715"
+      ],
+      "kind": "Particle",
+      "name": "Circle7",
+      "galleryImage": "rbxassetid://18785617715"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785580792"
+      ],
+      "kind": "Particle",
+      "name": "Cloud1",
+      "galleryImage": "rbxassetid://18785580792"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://8187308602"
+      ],
+      "kind": "Particle",
+      "name": "Cloud2",
+      "galleryImage": "rbxassetid://8187308602"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://8187308460"
+      ],
+      "kind": "Particle",
+      "name": "Cloud3",
+      "galleryImage": "rbxassetid://8187308460"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://8187308602"
+      ],
+      "kind": "Particle",
+      "name": "Cloud4",
+      "galleryImage": "rbxassetid://8187308602"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://8187308218"
+      ],
+      "kind": "Particle",
+      "name": "Cloud5",
+      "galleryImage": "rbxassetid://8187308218"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://8187308349"
+      ],
+      "kind": "Particle",
+      "name": "Cloud6",
+      "galleryImage": "rbxassetid://8187308349"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14197914960"
+      ],
+      "kind": "Particle",
+      "name": "Cloud7",
+      "galleryImage": "rbxassetid://14197914960"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14197913578"
+      ],
+      "kind": "Particle",
+      "name": "Cloud8",
+      "galleryImage": "rbxassetid://14197913578"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785606644"
+      ],
+      "kind": "Particle",
+      "name": "Compas1",
+      "galleryImage": "rbxassetid://18785606644"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14163275307"
+      ],
+      "kind": "Particle",
+      "name": "Crack1",
+      "galleryImage": "rbxassetid://14163275307"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785605855"
+      ],
+      "kind": "Particle",
+      "name": "Crack10",
+      "galleryImage": "rbxassetid://18785605855"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://8172249266"
+      ],
+      "kind": "Particle",
+      "name": "Crack2",
+      "galleryImage": "rbxassetid://8172249266"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14163287554"
+      ],
+      "kind": "Particle",
+      "name": "Crack3",
+      "galleryImage": "rbxassetid://14163287554"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636231415"
+      ],
+      "kind": "Particle",
+      "name": "Crack4",
+      "galleryImage": "rbxassetid://18636231415"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633498537"
+      ],
+      "kind": "Particle",
+      "name": "Crack5",
+      "galleryImage": "rbxassetid://18633498537"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633496956"
+      ],
+      "kind": "Particle",
+      "name": "Crack6",
+      "galleryImage": "rbxassetid://18633496956"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785600922"
+      ],
+      "kind": "Particle",
+      "name": "Crack7",
+      "galleryImage": "rbxassetid://18785600922"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785601118"
+      ],
+      "kind": "Particle",
+      "name": "Crack8",
+      "galleryImage": "rbxassetid://18785601118"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785605531"
+      ],
+      "kind": "Particle",
+      "name": "Crack9",
+      "galleryImage": "rbxassetid://18785605531"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633498002"
+      ],
+      "kind": "Particle",
+      "name": "Crescent1",
+      "galleryImage": "rbxassetid://18633498002"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633542179"
+      ],
+      "kind": "Particle",
+      "name": "Crescent2",
+      "galleryImage": "rbxassetid://18633542179"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633498408"
+      ],
+      "kind": "Particle",
+      "name": "Crescent3",
+      "galleryImage": "rbxassetid://18633498408"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://1084963972"
+      ],
+      "kind": "Particle",
+      "name": "Crescent4",
+      "galleryImage": "rbxassetid://1084963972"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633540348"
+      ],
+      "kind": "Particle",
+      "name": "Crescent5",
+      "galleryImage": "rbxassetid://18633540348"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633540128"
+      ],
+      "kind": "Particle",
+      "name": "Crescent6",
+      "galleryImage": "rbxassetid://18633540128"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636222745"
+      ],
+      "kind": "Particle",
+      "name": "Crescent7",
+      "galleryImage": "rbxassetid://18636222745"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636219644"
+      ],
+      "kind": "Particle",
+      "name": "Crescent8",
+      "galleryImage": "rbxassetid://18636219644"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633539543"
+      ],
+      "kind": "Particle",
+      "name": "Crescent9",
+      "galleryImage": "rbxassetid://18633539543"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636172799"
+      ],
+      "kind": "Particle",
+      "name": "Cross1",
+      "galleryImage": "rbxassetid://18636172799"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636220628"
+      ],
+      "kind": "Particle",
+      "name": "Crucifix1",
+      "galleryImage": "rbxassetid://18636220628"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216853898"
+      ],
+      "kind": "Particle",
+      "name": "Cursor1",
+      "galleryImage": "rbxassetid://7216853898"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636221951"
+      ],
+      "kind": "Particle",
+      "name": "Cursor2",
+      "galleryImage": "rbxassetid://18636221951"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633495949"
+      ],
+      "kind": "Particle",
+      "name": "Cursor3",
+      "galleryImage": "rbxassetid://18633495949"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633497831"
+      ],
+      "kind": "Particle",
+      "name": "CyberCircle1",
+      "galleryImage": "rbxassetid://18633497831"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636177053"
+      ],
+      "kind": "Particle",
+      "name": "CyberCircle2",
+      "galleryImage": "rbxassetid://18636177053"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636177319"
+      ],
+      "kind": "Particle",
+      "name": "CyberCircle3",
+      "galleryImage": "rbxassetid://18636177319"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633495075"
+      ],
+      "kind": "Particle",
+      "name": "CyberCircle4",
+      "galleryImage": "rbxassetid://18633495075"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636177631"
+      ],
+      "kind": "Particle",
+      "name": "CyberCircle4",
+      "galleryImage": "rbxassetid://18636177631"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636190150"
+      ],
+      "kind": "Particle",
+      "name": "DarkFlame1",
+      "galleryImage": "rbxassetid://18636190150"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633515668"
+      ],
+      "kind": "Particle",
+      "name": "Distortion1",
+      "galleryImage": "rbxassetid://18633515668"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633492996"
+      ],
+      "kind": "Particle",
+      "name": "Distortion2",
+      "galleryImage": "rbxassetid://18633492996"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785590540"
+      ],
+      "kind": "Particle",
+      "name": "Distortion3",
+      "galleryImage": "rbxassetid://18785590540"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633498947"
+      ],
+      "kind": "Particle",
+      "name": "Ditch1",
+      "galleryImage": "rbxassetid://18633498947"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633586087"
+      ],
+      "kind": "Particle",
+      "name": "Ditch2",
+      "galleryImage": "rbxassetid://18633586087"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633585915"
+      ],
+      "kind": "Particle",
+      "name": "Ditch3",
+      "galleryImage": "rbxassetid://18633585915"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633586405"
+      ],
+      "kind": "Particle",
+      "name": "Ditch4",
+      "galleryImage": "rbxassetid://18633586405"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://13326678344"
+      ],
+      "kind": "Particle",
+      "name": "Dove1",
+      "galleryImage": "rbxassetid://13326678344"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14197348275"
+      ],
+      "kind": "Particle",
+      "name": "Dragon1",
+      "galleryImage": "rbxassetid://14197348275"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://6119272027"
+      ],
+      "kind": "Particle",
+      "name": "Dust1",
+      "galleryImage": "rbxassetid://6119272027"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7096972007"
+      ],
+      "kind": "Particle",
+      "name": "Egg1",
+      "galleryImage": "rbxassetid://7096972007"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633584341"
+      ],
+      "kind": "Particle",
+      "name": "Eye1",
+      "galleryImage": "rbxassetid://18633584341"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12403116585"
+      ],
+      "kind": "Particle",
+      "name": "Eye2",
+      "galleryImage": "rbxassetid://12403116585"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://242911609"
+      ],
+      "kind": "Particle",
+      "name": "Fire1",
+      "galleryImage": "rbxassetid://242911609"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://3916143220"
+      ],
+      "kind": "Particle",
+      "name": "Fire10",
+      "galleryImage": "rbxassetid://3916143220"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://3916143220"
+      ],
+      "kind": "Particle",
+      "name": "Fire11",
+      "galleryImage": "rbxassetid://3916143220"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216855238"
+      ],
+      "kind": "Particle",
+      "name": "Fire12",
+      "galleryImage": "rbxassetid://7216855238"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216855136"
+      ],
+      "kind": "Particle",
+      "name": "Fire13",
+      "galleryImage": "rbxassetid://7216855136"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216854921"
+      ],
+      "kind": "Particle",
+      "name": "Fire14",
+      "galleryImage": "rbxassetid://7216854921"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://303195022"
+      ],
+      "kind": "Particle",
+      "name": "Fire2",
+      "galleryImage": "rbxassetid://303195022"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://5872447086"
+      ],
+      "kind": "Particle",
+      "name": "Fire3",
+      "galleryImage": "rbxassetid://5872447086"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216852799"
+      ],
+      "kind": "Particle",
+      "name": "Fire4",
+      "galleryImage": "rbxassetid://7216852799"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216852934"
+      ],
+      "kind": "Particle",
+      "name": "Fire5",
+      "galleryImage": "rbxassetid://7216852934"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216852679"
+      ],
+      "kind": "Particle",
+      "name": "Fire6",
+      "galleryImage": "rbxassetid://7216852679"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216855364"
+      ],
+      "kind": "Particle",
+      "name": "Fire7",
+      "galleryImage": "rbxassetid://7216855364"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216855489"
+      ],
+      "kind": "Particle",
+      "name": "Fire8",
+      "galleryImage": "rbxassetid://7216855489"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216851723"
+      ],
+      "kind": "Particle",
+      "name": "Fire9",
+      "galleryImage": "rbxassetid://7216851723"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785583806"
+      ],
+      "kind": "Particle",
+      "name": "FireCircle1",
+      "galleryImage": "rbxassetid://18785583806"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636200444"
+      ],
+      "kind": "Particle",
+      "name": "Fish1",
+      "galleryImage": "rbxassetid://18636200444"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://1454292685"
+      ],
+      "kind": "Particle",
+      "name": "Flare1",
+      "galleryImage": "rbxassetid://1454292685"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://75202463"
+      ],
+      "kind": "Particle",
+      "name": "Flare2",
+      "galleryImage": "rbxassetid://75202463"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://917186750"
+      ],
+      "kind": "Particle",
+      "name": "Flare3",
+      "galleryImage": "rbxassetid://917186750"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://8271495905"
+      ],
+      "kind": "Particle",
+      "name": "Flare4",
+      "galleryImage": "rbxassetid://8271495905"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633587390"
+      ],
+      "kind": "Particle",
+      "name": "Flare5",
+      "galleryImage": "rbxassetid://18633587390"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633498296"
+      ],
+      "kind": "Particle",
+      "name": "Flare6",
+      "galleryImage": "rbxassetid://18633498296"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633513693"
+      ],
+      "kind": "Particle",
+      "name": "Flare7",
+      "galleryImage": "rbxassetid://18633513693"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7524787479"
+      ],
+      "kind": "Particle",
+      "name": "FlashArrow1",
+      "galleryImage": "rbxassetid://7524787479"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://16933861674"
+      ],
+      "kind": "Particle",
+      "name": "FlashStar1",
+      "galleryImage": "rbxassetid://16933861674"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633585568"
+      ],
+      "kind": "Particle",
+      "name": "Gear1",
+      "galleryImage": "rbxassetid://18633585568"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://242213983"
+      ],
+      "kind": "Particle",
+      "name": "Ghost1",
+      "galleryImage": "rbxassetid://242213983"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14200442798"
+      ],
+      "kind": "Particle",
+      "name": "GlitchEffect1",
+      "galleryImage": "rbxassetid://14200442798"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636205900"
+      ],
+      "kind": "Particle",
+      "name": "GlowingStar1",
+      "galleryImage": "rbxassetid://18636205900"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://8133326767"
+      ],
+      "kind": "Particle",
+      "name": "GoldenCurve1",
+      "galleryImage": "rbxassetid://8133326767"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://1078637959"
+      ],
+      "kind": "Particle",
+      "name": "Grid1",
+      "galleryImage": "rbxassetid://1078637959"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://6479321476"
+      ],
+      "kind": "Particle",
+      "name": "Heart1",
+      "galleryImage": "rbxassetid://6479321476"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633497350"
+      ],
+      "kind": "Particle",
+      "name": "Impact1",
+      "galleryImage": "rbxassetid://18633497350"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633496610"
+      ],
+      "kind": "Particle",
+      "name": "Impact2",
+      "galleryImage": "rbxassetid://18633496610"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633494925"
+      ],
+      "kind": "Particle",
+      "name": "Impact3",
+      "galleryImage": "rbxassetid://18633494925"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633530430"
+      ],
+      "kind": "Particle",
+      "name": "Impact4",
+      "galleryImage": "rbxassetid://18633530430"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633494280"
+      ],
+      "kind": "Particle",
+      "name": "Impact5",
+      "galleryImage": "rbxassetid://18633494280"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14807036696"
+      ],
+      "kind": "Particle",
+      "name": "Kanji1",
+      "galleryImage": "rbxassetid://14807036696"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18654378213"
+      ],
+      "kind": "Particle",
+      "name": "Kanji2",
+      "galleryImage": "rbxassetid://18654378213"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://6475162564"
+      ],
+      "kind": "Particle",
+      "name": "Leaf1",
+      "galleryImage": "rbxassetid://6475162564"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://6602413638"
+      ],
+      "kind": "Particle",
+      "name": "Leaf2",
+      "galleryImage": "rbxassetid://6602413638"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://915916073"
+      ],
+      "kind": "Particle",
+      "name": "Leaf3",
+      "galleryImage": "rbxassetid://915916073"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216850212"
+      ],
+      "kind": "Particle",
+      "name": "Lightning1",
+      "galleryImage": "rbxassetid://7216850212"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216850429"
+      ],
+      "kind": "Particle",
+      "name": "Lightning2",
+      "galleryImage": "rbxassetid://7216850429"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216850580"
+      ],
+      "kind": "Particle",
+      "name": "Lightning3",
+      "galleryImage": "rbxassetid://7216850580"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://332491482"
+      ],
+      "kind": "Particle",
+      "name": "Lightning4",
+      "galleryImage": "rbxassetid://332491482"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://528280947"
+      ],
+      "kind": "Particle",
+      "name": "Lightning5",
+      "galleryImage": "rbxassetid://528280947"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14052694884"
+      ],
+      "kind": "Particle",
+      "name": "Lightning6",
+      "galleryImage": "rbxassetid://14052694884"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://243098098"
+      ],
+      "kind": "Particle",
+      "name": "Lightning7",
+      "galleryImage": "rbxassetid://243098098"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://16933892213"
+      ],
+      "kind": "Particle",
+      "name": "MagicCircle1",
+      "galleryImage": "rbxassetid://16933892213"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785618500"
+      ],
+      "kind": "Particle",
+      "name": "MagicCircle10",
+      "galleryImage": "rbxassetid://18785618500"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785617252"
+      ],
+      "kind": "Particle",
+      "name": "MagicCircle11",
+      "galleryImage": "rbxassetid://18785617252"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785588607"
+      ],
+      "kind": "Particle",
+      "name": "MagicCircle12",
+      "galleryImage": "rbxassetid://18785588607"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785588056"
+      ],
+      "kind": "Particle",
+      "name": "MagicCircle13",
+      "galleryImage": "rbxassetid://18785588056"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785587404"
+      ],
+      "kind": "Particle",
+      "name": "MagicCircle14",
+      "galleryImage": "rbxassetid://18785587404"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785579293"
+      ],
+      "kind": "Particle",
+      "name": "MagicCircle15",
+      "galleryImage": "rbxassetid://18785579293"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14197207222"
+      ],
+      "kind": "Particle",
+      "name": "MagicCircle16",
+      "galleryImage": "rbxassetid://14197207222"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14197211075"
+      ],
+      "kind": "Particle",
+      "name": "MagicCircle17",
+      "galleryImage": "rbxassetid://14197211075"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14197216945"
+      ],
+      "kind": "Particle",
+      "name": "MagicCircle18",
+      "galleryImage": "rbxassetid://14197216945"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://11902406031"
+      ],
+      "kind": "Particle",
+      "name": "MagicCircle19",
+      "galleryImage": "rbxassetid://11902406031"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633495343"
+      ],
+      "kind": "Particle",
+      "name": "MagicCircle2",
+      "galleryImage": "rbxassetid://18633495343"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636234636"
+      ],
+      "kind": "Particle",
+      "name": "MagicCircle2",
+      "galleryImage": "rbxassetid://18636234636"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14197223901"
+      ],
+      "kind": "Particle",
+      "name": "MagicCircle20",
+      "galleryImage": "rbxassetid://14197223901"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14197297037"
+      ],
+      "kind": "Particle",
+      "name": "MagicCircle21",
+      "galleryImage": "rbxassetid://14197297037"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14197309228"
+      ],
+      "kind": "Particle",
+      "name": "MagicCircle22",
+      "galleryImage": "rbxassetid://14197309228"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14191659579"
+      ],
+      "kind": "Particle",
+      "name": "MagicCircle23",
+      "galleryImage": "rbxassetid://14191659579"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14191668646"
+      ],
+      "kind": "Particle",
+      "name": "MagicCircle24",
+      "galleryImage": "rbxassetid://14191668646"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14197192649"
+      ],
+      "kind": "Particle",
+      "name": "MagicCircle25",
+      "galleryImage": "rbxassetid://14197192649"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14197243565"
+      ],
+      "kind": "Particle",
+      "name": "MagicCircle26",
+      "galleryImage": "rbxassetid://14197243565"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14197333869"
+      ],
+      "kind": "Particle",
+      "name": "MagicCircle27",
+      "galleryImage": "rbxassetid://14197333869"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14197257578"
+      ],
+      "kind": "Particle",
+      "name": "MagicCircle28",
+      "galleryImage": "rbxassetid://14197257578"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14197254601"
+      ],
+      "kind": "Particle",
+      "name": "MagicCircle29",
+      "galleryImage": "rbxassetid://14197254601"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636234078"
+      ],
+      "kind": "Particle",
+      "name": "MagicCircle3",
+      "galleryImage": "rbxassetid://18636234078"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14197236586"
+      ],
+      "kind": "Particle",
+      "name": "MagicCircle30",
+      "galleryImage": "rbxassetid://14197236586"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14191644242"
+      ],
+      "kind": "Particle",
+      "name": "MagicCircle31",
+      "galleryImage": "rbxassetid://14191644242"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14197201511"
+      ],
+      "kind": "Particle",
+      "name": "MagicCircle32",
+      "galleryImage": "rbxassetid://14197201511"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14197272066"
+      ],
+      "kind": "Particle",
+      "name": "MagicCircle33",
+      "galleryImage": "rbxassetid://14197272066"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14197282370"
+      ],
+      "kind": "Particle",
+      "name": "MagicCircle34",
+      "galleryImage": "rbxassetid://14197282370"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://11902410656"
+      ],
+      "kind": "Particle",
+      "name": "MagicCircle35",
+      "galleryImage": "rbxassetid://11902410656"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636233661"
+      ],
+      "kind": "Particle",
+      "name": "MagicCircle4",
+      "galleryImage": "rbxassetid://18636233661"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636232465"
+      ],
+      "kind": "Particle",
+      "name": "MagicCircle5",
+      "galleryImage": "rbxassetid://18636232465"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633496126"
+      ],
+      "kind": "Particle",
+      "name": "MagicCircle6",
+      "galleryImage": "rbxassetid://18633496126"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636172392"
+      ],
+      "kind": "Particle",
+      "name": "MagicCircle7",
+      "galleryImage": "rbxassetid://18636172392"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785621631"
+      ],
+      "kind": "Particle",
+      "name": "MagicCircle8",
+      "galleryImage": "rbxassetid://18785621631"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785620694"
+      ],
+      "kind": "Particle",
+      "name": "MagicCircle9",
+      "galleryImage": "rbxassetid://18785620694"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18654377877"
+      ],
+      "kind": "Particle",
+      "name": "MonsterFace1",
+      "galleryImage": "rbxassetid://18654377877"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12402930237"
+      ],
+      "kind": "Particle",
+      "name": "MoonCrescent1",
+      "galleryImage": "rbxassetid://12402930237"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://6337281108"
+      ],
+      "kind": "Particle",
+      "name": "MusicNote1",
+      "galleryImage": "rbxassetid://6337281108"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633515804"
+      ],
+      "kind": "Particle",
+      "name": "MusicNote2",
+      "galleryImage": "rbxassetid://18633515804"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633515538"
+      ],
+      "kind": "Particle",
+      "name": "MusicNote3",
+      "galleryImage": "rbxassetid://18633515538"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633495488"
+      ],
+      "kind": "Particle",
+      "name": "MusicNote4",
+      "galleryImage": "rbxassetid://18633495488"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14050362777"
+      ],
+      "kind": "Particle",
+      "name": "NoiseCircle1",
+      "galleryImage": "rbxassetid://14050362777"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14050361514"
+      ],
+      "kind": "Particle",
+      "name": "NoiseCircle2",
+      "galleryImage": "rbxassetid://14050361514"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14050319723"
+      ],
+      "kind": "Particle",
+      "name": "NoiseCircle3",
+      "galleryImage": "rbxassetid://14050319723"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14050321697"
+      ],
+      "kind": "Particle",
+      "name": "NoiseCircle4",
+      "galleryImage": "rbxassetid://14050321697"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14191636737"
+      ],
+      "kind": "Particle",
+      "name": "OtherCircle1",
+      "galleryImage": "rbxassetid://14191636737"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14191693649"
+      ],
+      "kind": "Particle",
+      "name": "OtherCircle2",
+      "galleryImage": "rbxassetid://14191693649"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://11902232976"
+      ],
+      "kind": "Particle",
+      "name": "OtherCircle3",
+      "galleryImage": "rbxassetid://11902232976"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14197316125"
+      ],
+      "kind": "Particle",
+      "name": "OtherCircle4",
+      "galleryImage": "rbxassetid://14197316125"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14197214062"
+      ],
+      "kind": "Particle",
+      "name": "OtherCircle6",
+      "galleryImage": "rbxassetid://14197214062"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14191651608"
+      ],
+      "kind": "Particle",
+      "name": "OtherCircle7",
+      "galleryImage": "rbxassetid://14191651608"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://917188138"
+      ],
+      "kind": "Particle",
+      "name": "Particle1",
+      "galleryImage": "rbxassetid://917188138"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://917189380"
+      ],
+      "kind": "Particle",
+      "name": "Particle2",
+      "galleryImage": "rbxassetid://917189380"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14162128187"
+      ],
+      "kind": "Particle",
+      "name": "PixelizedArrow1",
+      "galleryImage": "rbxassetid://14162128187"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://11902439743"
+      ],
+      "kind": "Particle",
+      "name": "PixelizedMagicCircle1",
+      "galleryImage": "rbxassetid://11902439743"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://11902442693"
+      ],
+      "kind": "Particle",
+      "name": "PixelizedMagicCircle2",
+      "galleryImage": "rbxassetid://11902442693"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://11902425479"
+      ],
+      "kind": "Particle",
+      "name": "PixelizedMagicCircle3",
+      "galleryImage": "rbxassetid://11902425479"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://11902428695"
+      ],
+      "kind": "Particle",
+      "name": "PixelizedMagicCircle4",
+      "galleryImage": "rbxassetid://11902428695"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14164260155"
+      ],
+      "kind": "Particle",
+      "name": "PixelizedShamrock1",
+      "galleryImage": "rbxassetid://14164260155"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://1084969783"
+      ],
+      "kind": "Particle",
+      "name": "Point1",
+      "galleryImage": "rbxassetid://1084969783"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216849215"
+      ],
+      "kind": "Particle",
+      "name": "Point2",
+      "galleryImage": "rbxassetid://7216849215"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216855914"
+      ],
+      "kind": "Particle",
+      "name": "Point3",
+      "galleryImage": "rbxassetid://7216855914"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://2122546039"
+      ],
+      "kind": "Particle",
+      "name": "Powder1",
+      "galleryImage": "rbxassetid://2122546039"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12363692255"
+      ],
+      "kind": "Particle",
+      "name": "Radar1",
+      "galleryImage": "rbxassetid://12363692255"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785614233"
+      ],
+      "kind": "Particle",
+      "name": "RatioLine1",
+      "galleryImage": "rbxassetid://18785614233"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://253188732"
+      ],
+      "kind": "Particle",
+      "name": "Ray1",
+      "galleryImage": "rbxassetid://253188732"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://11392234336"
+      ],
+      "kind": "Particle",
+      "name": "Ray10",
+      "galleryImage": "rbxassetid://11392234336"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633515261"
+      ],
+      "kind": "Particle",
+      "name": "Ray11",
+      "galleryImage": "rbxassetid://18633515261"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633515035"
+      ],
+      "kind": "Particle",
+      "name": "Ray12",
+      "galleryImage": "rbxassetid://18633515035"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636201915"
+      ],
+      "kind": "Particle",
+      "name": "Ray13",
+      "galleryImage": "rbxassetid://18636201915"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633513218"
+      ],
+      "kind": "Particle",
+      "name": "Ray14",
+      "galleryImage": "rbxassetid://18633513218"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633513025"
+      ],
+      "kind": "Particle",
+      "name": "Ray15",
+      "galleryImage": "rbxassetid://18633513025"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633510510"
+      ],
+      "kind": "Particle",
+      "name": "Ray16",
+      "galleryImage": "rbxassetid://18633510510"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633512517"
+      ],
+      "kind": "Particle",
+      "name": "Ray17",
+      "galleryImage": "rbxassetid://18633512517"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633511640"
+      ],
+      "kind": "Particle",
+      "name": "Ray18",
+      "galleryImage": "rbxassetid://18633511640"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633511168"
+      ],
+      "kind": "Particle",
+      "name": "Ray19",
+      "galleryImage": "rbxassetid://18633511168"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216979807"
+      ],
+      "kind": "Particle",
+      "name": "Ray2",
+      "galleryImage": "rbxassetid://7216979807"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633510891"
+      ],
+      "kind": "Particle",
+      "name": "Ray20",
+      "galleryImage": "rbxassetid://18633510891"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636189591"
+      ],
+      "kind": "Particle",
+      "name": "Ray21",
+      "galleryImage": "rbxassetid://18636189591"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785566843"
+      ],
+      "kind": "Particle",
+      "name": "Ray22",
+      "galleryImage": "rbxassetid://18785566843"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785592977"
+      ],
+      "kind": "Particle",
+      "name": "Ray23",
+      "galleryImage": "rbxassetid://18785592977"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216847958"
+      ],
+      "kind": "Particle",
+      "name": "Ray3",
+      "galleryImage": "rbxassetid://7216847958"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://243660364"
+      ],
+      "kind": "Particle",
+      "name": "Ray4",
+      "galleryImage": "rbxassetid://243660364"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216848219"
+      ],
+      "kind": "Particle",
+      "name": "Ray5",
+      "galleryImage": "rbxassetid://7216848219"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216848401"
+      ],
+      "kind": "Particle",
+      "name": "Ray6",
+      "galleryImage": "rbxassetid://7216848401"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216848307"
+      ],
+      "kind": "Particle",
+      "name": "Ray7",
+      "galleryImage": "rbxassetid://7216848307"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216847852"
+      ],
+      "kind": "Particle",
+      "name": "Ray8",
+      "galleryImage": "rbxassetid://7216847852"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216848307"
+      ],
+      "kind": "Particle",
+      "name": "Ray9",
+      "galleryImage": "rbxassetid://7216848307"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14052938411"
+      ],
+      "kind": "Particle",
+      "name": "Rock1",
+      "galleryImage": "rbxassetid://14052938411"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12403077402"
+      ],
+      "kind": "Particle",
+      "name": "Rosette1",
+      "galleryImage": "rbxassetid://12403077402"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12402916099"
+      ],
+      "kind": "Particle",
+      "name": "Rosette10",
+      "galleryImage": "rbxassetid://12402916099"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12403102126"
+      ],
+      "kind": "Particle",
+      "name": "Rosette11",
+      "galleryImage": "rbxassetid://12403102126"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12403078255"
+      ],
+      "kind": "Particle",
+      "name": "Rosette2",
+      "galleryImage": "rbxassetid://12403078255"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12403079236"
+      ],
+      "kind": "Particle",
+      "name": "Rosette3",
+      "galleryImage": "rbxassetid://12403079236"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12403075151"
+      ],
+      "kind": "Particle",
+      "name": "Rosette4",
+      "galleryImage": "rbxassetid://12403075151"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12403076360"
+      ],
+      "kind": "Particle",
+      "name": "Rosette5",
+      "galleryImage": "rbxassetid://12403076360"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12403108556"
+      ],
+      "kind": "Particle",
+      "name": "Rosette6",
+      "galleryImage": "rbxassetid://12403108556"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12403097047"
+      ],
+      "kind": "Particle",
+      "name": "Rosette7",
+      "galleryImage": "rbxassetid://12403097047"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12403098055"
+      ],
+      "kind": "Particle",
+      "name": "Rosette8",
+      "galleryImage": "rbxassetid://12403098055"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12402928708"
+      ],
+      "kind": "Particle",
+      "name": "Rosette9",
+      "galleryImage": "rbxassetid://12402928708"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216849471"
+      ],
+      "kind": "Particle",
+      "name": "Scope1",
+      "galleryImage": "rbxassetid://7216849471"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14279114116"
+      ],
+      "kind": "Particle",
+      "name": "Shamrock1",
+      "galleryImage": "rbxassetid://14279114116"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636183443"
+      ],
+      "kind": "Particle",
+      "name": "Shard1",
+      "galleryImage": "rbxassetid://18636183443"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7948615765"
+      ],
+      "kind": "Particle",
+      "name": "Shield1",
+      "galleryImage": "rbxassetid://7948615765"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633586668"
+      ],
+      "kind": "Particle",
+      "name": "Shield2",
+      "galleryImage": "rbxassetid://18633586668"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633586257"
+      ],
+      "kind": "Particle",
+      "name": "Shield3",
+      "galleryImage": "rbxassetid://18633586257"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://8620925663"
+      ],
+      "kind": "Particle",
+      "name": "Shockwave1",
+      "galleryImage": "rbxassetid://8620925663"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785567147"
+      ],
+      "kind": "Particle",
+      "name": "Shockwave10",
+      "galleryImage": "rbxassetid://18785567147"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785577807"
+      ],
+      "kind": "Particle",
+      "name": "Shockwave11",
+      "galleryImage": "rbxassetid://18785577807"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12878479033"
+      ],
+      "kind": "Particle",
+      "name": "Shockwave12",
+      "galleryImage": "rbxassetid://12878479033"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://13916934000"
+      ],
+      "kind": "Particle",
+      "name": "Shockwave2",
+      "galleryImage": "rbxassetid://13916934000"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636233213"
+      ],
+      "kind": "Particle",
+      "name": "Shockwave3",
+      "galleryImage": "rbxassetid://18636233213"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633497666"
+      ],
+      "kind": "Particle",
+      "name": "Shockwave4",
+      "galleryImage": "rbxassetid://18633497666"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633495719"
+      ],
+      "kind": "Particle",
+      "name": "Shockwave5",
+      "galleryImage": "rbxassetid://18633495719"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636203251"
+      ],
+      "kind": "Particle",
+      "name": "Shockwave6",
+      "galleryImage": "rbxassetid://18636203251"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785578232"
+      ],
+      "kind": "Particle",
+      "name": "Shockwave7",
+      "galleryImage": "rbxassetid://18785578232"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785593787"
+      ],
+      "kind": "Particle",
+      "name": "Shockwave8",
+      "galleryImage": "rbxassetid://18785593787"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785584055"
+      ],
+      "kind": "Particle",
+      "name": "Shockwave9",
+      "galleryImage": "rbxassetid://18785584055"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633586914"
+      ],
+      "kind": "Particle",
+      "name": "Skull1",
+      "galleryImage": "rbxassetid://18633586914"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14198040720"
+      ],
+      "kind": "Particle",
+      "name": "Skull2",
+      "galleryImage": "rbxassetid://14198040720"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633540748"
+      ],
+      "kind": "Particle",
+      "name": "Slash1",
+      "galleryImage": "rbxassetid://18633540748"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633494761"
+      ],
+      "kind": "Particle",
+      "name": "Slash10",
+      "galleryImage": "rbxassetid://18633494761"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633494589"
+      ],
+      "kind": "Particle",
+      "name": "Slash11",
+      "galleryImage": "rbxassetid://18633494589"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636200204"
+      ],
+      "kind": "Particle",
+      "name": "Slash12",
+      "galleryImage": "rbxassetid://18636200204"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636204676"
+      ],
+      "kind": "Particle",
+      "name": "Slash13",
+      "galleryImage": "rbxassetid://18636204676"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636204475"
+      ],
+      "kind": "Particle",
+      "name": "Slash14",
+      "galleryImage": "rbxassetid://18636204475"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636189812"
+      ],
+      "kind": "Particle",
+      "name": "Slash15",
+      "galleryImage": "rbxassetid://18636189812"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785620989"
+      ],
+      "kind": "Particle",
+      "name": "Slash16",
+      "galleryImage": "rbxassetid://18785620989"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785620168"
+      ],
+      "kind": "Particle",
+      "name": "Slash17",
+      "galleryImage": "rbxassetid://18785620168"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785616286"
+      ],
+      "kind": "Particle",
+      "name": "Slash18",
+      "galleryImage": "rbxassetid://18785616286"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785615954"
+      ],
+      "kind": "Particle",
+      "name": "Slash19",
+      "galleryImage": "rbxassetid://18785615954"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636227280"
+      ],
+      "kind": "Particle",
+      "name": "Slash2",
+      "galleryImage": "rbxassetid://18636227280"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785615591"
+      ],
+      "kind": "Particle",
+      "name": "Slash20",
+      "galleryImage": "rbxassetid://18785615591"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785619840"
+      ],
+      "kind": "Particle",
+      "name": "Slash21",
+      "galleryImage": "rbxassetid://18785619840"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785614956"
+      ],
+      "kind": "Particle",
+      "name": "Slash21",
+      "galleryImage": "rbxassetid://18785614956"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785615220"
+      ],
+      "kind": "Particle",
+      "name": "Slash21",
+      "galleryImage": "rbxassetid://18785615220"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785619526"
+      ],
+      "kind": "Particle",
+      "name": "Slash22",
+      "galleryImage": "rbxassetid://18785619526"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785619219"
+      ],
+      "kind": "Particle",
+      "name": "Slash23",
+      "galleryImage": "rbxassetid://18785619219"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785619219"
+      ],
+      "kind": "Particle",
+      "name": "Slash24",
+      "galleryImage": "rbxassetid://18785619219"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633542588"
+      ],
+      "kind": "Particle",
+      "name": "Slash3",
+      "galleryImage": "rbxassetid://18633542588"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633542833"
+      ],
+      "kind": "Particle",
+      "name": "Slash4",
+      "galleryImage": "rbxassetid://18633542833"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633541318"
+      ],
+      "kind": "Particle",
+      "name": "Slash5",
+      "galleryImage": "rbxassetid://18633541318"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633541852"
+      ],
+      "kind": "Particle",
+      "name": "Slash6",
+      "galleryImage": "rbxassetid://18633541852"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636231984"
+      ],
+      "kind": "Particle",
+      "name": "Slash7",
+      "galleryImage": "rbxassetid://18636231984"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636231218"
+      ],
+      "kind": "Particle",
+      "name": "Slash8",
+      "galleryImage": "rbxassetid://18636231218"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633539306"
+      ],
+      "kind": "Particle",
+      "name": "Slash9",
+      "galleryImage": "rbxassetid://18633539306"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785608464"
+      ],
+      "kind": "Particle",
+      "name": "SlashChromatic1",
+      "galleryImage": "rbxassetid://18785608464"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14200086275"
+      ],
+      "kind": "Particle",
+      "name": "SlashChromatic2",
+      "galleryImage": "rbxassetid://14200086275"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14197491097"
+      ],
+      "kind": "Particle",
+      "name": "SlashChromatic3",
+      "galleryImage": "rbxassetid://14197491097"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14197491097"
+      ],
+      "kind": "Particle",
+      "name": "SlashChromatic4",
+      "galleryImage": "rbxassetid://14197491097"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216851723"
+      ],
+      "kind": "Particle",
+      "name": "Smoke1",
+      "galleryImage": "rbxassetid://7216851723"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636206437"
+      ],
+      "kind": "Particle",
+      "name": "Smoke10",
+      "galleryImage": "rbxassetid://18636206437"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636187920"
+      ],
+      "kind": "Particle",
+      "name": "Smoke11",
+      "galleryImage": "rbxassetid://18636187920"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636187651"
+      ],
+      "kind": "Particle",
+      "name": "Smoke12",
+      "galleryImage": "rbxassetid://18636187651"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785611303"
+      ],
+      "kind": "Particle",
+      "name": "Smoke13",
+      "galleryImage": "rbxassetid://18785611303"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14050231318"
+      ],
+      "kind": "Particle",
+      "name": "Smoke14",
+      "galleryImage": "rbxassetid://14050231318"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14050223758"
+      ],
+      "kind": "Particle",
+      "name": "Smoke15",
+      "galleryImage": "rbxassetid://14050223758"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14050360239"
+      ],
+      "kind": "Particle",
+      "name": "Smoke16",
+      "galleryImage": "rbxassetid://14050360239"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14050358959"
+      ],
+      "kind": "Particle",
+      "name": "Smoke17",
+      "galleryImage": "rbxassetid://14050358959"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14050371166"
+      ],
+      "kind": "Particle",
+      "name": "Smoke18",
+      "galleryImage": "rbxassetid://14050371166"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14050320758"
+      ],
+      "kind": "Particle",
+      "name": "Smoke19",
+      "galleryImage": "rbxassetid://14050320758"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://122434532"
+      ],
+      "kind": "Particle",
+      "name": "Smoke2",
+      "galleryImage": "rbxassetid://122434532"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14050364977"
+      ],
+      "kind": "Particle",
+      "name": "Smoke20",
+      "galleryImage": "rbxassetid://14050364977"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14197911520"
+      ],
+      "kind": "Particle",
+      "name": "Smoke21",
+      "galleryImage": "rbxassetid://14197911520"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://6928325971"
+      ],
+      "kind": "Particle",
+      "name": "Smoke3",
+      "galleryImage": "rbxassetid://6928325971"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://3318493505"
+      ],
+      "kind": "Particle",
+      "name": "Smoke4",
+      "galleryImage": "rbxassetid://3318493505"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14302399641"
+      ],
+      "kind": "Particle",
+      "name": "Smoke5",
+      "galleryImage": "rbxassetid://14302399641"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://8250000734"
+      ],
+      "kind": "Particle",
+      "name": "Smoke6",
+      "galleryImage": "rbxassetid://8250000734"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633530663"
+      ],
+      "kind": "Particle",
+      "name": "Smoke7",
+      "galleryImage": "rbxassetid://18633530663"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633587147"
+      ],
+      "kind": "Particle",
+      "name": "Smoke8",
+      "galleryImage": "rbxassetid://18633587147"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18654378470"
+      ],
+      "kind": "Particle",
+      "name": "Smoke9",
+      "galleryImage": "rbxassetid://18654378470"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636231781"
+      ],
+      "kind": "Particle",
+      "name": "SmokeCircle1",
+      "galleryImage": "rbxassetid://18636231781"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://242102147"
+      ],
+      "kind": "Particle",
+      "name": "SmoothArrow1",
+      "galleryImage": "rbxassetid://242102147"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://933102662"
+      ],
+      "kind": "Particle",
+      "name": "Snowflake1",
+      "galleryImage": "rbxassetid://933102662"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14197924963"
+      ],
+      "kind": "Particle",
+      "name": "Snowflake2",
+      "galleryImage": "rbxassetid://14197924963"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14197923174"
+      ],
+      "kind": "Particle",
+      "name": "Snowflake3",
+      "galleryImage": "rbxassetid://14197923174"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://6479341134"
+      ],
+      "kind": "Particle",
+      "name": "Spark1",
+      "galleryImage": "rbxassetid://6479341134"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://6110499276"
+      ],
+      "kind": "Particle",
+      "name": "Spark2",
+      "galleryImage": "rbxassetid://6110499276"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18242881337"
+      ],
+      "kind": "Particle",
+      "name": "Sparkle1",
+      "galleryImage": "rbxassetid://18242881337"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216854028"
+      ],
+      "kind": "Particle",
+      "name": "SpellParticle1",
+      "galleryImage": "rbxassetid://7216854028"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216854161"
+      ],
+      "kind": "Particle",
+      "name": "SpellParticle2",
+      "galleryImage": "rbxassetid://7216854161"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://10365553921"
+      ],
+      "kind": "Particle",
+      "name": "Spin1",
+      "galleryImage": "rbxassetid://10365553921"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633584546"
+      ],
+      "kind": "Particle",
+      "name": "Spin2",
+      "galleryImage": "rbxassetid://18633584546"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://10365549270"
+      ],
+      "kind": "Particle",
+      "name": "Spin3",
+      "galleryImage": "rbxassetid://10365549270"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://243457340"
+      ],
+      "kind": "Particle",
+      "name": "Splash1",
+      "galleryImage": "rbxassetid://243457340"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216855813"
+      ],
+      "kind": "Particle",
+      "name": "Splash2",
+      "galleryImage": "rbxassetid://7216855813"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216855695"
+      ],
+      "kind": "Particle",
+      "name": "Splash3",
+      "galleryImage": "rbxassetid://7216855695"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14198057876"
+      ],
+      "kind": "Particle",
+      "name": "Splash4",
+      "galleryImage": "rbxassetid://14198057876"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14198056286"
+      ],
+      "kind": "Particle",
+      "name": "Splash5",
+      "galleryImage": "rbxassetid://14198056286"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14198059051"
+      ],
+      "kind": "Particle",
+      "name": "Splash6",
+      "galleryImage": "rbxassetid://14198059051"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://6590251003"
+      ],
+      "kind": "Particle",
+      "name": "Star1",
+      "galleryImage": "rbxassetid://6590251003"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216849703"
+      ],
+      "kind": "Particle",
+      "name": "Star10",
+      "galleryImage": "rbxassetid://7216849703"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216849325"
+      ],
+      "kind": "Particle",
+      "name": "Star11",
+      "galleryImage": "rbxassetid://7216849325"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216854591"
+      ],
+      "kind": "Particle",
+      "name": "Star12",
+      "galleryImage": "rbxassetid://7216854591"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://8037777212"
+      ],
+      "kind": "Particle",
+      "name": "Star13",
+      "galleryImage": "rbxassetid://8037777212"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://10335418884"
+      ],
+      "kind": "Particle",
+      "name": "Star14",
+      "galleryImage": "rbxassetid://10335418884"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636201548"
+      ],
+      "kind": "Particle",
+      "name": "Star15",
+      "galleryImage": "rbxassetid://18636201548"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636189182"
+      ],
+      "kind": "Particle",
+      "name": "Star16",
+      "galleryImage": "rbxassetid://18636189182"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636190900"
+      ],
+      "kind": "Particle",
+      "name": "Star17",
+      "galleryImage": "rbxassetid://18636190900"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12362734091"
+      ],
+      "kind": "Particle",
+      "name": "Star18",
+      "galleryImage": "rbxassetid://12362734091"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12362724228"
+      ],
+      "kind": "Particle",
+      "name": "Star19",
+      "galleryImage": "rbxassetid://12362724228"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://669133414"
+      ],
+      "kind": "Particle",
+      "name": "Star2",
+      "galleryImage": "rbxassetid://669133414"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12362726009"
+      ],
+      "kind": "Particle",
+      "name": "Star20",
+      "galleryImage": "rbxassetid://12362726009"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12362729664"
+      ],
+      "kind": "Particle",
+      "name": "Star21",
+      "galleryImage": "rbxassetid://12362729664"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12362731343"
+      ],
+      "kind": "Particle",
+      "name": "Star22",
+      "galleryImage": "rbxassetid://12362731343"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://3057073083"
+      ],
+      "kind": "Particle",
+      "name": "Star23",
+      "galleryImage": "rbxassetid://3057073083"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14043612483"
+      ],
+      "kind": "Particle",
+      "name": "Star24",
+      "galleryImage": "rbxassetid://14043612483"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12362715793"
+      ],
+      "kind": "Particle",
+      "name": "Star25",
+      "galleryImage": "rbxassetid://12362715793"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12362732821"
+      ],
+      "kind": "Particle",
+      "name": "Star26",
+      "galleryImage": "rbxassetid://12362732821"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12362718461"
+      ],
+      "kind": "Particle",
+      "name": "Star27",
+      "galleryImage": "rbxassetid://12362718461"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12362719112"
+      ],
+      "kind": "Particle",
+      "name": "Star28",
+      "galleryImage": "rbxassetid://12362719112"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12362719770"
+      ],
+      "kind": "Particle",
+      "name": "Star29",
+      "galleryImage": "rbxassetid://12362719770"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://298984512"
+      ],
+      "kind": "Particle",
+      "name": "Star3",
+      "galleryImage": "rbxassetid://298984512"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14052947329"
+      ],
+      "kind": "Particle",
+      "name": "Star30",
+      "galleryImage": "rbxassetid://14052947329"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12362720771"
+      ],
+      "kind": "Particle",
+      "name": "Star31",
+      "galleryImage": "rbxassetid://12362720771"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12362721759"
+      ],
+      "kind": "Particle",
+      "name": "Star32",
+      "galleryImage": "rbxassetid://12362721759"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12362722516"
+      ],
+      "kind": "Particle",
+      "name": "Star33",
+      "galleryImage": "rbxassetid://12362722516"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14052947329"
+      ],
+      "kind": "Particle",
+      "name": "Star34",
+      "galleryImage": "rbxassetid://14052947329"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12363979555"
+      ],
+      "kind": "Particle",
+      "name": "Star35",
+      "galleryImage": "rbxassetid://12363979555"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14052947329"
+      ],
+      "kind": "Particle",
+      "name": "Star36",
+      "galleryImage": "rbxassetid://14052947329"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12363987254"
+      ],
+      "kind": "Particle",
+      "name": "Star37",
+      "galleryImage": "rbxassetid://12363987254"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12363987488"
+      ],
+      "kind": "Particle",
+      "name": "Star38",
+      "galleryImage": "rbxassetid://12363987488"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://12363987772"
+      ],
+      "kind": "Particle",
+      "name": "Star39",
+      "galleryImage": "rbxassetid://12363987772"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216848699"
+      ],
+      "kind": "Particle",
+      "name": "Star4",
+      "galleryImage": "rbxassetid://7216848699"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216848493"
+      ],
+      "kind": "Particle",
+      "name": "Star40",
+      "galleryImage": "rbxassetid://7216848493"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216849594"
+      ],
+      "kind": "Particle",
+      "name": "Star5",
+      "galleryImage": "rbxassetid://7216849594"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216853637"
+      ],
+      "kind": "Particle",
+      "name": "Star6",
+      "galleryImage": "rbxassetid://7216853637"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216849075"
+      ],
+      "kind": "Particle",
+      "name": "Star7",
+      "galleryImage": "rbxassetid://7216849075"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216848832"
+      ],
+      "kind": "Particle",
+      "name": "Star8",
+      "galleryImage": "rbxassetid://7216848832"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://7216848960"
+      ],
+      "kind": "Particle",
+      "name": "Star9",
+      "galleryImage": "rbxassetid://7216848960"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://242292288"
+      ],
+      "kind": "Particle",
+      "name": "StarSquare1",
+      "galleryImage": "rbxassetid://242292288"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://243728104"
+      ],
+      "kind": "Particle",
+      "name": "Strange1",
+      "galleryImage": "rbxassetid://243728104"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633498776"
+      ],
+      "kind": "Particle",
+      "name": "Swirl1",
+      "galleryImage": "rbxassetid://18633498776"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14050153106"
+      ],
+      "kind": "Particle",
+      "name": "Swirl10",
+      "galleryImage": "rbxassetid://14050153106"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14050169911"
+      ],
+      "kind": "Particle",
+      "name": "Swirl11",
+      "galleryImage": "rbxassetid://14050169911"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14050146678"
+      ],
+      "kind": "Particle",
+      "name": "Swirl12",
+      "galleryImage": "rbxassetid://14050146678"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14050133507"
+      ],
+      "kind": "Particle",
+      "name": "Swirl13",
+      "galleryImage": "rbxassetid://14050133507"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14050124950"
+      ],
+      "kind": "Particle",
+      "name": "Swirl14",
+      "galleryImage": "rbxassetid://14050124950"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14050102591"
+      ],
+      "kind": "Particle",
+      "name": "Swirl15",
+      "galleryImage": "rbxassetid://14050102591"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14050094484"
+      ],
+      "kind": "Particle",
+      "name": "Swirl16",
+      "galleryImage": "rbxassetid://14050094484"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://1244829143"
+      ],
+      "kind": "Particle",
+      "name": "Swirl17",
+      "galleryImage": "rbxassetid://1244829143"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633585194"
+      ],
+      "kind": "Particle",
+      "name": "Swirl2",
+      "galleryImage": "rbxassetid://18633585194"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://10537588488"
+      ],
+      "kind": "Particle",
+      "name": "Swirl3",
+      "galleryImage": "rbxassetid://10537588488"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://10352554571"
+      ],
+      "kind": "Particle",
+      "name": "Swirl4",
+      "galleryImage": "rbxassetid://10352554571"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636227056"
+      ],
+      "kind": "Particle",
+      "name": "Swirl5",
+      "galleryImage": "rbxassetid://18636227056"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18654377531"
+      ],
+      "kind": "Particle",
+      "name": "Swirl6",
+      "galleryImage": "rbxassetid://18654377531"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633584188"
+      ],
+      "kind": "Particle",
+      "name": "Swirl7",
+      "galleryImage": "rbxassetid://18633584188"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636178754"
+      ],
+      "kind": "Particle",
+      "name": "Swirl8",
+      "galleryImage": "rbxassetid://18636178754"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18785571761"
+      ],
+      "kind": "Particle",
+      "name": "Swirl9",
+      "galleryImage": "rbxassetid://18785571761"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633585402"
+      ],
+      "kind": "Particle",
+      "name": "Sword1",
+      "galleryImage": "rbxassetid://18633585402"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636176726"
+      ],
+      "kind": "Particle",
+      "name": "Teeth1",
+      "galleryImage": "rbxassetid://18636176726"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://6479253935"
+      ],
+      "kind": "Particle",
+      "name": "Thinkers1",
+      "galleryImage": "rbxassetid://6479253935"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18633583914"
+      ],
+      "kind": "Particle",
+      "name": "Toxic1",
+      "galleryImage": "rbxassetid://18633583914"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://5561954395"
+      ],
+      "kind": "Particle",
+      "name": "Triangle1",
+      "galleryImage": "rbxassetid://5561954395"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://18636228202"
+      ],
+      "kind": "Particle",
+      "name": "WaterBall1",
+      "galleryImage": "rbxassetid://18636228202"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://8187305477"
+      ],
+      "kind": "Particle",
+      "name": "WaterRipple1",
+      "galleryImage": "rbxassetid://8187305477"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://5726444189"
+      ],
+      "kind": "Particle",
+      "name": "WaterRipple2",
+      "galleryImage": "rbxassetid://5726444189"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://8315479061"
+      ],
+      "kind": "Particle",
+      "name": "Wave1",
+      "galleryImage": "rbxassetid://8315479061"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://8890668553"
+      ],
+      "kind": "Particle",
+      "name": "Wave2",
+      "galleryImage": "rbxassetid://8890668553"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://8890667599"
+      ],
+      "kind": "Particle",
+      "name": "Wave3",
+      "galleryImage": "rbxassetid://8890667599"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://8315490497"
+      ],
+      "kind": "Particle",
+      "name": "Wave4",
+      "galleryImage": "rbxassetid://8315490497"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://8315447357"
+      ],
+      "kind": "Particle",
+      "name": "Wave5",
+      "galleryImage": "rbxassetid://8315447357"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14050057361"
+      ],
+      "kind": "Particle",
+      "name": "WaveCircle1",
+      "galleryImage": "rbxassetid://14050057361"
+    },
+    {
+      "galleryImages": [
+        "rbxassetid://14050240833"
+      ],
+      "kind": "Particle",
+      "name": "WaveCircle2",
+      "galleryImage": "rbxassetid://14050240833"
+    }
+  ]
+}

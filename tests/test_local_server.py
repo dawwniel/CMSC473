@@ -36,6 +36,12 @@ class LocalServerTests(unittest.TestCase):
                 sample = json.load(response)
                 self.assertTrue(sample["prompt"])
                 self.assertEqual(sample["number"], 1)
+            with urlopen(base + "/next_prompt?reviewer=A") as response:
+                self.assertEqual(json.load(response)["number"], 1)
+            with urlopen(base + "/next_prompt?reviewer=A") as response:
+                self.assertEqual(json.load(response)["number"], 2)
+            with urlopen(base + "/next_prompt?reviewer=B") as response:
+                self.assertEqual(json.load(response)["number"], 1)
             request = Request(
                 base + "/predict", data=b'{"prompt":"blue sparks"}',
                 headers={"Content-Type": "application/json"}, method="POST",
@@ -51,6 +57,18 @@ class LocalServerTests(unittest.TestCase):
             with urlopen(review) as response:
                 self.assertEqual(json.load(response), {"saved": True})
             self.assertEqual(json.loads(feedback.read_text())["rating"], "texture")
+            texture_review = Request(
+                base + "/feedback",
+                data=json.dumps({"request_id": prediction["request_id"],
+                                 "rating": "texture_usable", "reviewer": "A"}).encode(),
+                method="POST",
+            )
+            with urlopen(texture_review) as response:
+                self.assertEqual(json.load(response), {"saved": True})
+            with self.assertRaises(HTTPError) as caught:
+                urlopen(texture_review)
+            self.assertEqual(caught.exception.code, 400)
+            self.assertEqual(json.loads(feedback.read_text().splitlines()[-1])["reviewer"], "A")
             bad = Request(base + "/predict", data=b'{"prompt":""}', method="POST")
             with self.assertRaises(HTTPError) as caught:
                 urlopen(bad)

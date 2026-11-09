@@ -32,16 +32,22 @@ Each example will contain:
 
 The target dataset size is approximately 1,000 to 6,000 prompt/effect pairs created from 100-200 base particle effects.
 
-## Current Development
+The CIX Library texture inventory, 30 pilot effects, and 574 additional Studio
+effects are documented in [`docs/cix_library.md`](docs/cix_library.md). Of
+these, 244 have distinct prompt wording and are in `train`; 360 remain in
+`review` until their prompts distinguish their textures. The earlier
+evaluation splits were left intact.
 
-The project is currently focused on:
+## Current system
 
-- Defining the particle configuration format
-- Exporting ParticleEmitter properties from Roblox
-- Reconstructing ParticleEmitters from exported data
-- Loading and validating particle data in Python
-- Testing MiniLM sentence embeddings
-- Preparing the training pipeline
+The exporter, importer, Python data loader, and full prediction model are in
+place. A local Studio plugin sends prompts to the Python server and creates
+preview emitters. The saved place has 2,285 effects; 1,231 are in train. The
+current model's exact texture accuracy is 82.9% on familiar-base test effects
+and 33.8% on held-out bases. The visually acceptable texture score is a
+separate human review and has not yet been measured. See
+[`docs/evaluation_results.md`](docs/evaluation_results.md) and
+[`docs/texture_evaluation.md`](docs/texture_evaluation.md).
 
 ## Testing the Roblox roundtrip
 
@@ -146,6 +152,14 @@ experiment did not improve the development scores. The local server uses the
 full checkpoint with a texture-only nearest-neighbor fallback for uncertain
 texture predictions. Report-ready comparisons with the baselines are in
 [`docs/evaluation_results.md`](docs/evaluation_results.md).
+The CIX split, retraining comparison, and current texture lookup checkpoint
+are documented in [`docs/cix_library.md`](docs/cix_library.md#model-check).
+The first 60-prompt visual review and image-retrieval benchmark are in
+[`docs/cix_texture_experiment.md`](docs/cix_texture_experiment.md).
+The separate 15-effect CIX texture holdout and catalog selector are in
+[`docs/cix_texture_holdout.md`](docs/cix_texture_holdout.md).
+The blind Studio texture-rating procedure and new 24-effect prompt check are
+in [`docs/texture_evaluation.md`](docs/texture_evaluation.md).
 
 ## Project Structure
 

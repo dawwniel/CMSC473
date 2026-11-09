@@ -43,8 +43,9 @@ def main() -> None:
     saved = torch.load(args.checkpoint, map_location="cpu", weights_only=True)
     normalizer = Normalizer.from_dict(saved["normalizer"])
     train = load_split("train")
-    if fingerprint(train) != saved["train_fingerprint"]:
-        parser.error("training data changed after this checkpoint; retrain before evaluating")
+    bank_fingerprint = saved.get("neighbor_bank_fingerprint", saved["train_fingerprint"])
+    if fingerprint(train) != bank_fingerprint:
+        parser.error("texture lookup data changed after this checkpoint was prepared")
     model = ParticleFull(normalizer, saved["embedding_dim"], saved["hidden_dim"])
     model.load_state_dict(saved["model"])
     model.eval()

@@ -62,7 +62,7 @@ def property_rows(split, group, names, format_value):
     return rows
 
 
-def render(results, changes):
+def render(results, changes, evaluation_file="neighbor_hybrid_evaluation.json"):
     familiar = results["test"]
     new_base = results["generalization_test"]
     familiar_full = percent(familiar["full_model"]["category_accuracy"]["Texture"])
@@ -139,10 +139,10 @@ def render(results, changes):
         "",
         "Reproduce from `CMSC473`:", "",
         "```powershell",
-        ".\\.venv\\Scripts\\python.exe scripts\\evaluate_full.py --neighbor-texture-threshold 0.6926 --output checkpoints\\neighbor_hybrid_evaluation.json",
-        ".\\.venv\\Scripts\\python.exe scripts\\write_results_report.py",
+        f".\\.venv\\Scripts\\python.exe scripts\\evaluate_full.py --neighbor-texture-threshold 0.6926 --output checkpoints\\{evaluation_file}",
+        f".\\.venv\\Scripts\\python.exe scripts\\write_results_report.py --input checkpoints\\{evaluation_file}",
         "```", "",
-        "The raw report is `checkpoints/neighbor_hybrid_evaluation.json`.",
+        f"The raw report is `checkpoints/{evaluation_file}`.",
     ])
     return "\n".join(lines) + "\n"
 
@@ -169,7 +169,7 @@ def main():
                           and not row["fallback_texture_correct"] for row in details),
         }
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(render(results, changes), encoding="utf-8")
+    args.output.write_text(render(results, changes, args.input.name), encoding="utf-8")
     print(f"saved {args.output}")
 
 

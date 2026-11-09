@@ -10,7 +10,7 @@ local toolbar = plugin:CreateToolbar("Prompt2Particles")
 local toggle = toolbar:CreateButton("Prompt2Particles", "Open particle panel", "")
 toggle.ClickableWhenViewportHidden = true
 
-local info = DockWidgetPluginGuiInfo.new(Enum.InitialDockState.Float, false, false, 360, 322, 330, 322)
+local info = DockWidgetPluginGuiInfo.new(Enum.InitialDockState.Float, false, false, 360, 365, 330, 365)
 local widget = plugin:CreateDockWidgetPluginGuiAsync("Prompt2ParticlesPanel", info)
 widget.Title = "Particles"
 
@@ -127,7 +127,7 @@ add("TextLabel", {
 	Position = UDim2.fromOffset(16, 260),
 	Size = UDim2.new(1, -32, 0, 18),
 	BackgroundTransparency = 1,
-	Text = "How did it look?",
+	Text = "Texture fit?",
 	TextColor3 = Color3.fromRGB(151, 158, 168),
 	TextXAlignment = Enum.TextXAlignment.Left,
 	TextSize = 13,
@@ -141,10 +141,10 @@ local feedbackFrame = add("Frame", {
 }, panel)
 
 local feedbackLabels = {
-	{ "Good", "good" },
-	{ "Texture", "texture" },
-	{ "Motion", "motion" },
-	{ "Other", "other" },
+	{ "Fits", "texture_fit" },
+	{ "Usable", "texture_usable" },
+	{ "Wrong", "texture_wrong" },
+	{ "Skip", "texture_skip" },
 }
 local feedbackButtons = {}
 for i, item in ipairs(feedbackLabels) do
@@ -162,10 +162,36 @@ for i, item in ipairs(feedbackLabels) do
 	feedbackButtons[item[2]] = button
 end
 
+add("TextLabel", {
+	Position = UDim2.fromOffset(16, 318),
+	Size = UDim2.fromOffset(74, 24),
+	BackgroundTransparency = 1,
+	Text = "Reviewer",
+	TextColor3 = Color3.fromRGB(151, 158, 168),
+	TextXAlignment = Enum.TextXAlignment.Left,
+	TextSize = 13,
+	Font = Enum.Font.SourceSans,
+}, panel)
+
+local reviewerBox = add("TextBox", {
+	Position = UDim2.fromOffset(94, 318),
+	Size = UDim2.new(1, -110, 0, 24),
+	BackgroundColor3 = Color3.fromRGB(49, 52, 57),
+	BorderSizePixel = 0,
+	ClearTextOnFocus = false,
+	Text = "",
+	PlaceholderText = "Your initials",
+	TextColor3 = Color3.fromRGB(240, 242, 245),
+	TextSize = 13,
+	Font = Enum.Font.SourceSans,
+}, panel)
+round(reviewerBox, 4)
+
 local busy = false
 local lastEmitter = nil
 local lastAnchor = nil
 local lastRequestId = nil
+local lastRatedRequestId = nil
 
 local function setStatus(message, isError)
 	status.Text = message
@@ -198,9 +224,14 @@ local function post(path, body)
 end
 
 nextButton.MouseButton1Click:Connect(function()
+	local reviewer = reviewerBox.Text:match("^%s*(.-)%s*$")
+	if not reviewer:match("^[%w_-]+$") or #reviewer > 32 then
+		setStatus("Enter reviewer initials using letters or numbers.", true)
+		return
+	end
 	task.spawn(function()
 		local ok, result = pcall(function()
-			local response = HttpService:RequestAsync({ Url = SERVER .. "/next_prompt", Method = "GET" })
+			local response = HttpService:RequestAsync({ Url = SERVER .. "/next_prompt?reviewer=" .. reviewer, Method = "GET" })
 			assert(response.Success, "local server is unavailable")
 			return HttpService:JSONDecode(response.Body)
 		end)
@@ -307,6 +338,7 @@ createButton.MouseButton1Click:Connect(function()
 		createButton.Text = "Create emitter"
 		if ok then
 			lastAnchor, lastEmitter, lastRequestId = anchor, emitter, requestId
+			lastRatedRequestId = nil
 			setStatus(count > 0 and ("Placed burst. Emitted " .. count .. ".") or "Placed continuous effect.")
 		else
 			setStatus(tostring(anchor) .. " Check the server window.", true)
@@ -341,11 +373,23 @@ for rating, button in pairs(feedbackButtons) do
 			setStatus("Create an emitter before rating it.", true)
 			return
 		end
+		if lastRatedRequestId == lastRequestId then
+			setStatus("This emitter already has a texture rating.", true)
+			return
+		end
+		local reviewer = reviewerBox.Text:match("^%s*(.-)%s*$")
+		if not reviewer:match("^[%w_-]+$") or #reviewer > 32 then
+			setStatus("Enter reviewer initials using letters or numbers.", true)
+			return
+		end
 		local requestId = lastRequestId
 		task.spawn(function()
 			local ok, failure = pcall(function()
-				post("/feedback", { request_id = requestId, rating = rating })
+				post("/feedback", { request_id = requestId, rating = rating, reviewer = reviewer })
 			end)
+			if ok then
+				lastRatedRequestId = requestId
+			end
 			setStatus(ok and "Feedback saved." or tostring(failure), not ok)
 		end)
 	end)

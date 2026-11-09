@@ -73,9 +73,9 @@ EmitCount when that setting applies.
 
 | Method | Burst accuracy | Texture accuracy | Size MAE | Color MAE | Valid |
 | --- | --- | --- | --- | --- | --- |
-| Texture fallback | 92.3% | 34.2% | 2.108 | 0.158 | 260/260 |
+| Texture fallback | 92.3% | 33.8% | 2.108 | 0.158 | 260/260 |
 | Full model | 92.3% | 27.3% | 2.108 | 0.158 | 260/260 |
-| Nearest neighbor | 93.8% | 35.4% | 3.025 | 0.187 | 260/260 |
+| Nearest neighbor | 93.5% | 35.0% | 3.026 | 0.187 | 260/260 |
 | Seven-value model | 90.4% | 0.0% | 3.386 | 0.290 | 260/260 |
 | Train constant | 76.9% | 0.0% | 3.386 | 0.290 | 260/260 |
 
@@ -87,24 +87,24 @@ EmitCount when that setting applies.
 
 | Property | Texture fallback | Full model | Nearest neighbor | Seven-value model | Train constant |
 | --- | --- | --- | --- | --- | --- |
-| Brightness | 5.564 | 5.564 | 6.297 | 5.712 | 5.749 |
-| Rate | 5.448 | 5.448 | 7.762 | 5.905 | 9.350 |
-| EmitCount | 1.900 | 1.900 | 2.031 | 2.285 | 2.688 |
-| Lifetime.min | 0.307 | 0.307 | 0.375 | 0.271 | 0.415 |
-| Lifetime.max | 0.409 | 0.409 | 0.451 | 0.359 | 0.573 |
+| Brightness | 5.564 | 5.564 | 6.293 | 5.712 | 5.749 |
+| Rate | 5.448 | 5.448 | 7.765 | 5.905 | 9.350 |
+| EmitCount | 1.900 | 1.900 | 2.035 | 2.285 | 2.688 |
+| Lifetime.min | 0.307 | 0.307 | 0.376 | 0.271 | 0.415 |
+| Lifetime.max | 0.409 | 0.409 | 0.450 | 0.359 | 0.573 |
 | Speed.min | 3.790 | 3.790 | 5.428 | 3.903 | 4.797 |
 | Speed.max | 4.851 | 4.851 | 5.768 | 4.710 | 6.397 |
 
 | Active property | Texture fallback | Full model | Nearest neighbor | Seven-value model | Train constant |
 | --- | --- | --- | --- | --- | --- |
-| Rate | 6.304 | 6.304 | 8.918 | 6.531 | 8.767 |
+| Rate | 6.304 | 6.304 | 8.922 | 6.531 | 8.767 |
 | EmitCount | 8.233 | 8.233 | 8.650 | 9.900 | 11.650 |
 
 ### Sequence MAE
 
 | Curve | Texture fallback | Full model | Nearest neighbor | Seven-value model | Train constant |
 | --- | --- | --- | --- | --- | --- |
-| Size.value | 2.108 | 2.108 | 3.025 | 3.386 | 3.386 |
+| Size.value | 2.108 | 2.108 | 3.026 | 3.386 | 3.386 |
 | Size.envelope | 0.397 | 0.397 | 0.795 | 0.543 | 0.543 |
 | Squash.value | 0.235 | 0.235 | 0.166 | 0.179 | 0.179 |
 | Squash.envelope | 0.013 | 0.013 | 0.015 | 0.037 | 0.037 |
@@ -116,25 +116,80 @@ EmitCount when that setting applies.
 
 | Property | Texture fallback | Full model | Nearest neighbor | Seven-value model | Train constant |
 | --- | --- | --- | --- | --- | --- |
-| Texture | 34.2% | 27.3% | 35.4% | 0.0% | 0.0% |
+| Texture | 33.8% | 27.3% | 35.0% | 0.0% | 0.0% |
 | EmissionDirection | 83.8% | 83.8% | 81.2% | 84.6% | 84.6% |
 | FlipbookLayout | 72.3% | 72.3% | 68.5% | 38.5% | 38.5% |
 | FlipbookMode | 61.9% | 61.9% | 73.5% | 61.5% | 61.5% |
 | Orientation | 85.4% | 85.4% | 84.6% | 100.0% | 100.0% |
-| Shape | 82.7% | 82.7% | 81.2% | 88.5% | 88.5% |
+| Shape | 82.7% | 82.7% | 80.8% | 88.5% | 88.5% |
 | ShapeInOut | 100.0% | 100.0% | 100.0% | 100.0% | 100.0% |
 | ShapeStyle | 90.0% | 90.0% | 93.5% | 100.0% | 100.0% |
 
 ## Interpretation
 
+The active checkpoint remains the version reported in the tables above.
+
+### Retraining after the CIX texture review (November 8)
+
+Studio and the exported dataset agree on 1,231 train effects, 212 validation,
+211 test, 260 generalization test, and 371 effects still under review. The
+review effects are excluded from fitting. Fifteen CIX effects were deliberately
+reserved from training for the separate catalog check described in
+[cix_texture_holdout.md](cix_texture_holdout.md).
+
+I retrained the full model on the current 1,231 train effects and selected its
+checkpoint by validation loss (best epoch 230). I also tried a linear texture
+head and a category-aware model. The table reports **exact asset ID** accuracy;
+the denominator includes textures not present in training.
+
+| Method | Familiar test (211) | Held-out bases (260) |
+| --- | ---: | ---: |
+| Active model with texture fallback | 175/211 (82.9%) | 88/260 (33.8%) |
+| Retrained full model | 177/211 (83.9%) | 71/260 (27.3%) |
+| Retrained model with texture fallback | 174/211 (82.5%) | 89/260 (34.2%) |
+| Retrained texture-only linear head | 74/211 (35.1%) | 60/260 (23.1%) |
+| Nearest training prompt | 163/211 (77.3%) | 91/260 (35.0%) |
+
+The new fallback gains one held-out effect but loses one familiar effect
+relative to the active checkpoint. Its held-out burst accuracy also falls from
+92.3% to 89.6%. It has **not** replaced the active model. The texture-only head
+was selected after reaching 50/140 on 20 reserved training bases, but that
+small development result did not carry over to the official sets. The
+category-aware model reached only 25/140 on those reserved bases.
+
+Only 10 of the 260 held-out effects use an asset ID absent from training.
+Among the 364 texture IDs in training, 243 occur in just one effect. Many of
+the remaining misses have similar prompts within a family but different
+textures. More epochs or a larger output head cannot reliably resolve an
+image distinction that the prompt does not describe. The next data pass
+should add visually specific, independently written descriptions for reused
+textures and test on newly reserved whole base effects. Keep the existing
+test and generalization sets fixed for reporting.
+
+The candidate checkpoint and per-effect errors are in ignored `checkpoints/`
+files. Reproduce the experiment with `scripts/train_full.py`,
+`scripts/evaluate_full.py`, `scripts/train_texture.py`, and
+`scripts/evaluate_texture_head.py`.
+
+A later image-aware retrieval experiment aligned prompt embeddings to cached
+texture images. It reached 36.4% exact top-one on the 140 reserved development
+effects, but only 26.2% on the 260 held-out-base effects, so it was not added
+to inference. The active model's top three texture IDs contain the recorded ID
+for 44.6% of held-out effects; the three closest distinct training-prompt
+textures contain it for 47.3%. A three-choice picker alone therefore does not
+meet an 80% exact-ID target. The separate human visual-fit protocol is in
+[`texture_evaluation.md`](texture_evaluation.md).
+
+### Active checkpoint details
+
 The texture fallback improves held-out-base texture accuracy from 27.3%
-to 34.2%, while familiar-base texture accuracy changes from 83.9%
+to 33.8%, while familiar-base texture accuracy changes from 83.9%
 to 82.9%. All other emitter predictions and their errors are unchanged.
 On the held-out-base split, the fallback is used for 106 of 260 effects:
-it corrects 22 prior mistakes and changes 4 previously correct IDs.
+it corrects 21 prior mistakes and changes 4 previously correct IDs.
 On familiar-base test, it is used for 24 of 211 effects, correcting 2
 and changing 4 previously correct IDs.
-Nearest neighbor reaches 35.4% texture accuracy on held-out bases, but
+Nearest neighbor reaches 35.0% texture accuracy on held-out bases, but
 copies the whole emitter, leading to larger errors on several numeric
 and curve properties. The texture fallback uses only its texture.
 
@@ -152,8 +207,8 @@ collected for a final claim about generalization.
 Reproduce from `CMSC473`:
 
 ```powershell
-.\.venv\Scripts\python.exe scripts\evaluate_full.py --neighbor-texture-threshold 0.6926 --output checkpoints\neighbor_hybrid_evaluation.json
-.\.venv\Scripts\python.exe scripts\write_results_report.py
+.\.venv\Scripts\python.exe scripts\evaluate_full.py --neighbor-texture-threshold 0.6926 --output checkpoints\cix_holdout_hybrid_evaluation.json
+.\.venv\Scripts\python.exe scripts\write_results_report.py --input checkpoints\cix_holdout_hybrid_evaluation.json
 ```
 
-The raw report is `checkpoints/neighbor_hybrid_evaluation.json`.
+The raw report is `checkpoints/cix_holdout_hybrid_evaluation.json`.

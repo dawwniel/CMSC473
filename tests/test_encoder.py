@@ -35,7 +35,9 @@ class TensorDatasetTests(unittest.TestCase):
     def test_train_uses_alternates_and_others_do_not(self):
         train = ParticleTensorDataset("train", self.normalizer, FakeEmbeddings())
         validation = ParticleTensorDataset("validation", self.normalizer, FakeEmbeddings())
-        self.assertEqual(len(train), 3 * 987)
+        records = ParticleDataset("train")
+        self.assertEqual(len(train), sum(len(record_prompts(row)) for row in records))
+        self.assertGreater(len(train), len(records))
         self.assertEqual(len(validation), 212)
         self.assertTrue(all(item[1][0] == 0 for item in validation.items))
 
