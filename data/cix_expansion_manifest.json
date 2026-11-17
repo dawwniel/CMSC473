@@ -91,7 +91,7 @@
       ],
       "prompt": "An inky black soot fleck scatters outward and falls.",
       "split": "train",
-      "layout": "Grid8x8",
+      "layout": "Grid4x4",
       "column": 4,
       "row": 0
     },
@@ -283,25 +283,6 @@
       "split": "review",
       "layout": "Grid4x4",
       "column": 14,
-      "row": 0
-    },
-    {
-      "id": "N063",
-      "kind": "FlipBook",
-      "card": "Bubble8",
-      "texture": "rbxassetid://9295449811",
-      "family": "WaterBubbles",
-      "category": "Water",
-      "recipe": "bubble",
-      "color": [
-        139,
-        220,
-        255
-      ],
-      "prompt": "A pale blue bubble rises gently and fades.",
-      "split": "review",
-      "layout": "Grid4x4",
-      "column": 15,
       "row": 0
     },
     {
@@ -1312,25 +1293,6 @@
       "row": 3
     },
     {
-      "id": "N117",
-      "kind": "FlipBook",
-      "card": "Geomostry3",
-      "texture": "rbxassetid://18636212277",
-      "family": "AmbientSymbols",
-      "category": "Ambient",
-      "recipe": "symbol",
-      "color": [
-        234,
-        238,
-        248
-      ],
-      "prompt": "A pale white geometry appears, drifts upward, and fades.",
-      "split": "train",
-      "layout": "Grid4x4",
-      "column": 3,
-      "row": 3
-    },
-    {
       "id": "N118",
       "kind": "FlipBook",
       "card": "Heart1",
@@ -1364,7 +1326,7 @@
       ],
       "prompt": "A warm gold heart floats upward and fades.",
       "split": "train",
-      "layout": "Grid8x8",
+      "layout": "Grid4x4",
       "column": 5,
       "row": 3
     },
@@ -2637,7 +2599,7 @@
       ],
       "prompt": "An animated slate gray smoke puff swells into a loose ring and dissolves as it rises.",
       "split": "train",
-      "layout": "Grid8x8",
+      "layout": "Grid4x4",
       "column": 6,
       "row": 6
     },

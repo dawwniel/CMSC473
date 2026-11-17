@@ -152,10 +152,10 @@ TWO_BY_TWO = {
     "Smoke18", "Smoke24", "Smoke27", "Smoke28", "Smoke29", "Water5",
 }
 EIGHT_BY_EIGHT = {
-    "Alphabet1", "BlackDust1", "BlackLightning3", "Blood1", "Fire7", "Fire13",
-    "Heart1", "Heart2", "Kanji2", "Lightning2", "Lightning8", "Lightning14",
+    "Alphabet1", "BlackLightning3", "Blood1", "Fire7", "Fire13",
+    "Heart1", "Kanji2", "Lightning2", "Lightning8", "Lightning14",
     "Lightning16", "Lightning17", "Number1", "Shockwave1", "Shockwave6",
-    "Slash12", "Smoke2", "Smoke15", "Smoke22", "Smoke23", "Smoke25",
+    "Slash12", "Smoke2", "Smoke22", "Smoke23", "Smoke25",
     "Smoke26", "SnowFlakes2",
 }
 
@@ -176,10 +176,15 @@ def existing_textures() -> set[str]:
 
 def make_manifest() -> list[dict]:
     catalog = json.loads((DATA / "cix_catalog.json").read_text(encoding="utf-8"))["entries"]
+    unavailable = set(json.loads((DATA / "unavailable_textures.json").read_text(encoding="utf-8"))["textures"])
     prompt_overrides = json.loads((DATA / "cix_prompt_review.json").read_text(encoding="utf-8"))
     holdout_ids = set(json.loads((DATA / "cix_texture_holdout.json").read_text(encoding="utf-8"))["queries"])
     assert holdout_ids <= prompt_overrides.keys()
     seen = existing_textures()
+    # Count unavailable cards when assigning IDs so existing Studio effects keep
+    # their N-numbers and floor coordinates after a card is removed.
+    seen.difference_update(unavailable)
+    source_index = 0
     trained_prompts = set()
     used_overrides = set()
     entries = sorted(catalog, key=lambda x: (x["kind"], x["name"], x["galleryImage"]))
@@ -189,8 +194,10 @@ def make_manifest() -> list[dict]:
         if texture in seen:
             continue
         seen.add(texture)
+        source_index += 1
+        effect_id = f"N{source_index + 47:03d}"
         category, family, recipe, label = classify(card["kind"], card["name"])
-        rgb = PALETTES[category][len(manifest) % len(PALETTES[category])]
+        rgb = PALETTES[category][(source_index - 1) % len(PALETTES[category])]
         color = "red" if recipe == "blood" else rgb[3]
         if recipe == "blood":
             rgb = (204, 44, 55, color)
@@ -218,7 +225,6 @@ def make_manifest() -> list[dict]:
         prompt = f"{article} {color} {label} {action}."
         if card["kind"] == "FlipBook" and recipe in {"flame", "smoke", "cloud", "lightning", "spark", "splash", "orb"}:
             prompt = f"An animated {color} {label} {action}."
-        effect_id = f"N{len(manifest) + 48:03d}"
         if effect_id in prompt_overrides:
             prompt = prompt_overrides[effect_id]
             assert prompt.strip() == prompt and 0 < len(prompt) <= 500, effect_id
@@ -228,7 +234,9 @@ def make_manifest() -> list[dict]:
             assert wording not in trained_prompts, f"duplicate reviewed prompt: {effect_id}"
         split = "review" if effect_id in holdout_ids or wording in trained_prompts else "train"
         trained_prompts.add(wording)
-        index = len(manifest)
+        if texture in unavailable:
+            continue
+        index = source_index - 1
         manifest.append({
             "id": effect_id,
             "kind": card["kind"], "card": card["name"], "texture": texture,
@@ -237,13 +245,14 @@ def make_manifest() -> list[dict]:
             "layout": "Grid2x2" if card["kind"] == "FlipBook" and card["name"] in TWO_BY_TWO else "Grid8x8" if card["kind"] == "FlipBook" and card["name"] in EIGHT_BY_EIGHT else "Grid4x4" if card["kind"] == "FlipBook" else "None",
             "column": index % 22, "row": index // 22,
         })
+    assert source_index == 574, source_index
     assert used_overrides == prompt_overrides.keys(), prompt_overrides.keys() - used_overrides
     return manifest
 
 
 def main() -> None:
     manifest = make_manifest()
-    assert len(manifest) == 574, len(manifest)
+    assert len(manifest) == 572, len(manifest)
     (DATA / "cix_expansion_manifest.json").write_text(
         json.dumps({"effects": manifest}, indent=2) + "\n", encoding="utf-8"
     )
@@ -261,7 +270,7 @@ def main() -> None:
         lines.append("\t{" + fields + "},")
     source = template.replace("__MANIFEST_LUA__", "\n".join(lines))
     (ROBLOX / "cix_expansion.lua").write_text(source, encoding="utf-8")
-    print(f"Wrote {len(manifest)} CIX effects, N048–N{len(manifest) + 47:03d}")
+    print(f"Wrote {len(manifest)} available CIX effects, preserving IDs N048–N621")
 
 
 if __name__ == "__main__":

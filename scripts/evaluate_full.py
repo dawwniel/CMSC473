@@ -21,6 +21,7 @@ from src.models.full import ParticleFull, decode_full
 from src.models.inference import apply_neighbor_textures
 from src.models.model import ParticleBaseline, decode_prediction, particle_record, train_defaults
 from src.models.nearest_neighbor import build_bank, nearest
+from src.models.texture_layout import align_flipbook_layouts, texture_layout_index
 from train_full import fingerprint
 
 
@@ -43,6 +44,8 @@ def main() -> None:
     saved = torch.load(args.checkpoint, map_location="cpu", weights_only=True)
     normalizer = Normalizer.from_dict(saved["normalizer"])
     train = load_split("train")
+    cix_effects = json.loads((ROOT / "data/cix_expansion_manifest.json").read_text(encoding="utf-8"))["effects"]
+    texture_layouts = texture_layout_index(train, cix_effects)
     bank_fingerprint = saved.get("neighbor_bank_fingerprint", saved["train_fingerprint"])
     if fingerprint(train) != bank_fingerprint:
         parser.error("texture lookup data changed after this checkpoint was prepared")
@@ -76,6 +79,7 @@ def main() -> None:
         with torch.no_grad():
             output = model(vectors)
         predicted = [decode_full(normalizer, output, i) for i in range(len(records))]
+        raw_layout_repairs = align_flipbook_layouts(predicted, texture_layouts)
         indices, similarities = nearest(vectors, bank)
         neighbor = [train[owners[index][0]]["emitter"] for index in indices.tolist()]
         neighbor_hybrid = None
@@ -84,15 +88,18 @@ def main() -> None:
             neighbor_hybrid = copy.deepcopy(predicted)
             apply_neighbor_textures(neighbor_hybrid, confidence, neighbor,
                                     args.neighbor_texture_threshold)
+            hybrid_layout_repairs = align_flipbook_layouts(neighbor_hybrid, texture_layouts)
         truth = [record["emitter"] for record in records]
         scores = {
             "full_model": summarize_full(truth, predicted, normalizer),
             "train_constant": summarize_full(truth, [constant] * len(records), normalizer),
             "nearest_neighbor": summarize_full(truth, neighbor, normalizer),
             "neighbor_mean_similarity": similarities.mean().item(),
+            "raw_layout_repairs": raw_layout_repairs,
         }
         if neighbor_hybrid is not None:
             scores["neighbor_texture_hybrid"] = summarize_full(truth, neighbor_hybrid, normalizer)
+            scores["hybrid_layout_repairs"] = hybrid_layout_repairs
         if baseline is not None:
             with torch.no_grad():
                 prior_output = baseline(vectors)

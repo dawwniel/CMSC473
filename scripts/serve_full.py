@@ -135,7 +135,10 @@ def main() -> None:
     )
     version = hashlib.sha256()
     for path in (args.checkpoint, ROOT / "src/models/inference.py",
+                 ROOT / "src/models/texture_layout.py",
                  ROOT / "src/data/train/particles_train.jsonl",
+                 ROOT / "data/cix_expansion_manifest.json",
+                 ROOT / "data/unavailable_textures.json",
                  ROOT / "data/cix_prompt_review.json",
                  ROOT / "data/cix_second_prompt_review.json",
                  ROOT / "data/cix_new_holdout_catalog.json"):

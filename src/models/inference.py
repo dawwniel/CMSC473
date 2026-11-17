@@ -14,6 +14,7 @@ from .encoder import TextEncoder, split_embeddings
 from .full import ParticleFull, decode_full
 from .model import particle_record
 from .nearest_neighbor import build_bank, nearest
+from .texture_layout import align_flipbook_layouts, texture_layout_index
 from .v2 import ParticleV2
 
 
@@ -84,10 +85,13 @@ class FullPredictor:
         self.model = model
         self.encoder = TextEncoder(saved["encoder_name"], device="cpu")
         self.neighbor_texture_threshold = neighbor_texture_threshold
+        self.train_records = load_split("train")
+        root = Path(__file__).resolve().parents[2]
+        manifest = json.loads((root / "data/cix_expansion_manifest.json").read_text(encoding="utf-8"))
+        self.texture_layouts = texture_layout_index(self.train_records, manifest["effects"])
         if neighbor_texture_threshold is not None:
             if not 0 <= neighbor_texture_threshold <= 1:
                 raise ValueError("texture confidence threshold must be between 0 and 1")
-            self.train_records = load_split("train")
             fingerprint = hashlib.sha256("\n".join(
                 row["row_hash"] for row in self.train_records
             ).encode()).hexdigest()
@@ -97,7 +101,6 @@ class FullPredictor:
             embeddings = split_embeddings("train", model_name=saved["encoder_name"])
             self.bank, self.owners = build_bank(self.train_records, embeddings)
             self.exact_textures = exact_texture_index(self.train_records)
-            root = Path(__file__).resolve().parents[2]
             descriptions = {}
             for path in ("cix_prompt_review.json", "cix_second_prompt_review.json",
                          "cix_new_holdout_catalog.json"):
@@ -105,7 +108,6 @@ class FullPredictor:
                 if set(descriptions) & set(more):
                     raise ValueError("CIX description files contain duplicate effect IDs")
                 descriptions.update(more)
-            manifest = json.loads((root / "data/cix_expansion_manifest.json").read_text(encoding="utf-8"))
             by_id = {item["id"]: item for item in manifest["effects"]}
             self.cix_textures = [by_id[effect_id]["texture"] for effect_id in descriptions]
             self.cix_bank = self.encoder.encode(list(descriptions.values()))
@@ -134,6 +136,7 @@ class FullPredictor:
                 texture = self.exact_textures.get(" ".join(prompt.casefold().split()))
                 if texture is not None:
                     emitter["properties"]["Texture"] = texture
+        align_flipbook_layouts(emitters, self.texture_layouts)
         return [
             particle_record(prompt, emitter)
             for prompt, emitter in zip(prompts, emitters)

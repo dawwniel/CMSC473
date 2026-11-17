@@ -14,6 +14,7 @@ def main() -> None:
     catalog = json.loads((ROOT / "data/cix_catalog.json").read_text(encoding="utf-8"))["entries"]
     pilot = json.loads((ROOT / "data/cix_pilot_review.json").read_text(encoding="utf-8"))["effects"]
     expansion = json.loads((ROOT / "data/cix_expansion_manifest.json").read_text(encoding="utf-8"))["effects"]
+    unavailable = set(json.loads((ROOT / "data/unavailable_textures.json").read_text(encoding="utf-8"))["textures"])
 
     cards_by_image = defaultdict(list)
     for card in catalog:
@@ -27,7 +28,7 @@ def main() -> None:
 
     pilot_images = {effect["texture"] for effect in pilot}
     expansion_images = {effect["texture"] for effect in expansion}
-    unused = sorted(set(cards_by_image) - dataset_images - pilot_images - expansion_images)
+    unused = sorted(set(cards_by_image) - dataset_images - pilot_images - expansion_images - unavailable)
     counts = defaultdict(int)
     for image in unused:
         kind = cards_by_image[image][0].split("/", 1)[0]
@@ -35,7 +36,9 @@ def main() -> None:
 
     print(f"CIX cards: {len(catalog)}")
     print(f"Distinct CIX image IDs: {len(cards_by_image)}")
-    print(f"Covered by exported dataset or Studio review sets: {len(set(cards_by_image) - set(unused))}")
+    covered = set(cards_by_image) - set(unused) - unavailable
+    print(f"Covered by exported dataset or Studio review sets: {len(covered)}")
+    print(f"Unavailable to this requester: {len(unavailable)}")
     print(f"Unused: {len(unused)} ({counts['Particle']} static, {counts['FlipBook']} flipbook)")
     print("Next unused IDs:")
     for image in unused[:20]:

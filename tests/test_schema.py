@@ -32,7 +32,7 @@ class SchemaTests(unittest.TestCase):
 
     def test_saved_splits(self):
         for split, count in (
-            ("train", 1231),
+            ("train", 1230),
             ("validation", 212),
             ("test", 211),
             ("generalization_test", 260),

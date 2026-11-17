@@ -160,6 +160,9 @@ The separate 15-effect CIX texture holdout and catalog selector are in
 [`docs/cix_texture_holdout.md`](docs/cix_texture_holdout.md).
 The blind Studio texture-rating procedure and new 24-effect prompt check are
 in [`docs/texture_evaluation.md`](docs/texture_evaluation.md).
+The November 16 asset-access cleanup, three corrected flipbook sheets,
+texture-to-layout inference rule, and retraining comparison are in
+[`docs/asset_layout_audit.md`](docs/asset_layout_audit.md).
 
 ## Project Structure
 

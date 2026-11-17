@@ -12,6 +12,10 @@ prompt more closely than any training prompt and clears a minimum similarity.
 The [CIX holdout check](cix_texture_holdout.md) reports the measured result.
 The plugin uses `ServerStorage.Prompt2Particles.Importer` to build the emitter and
 places it in `Workspace.Prompt2ParticlesGenerated`, away from the dataset.
+After the final texture choice, inference sets `FlipbookLayout` to the grid
+recorded for that texture. The two CIX assets that Studio reported as not
+approved are excluded from the available catalog; see
+[`asset_layout_audit.md`](asset_layout_audit.md).
 
 ## One-time setup
 
