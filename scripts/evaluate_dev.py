@@ -16,6 +16,7 @@ from src.data.normalize import Normalizer
 from src.evaluation.full_metrics import summarize_full
 from src.models.encoder import split_embeddings
 from src.models.full import decode_full
+from src.models.levels import chosen_biases
 from src.models.inference import model_from_checkpoint
 from src.models.nearest_neighbor import build_bank, nearest
 from train_full import fingerprint
@@ -52,7 +53,11 @@ def main() -> None:
         model = model_from_checkpoint(saved, normalizer)
         with torch.no_grad():
             output = model(vectors)
-        predicted = [decode_full(normalizer, output, i) for i in range(len(heldout))]
+        base_bias, light_bias = chosen_biases(saved)
+        predicted = [
+            decode_full(normalizer, output, i, record["prompt"], base_bias, light_bias)
+            for i, record in enumerate(heldout)
+        ]
         scores[name] = summarize_full(actual, predicted, normalizer)
         if "group" in output:
             correct = sum(

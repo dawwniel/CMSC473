@@ -19,32 +19,44 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from src.data.dataset import load_split
 from src.data.normalize import Normalizer, inverse
 from src.data.tensor_dataset import ParticleTensorDataset
+from src.data.targets import FAVORED
+from src.evaluation.metrics import level_summary
 from src.models.encoder import TextEncoder, split_embeddings
 from src.models.model import (
     BASELINE_COLUMNS, ParticleBaseline, baseline_loss, decode_prediction,
-    particle_record, target_indices, train_defaults,
+    output_row, particle_record, target_indices, train_defaults,
+)
+from src.models.levels import (
+    add_training_args, check_training_args, level_accuracy, level_class_weights, tune_and_choose,
 )
 
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def run_epoch(model, loader, optimizer, indices, burst_index, device):
+def run_epoch(model, loader, optimizer, indices, burst_index, device, class_weights, light_weight):
+    """Mean loss, regression, burst, level loss, burst accuracy, and unbiased level accuracy."""
     training = optimizer is not None
     model.train(training)
-    totals = np.zeros(4, dtype=float)
+    totals = np.zeros(6, dtype=float)
     for batch in loader:
         batch = {key: value.to(device) for key, value in batch.items()}
         with torch.set_grad_enabled(training):
             prediction = model(batch["embedding"])
-            loss, regression, burst = baseline_loss(prediction, batch, indices, burst_index)
+            loss, regression, burst, level = baseline_loss(
+                prediction, batch, indices, burst_index, class_weights, light_weight,
+            )
             if training:
                 optimizer.zero_grad()
                 loss.backward()
                 optimizer.step()
         size = len(batch["embedding"])
         correct = ((prediction["burst_logit"] >= 0) == (batch["flags"][:, burst_index] >= 0.5)).sum()
-        totals += [loss.item() * size, regression.item() * size, burst.item() * size, correct.item()]
+        level_correct = level_accuracy(prediction, batch)
+        totals += [
+            loss.item() * size, regression.item() * size, burst.item() * size,
+            level.item() * size, correct.item(), level_correct * size,
+        ]
     return totals / len(loader.dataset)
 
 
@@ -98,11 +110,13 @@ def main():
     parser.add_argument("--seed", type=int, default=473)
     parser.add_argument("--checkpoint", type=Path, default=ROOT / "checkpoints/particle_baseline.pt")
     parser.add_argument("--preview", type=Path, default=ROOT / "checkpoints/validation_preview.jsonl")
+    add_training_args(parser)
     args = parser.parse_args()
     if args.epochs < 1 or args.patience < 1 or args.batch_size < 1:
         parser.error("epochs, patience, and batch size must be positive")
     if args.hidden_dim < 2:
         parser.error("hidden dimension must be at least 2")
+    check_training_args(parser, args)
 
     random.seed(args.seed)
     np.random.seed(args.seed)
@@ -124,6 +138,7 @@ def main():
     train_loader = DataLoader(train_data, batch_size=args.batch_size, shuffle=True, generator=generator)
     validation_loader = DataLoader(validation_data, batch_size=args.batch_size)
 
+    class_weights = {name: w.to(device) for name, w in level_class_weights(args.favored_weight).items()}
     model = ParticleBaseline(encoder.dim, args.hidden_dim).to(device)
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr)
     best_loss = float("inf")
@@ -131,13 +146,18 @@ def main():
     stale_epochs = 0
     print(f"device={device} train={len(train_data)} validation={len(validation_data)} targets={BASELINE_COLUMNS}")
     for epoch in range(1, args.epochs + 1):
-        train = run_epoch(model, train_loader, optimizer, indices, burst_index, device)
-        validation = run_epoch(model, validation_loader, None, indices, burst_index, device)
+        train = run_epoch(
+            model, train_loader, optimizer, indices, burst_index, device, class_weights, args.light_weight,
+        )
+        validation = run_epoch(
+            model, validation_loader, None, indices, burst_index, device, class_weights, args.light_weight,
+        )
         if not np.isfinite(validation[0]):
             raise RuntimeError("validation loss is not finite")
         print(
             f"epoch {epoch:02d} train_loss={train[0]:.4f} val_loss={validation[0]:.4f} "
-            f"val_reg={validation[1]:.4f} val_burst_acc={validation[3]:.3f}"
+            f"val_reg={validation[1]:.4f} val_level={validation[3]:.4f} "
+            f"val_burst_acc={validation[4]:.3f} val_level_acc={validation[5]:.3f}"
         )
         if validation[0] < best_loss - 1e-4:
             best_loss = validation[0]
@@ -151,6 +171,8 @@ def main():
 
     model.load_state_dict(best_state)
     mae = validation_mae(model, validation_loader, normalizer, indices, device)
+    bias = tune_and_choose(model, validation_loader, device, args)
+    base_bias, light_bias = bias["base_bias"], bias["light_bias"]
     args.checkpoint.parent.mkdir(parents=True, exist_ok=True)
     torch.save({
         "model": best_state,
@@ -162,6 +184,7 @@ def main():
         "hidden_dim": args.hidden_dim,
         "normalizer": normalizer.to_dict(),
         "defaults": defaults,
+        **bias,
         "columns": list(BASELINE_COLUMNS),
         "best_epoch": best_epoch,
         "validation_loss": float(best_loss),
@@ -170,17 +193,24 @@ def main():
     }, args.checkpoint)
 
     model.eval()
+    with torch.no_grad():
+        output = model(torch.stack([item[1] for item in validation_data.items]).to(device))
+    prompts = [record["prompt"] for record in validation_data.records]
+    decoded = [
+        decode_prediction(normalizer, output_row(output, i), defaults, prompts[i], base_bias, light_bias)
+        for i in range(len(prompts))
+    ]
+    levels = level_summary("LightEmission", [r["emitter"] for r in validation_data.records], decoded, prompts)
     previews = []
     with torch.no_grad():
         for number, i in enumerate(preview_indices(validation_data.records), start=1):
             sample = validation_data[i]
             prediction = model(sample["embedding"].unsqueeze(0).to(device))
+            prompt = validation_data.records[i]["prompt"]
             emitter = decode_prediction(
-                normalizer, prediction["continuous"][0], prediction["burst_logit"][0], defaults,
+                normalizer, output_row(prediction, 0), defaults, prompt, base_bias, light_bias,
             )
-            previews.append(particle_record(
-                validation_data.records[i]["prompt"], emitter, f"V{number:03d}", "BaselinePreview",
-            ))
+            previews.append(particle_record(prompt, emitter, f"V{number:03d}", "BaselinePreview"))
     args.preview.parent.mkdir(parents=True, exist_ok=True)
     args.preview.write_text(
         "\n".join(json.dumps(record, separators=(",", ":")) for record in previews) + "\n",
@@ -188,6 +218,16 @@ def main():
     )
     print(f"best_epoch={best_epoch} val_loss={best_loss:.4f} checkpoint={args.checkpoint}")
     print("validation MAE: " + ", ".join(f"{name}={value:.3f}" for name, value in mae.items()))
+    favored = FAVORED["LightEmission"]
+    print(
+        f"LightEmission bias toward {favored:g}: base={base_bias:g} light={light_bias:g} "
+        f"(tuned {bias['tuned_biases']['LightEmission']})"
+    )
+    print(
+        f"validation LightEmission: accuracy={levels['accuracy']:.3f} "
+        f"light prompts={levels['light_prompts']} picked {favored:g}={levels['light_favored_rate']:.3f} "
+        f"recall of true {favored:g}={levels['light_favored_recall']:.3f} confusion={levels['confusion']}"
+    )
     print(f"validated {len(previews)} decoded emitters; preview={args.preview}")
 
 

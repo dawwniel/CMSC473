@@ -12,6 +12,7 @@ from ..data.normalize import Normalizer
 from ..data.dataset import load_split
 from .encoder import TextEncoder, split_embeddings
 from .full import ParticleFull, decode_full
+from .levels import chosen_biases
 from .model import particle_record
 from .nearest_neighbor import build_bank, nearest
 from .texture_layout import align_flipbook_layouts, texture_layout_index
@@ -76,13 +77,20 @@ def apply_catalog_textures(emitters: list[dict], scores: torch.Tensor,
 
 
 class FullPredictor:
-    def __init__(self, checkpoint: Path, neighbor_texture_threshold: float | None = None):
+    def __init__(self, checkpoint: Path, neighbor_texture_threshold: float | None = None,
+                 base_bias: float | None = None, light_bias: float | None = None):
+        """`base_bias`/`light_bias` override the checkpoint's LightEmission biases."""
         torch.set_num_threads(min(4, torch.get_num_threads()))
         saved = torch.load(checkpoint, map_location="cpu", weights_only=True)
         normalizer = Normalizer.from_dict(saved["normalizer"])
         model = model_from_checkpoint(saved, normalizer)
         self.normalizer = normalizer
         self.model = model
+        self.base_bias, self.light_bias = chosen_biases(saved)
+        if base_bias is not None:
+            self.base_bias = base_bias
+        if light_bias is not None:
+            self.light_bias = light_bias
         self.encoder = TextEncoder(saved["encoder_name"], device="cpu")
         self.neighbor_texture_threshold = neighbor_texture_threshold
         self.train_records = load_split("train")
@@ -122,7 +130,10 @@ class FullPredictor:
         with torch.no_grad():
             vectors = self.encoder.encode(prompts)
             output = self.model(vectors)
-        emitters = [decode_full(self.normalizer, output, index) for index in range(len(prompts))]
+        emitters = [
+            decode_full(self.normalizer, output, index, prompt, self.base_bias, self.light_bias)
+            for index, prompt in enumerate(prompts)
+        ]
         if self.neighbor_texture_threshold is not None:
             confidence = output["categories"]["Texture"].softmax(dim=1).max(dim=1).values
             indices, similarities = nearest(vectors, self.bank)

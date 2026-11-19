@@ -19,7 +19,10 @@ from src.evaluation.full_metrics import row_errors, summarize_full
 from src.models.encoder import split_embeddings
 from src.models.full import ParticleFull, decode_full
 from src.models.inference import apply_neighbor_textures
-from src.models.model import ParticleBaseline, decode_prediction, particle_record, train_defaults
+from src.models.levels import add_bias_args, chosen_biases
+from src.models.model import (
+    ParticleBaseline, decode_prediction, output_row, particle_record, train_defaults,
+)
 from src.models.nearest_neighbor import build_bank, nearest
 from src.models.texture_layout import align_flipbook_layouts, texture_layout_index
 from train_full import fingerprint
@@ -37,6 +40,7 @@ def main() -> None:
     parser.add_argument("--output", type=Path, default=ROOT / "checkpoints/full_evaluation.json")
     parser.add_argument("--splits", nargs="+", choices=("validation", "test", "generalization_test"),
                         default=("test", "generalization_test"))
+    add_bias_args(parser)
     args = parser.parse_args()
     torch.set_num_threads(min(4, torch.get_num_threads()))
     args.output.parent.mkdir(parents=True, exist_ok=True)
@@ -52,9 +56,12 @@ def main() -> None:
     model = ParticleFull(normalizer, saved["embedding_dim"], saved["hidden_dim"])
     model.load_state_dict(saved["model"])
     model.eval()
+    base_bias, light_bias = chosen_biases(saved, args)
+    print(f"LightEmission bias: base={base_bias:g} light={light_bias:g}")
     defaults = train_defaults(normalizer, train)
     constant = normalizer.inverse_transform(
         np.zeros(len(normalizer.continuous)), defaults["categories"], defaults["flags"],
+        defaults["levels"],
     )
     train_embeddings = split_embeddings("train", model_name=saved["encoder_name"])
     bank, owners = build_bank(train, train_embeddings)
@@ -78,7 +85,9 @@ def main() -> None:
         vectors = torch.stack([embeddings[record["row_hash"], 0] for record in records])
         with torch.no_grad():
             output = model(vectors)
-        predicted = [decode_full(normalizer, output, i) for i in range(len(records))]
+        prompts = [record["prompt"] for record in records]
+        predicted = [decode_full(normalizer, output, i, prompts[i], base_bias, light_bias)
+                     for i in range(len(records))]
         raw_layout_repairs = align_flipbook_layouts(predicted, texture_layouts)
         indices, similarities = nearest(vectors, bank)
         neighbor = [train[owners[index][0]]["emitter"] for index in indices.tolist()]
@@ -91,26 +100,27 @@ def main() -> None:
             hybrid_layout_repairs = align_flipbook_layouts(neighbor_hybrid, texture_layouts)
         truth = [record["emitter"] for record in records]
         scores = {
-            "full_model": summarize_full(truth, predicted, normalizer),
-            "train_constant": summarize_full(truth, [constant] * len(records), normalizer),
-            "nearest_neighbor": summarize_full(truth, neighbor, normalizer),
+            "full_model": summarize_full(truth, predicted, normalizer, prompts),
+            "train_constant": summarize_full(truth, [constant] * len(records), normalizer, prompts),
+            "nearest_neighbor": summarize_full(truth, neighbor, normalizer, prompts),
             "neighbor_mean_similarity": similarities.mean().item(),
             "raw_layout_repairs": raw_layout_repairs,
         }
         if neighbor_hybrid is not None:
-            scores["neighbor_texture_hybrid"] = summarize_full(truth, neighbor_hybrid, normalizer)
+            scores["neighbor_texture_hybrid"] = summarize_full(truth, neighbor_hybrid, normalizer, prompts)
             scores["hybrid_layout_repairs"] = hybrid_layout_repairs
         if baseline is not None:
             with torch.no_grad():
                 prior_output = baseline(vectors)
+            prior_base, prior_light = chosen_biases(prior)
             prior_predictions = [
                 decode_prediction(
-                    baseline_normalizer, prior_output["continuous"][i],
-                    prior_output["burst_logit"][i], prior["defaults"],
+                    baseline_normalizer, output_row(prior_output, i), prior["defaults"],
+                    prompts[i], prior_base, prior_light,
                 )
                 for i in range(len(records))
             ]
-            scores["seven_value_model"] = summarize_full(truth, prior_predictions, normalizer)
+            scores["seven_value_model"] = summarize_full(truth, prior_predictions, normalizer, prompts)
         results[split] = scores
 
         details = []
@@ -157,6 +167,13 @@ def main() -> None:
                   f"texture={report['category_accuracy']['Texture']:.3f} "
                   f"color_curve_mae={report['curve_mae']['Color']:.3f} "
                   f"valid={report['valid_emitters']}/{len(records)}")
+            light = report["seven_value_metrics"]["levels"]["LightEmission"]
+            rate, recall = light["light_favored_rate"], light["light_favored_recall"]
+            print(f"    LightEmission: accuracy={light['accuracy']:.3f} "
+                  f"light prompts={light['light_prompts']} "
+                  f"picked 1={'n/a' if rate is None else f'{rate:.3f}'} "
+                  f"recall of true 1={'n/a' if recall is None else f'{recall:.3f}'} "
+                  f"confusion={light['confusion']}")
 
     args.output.write_text(json.dumps(results, indent=2) + "\n", encoding="utf-8")
     print(f"saved {args.output}")

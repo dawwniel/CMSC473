@@ -9,7 +9,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
+from src.data.light import is_light_prompt
 from src.models.inference import FullPredictor
+from src.models.levels import add_bias_args
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -22,6 +24,7 @@ def main() -> None:
     parser.add_argument("--output", type=Path, default=ROOT / "checkpoints/full_prediction.jsonl")
     parser.add_argument("--neighbor-texture-threshold", type=float, default=0.6926)
     parser.add_argument("--no-neighbor-texture", action="store_true")
+    add_bias_args(parser)
     args = parser.parse_args()
     if not args.prompt.strip():
         parser.error("prompt cannot be blank")
@@ -29,6 +32,7 @@ def main() -> None:
     record = FullPredictor(
         args.checkpoint,
         None if args.no_neighbor_texture else args.neighbor_texture_threshold,
+        args.base_bias, args.light_bias,
     ).predict(args.prompt)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(record, separators=(",", ":")) + "\n", encoding="utf-8")
@@ -38,7 +42,8 @@ def main() -> None:
     print(f"saved {args.output}")
     print(f"{record['playback_mode']}: EmitCount={emitter['attributes']['EmitCount']}, "
           f"Rate={properties['Rate']:.2f}, Texture={properties['Texture']}, "
-          f"Speed={properties['Speed']['value']}")
+          f"Speed={properties['Speed']['value']}, LightEmission={properties['LightEmission']:g} "
+          f"(light prompt: {is_light_prompt(args.prompt)})")
 
 
 if __name__ == "__main__":

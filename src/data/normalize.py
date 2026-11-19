@@ -11,13 +11,13 @@ from typing import Any
 import numpy as np
 
 from .targets import (
-    CATEGORIES, FLAGS, K, UNKNOWN, Targets, continuous_columns, decode_emitter, encode_targets,
+    CATEGORIES, FLAGS, K, LEVELS, UNKNOWN, Targets, continuous_columns, decode_emitter, encode_targets,
 )
 
 
 ROOT = Path(__file__).resolve().parents[2]
 NORMALIZER_PATH = ROOT / "data/processed/normalizer.json"
-SAVE_VERSION = 1
+SAVE_VERSION = 2
 
 
 def forward(transform: str, values: np.ndarray) -> np.ndarray:
@@ -41,7 +41,8 @@ class Normalizer:
 
     Fields with a single value in train are stored as constants and left out
     of the model's targets. Unseen categories map to index 0, UNKNOWN, which
-    decodes to the most common train value.
+    decodes to the most common train value. Fixed-level fields (LEVELS) are
+    not fitted; their targets are indices into the levels.
     """
 
     def __init__(self, k: int = K):
@@ -53,6 +54,7 @@ class Normalizer:
         self.classes: dict[str, list[str]] = {}
         self.fallback: dict[str, str] = {}
         self.flags: list[str] = []
+        self.levels: dict[str, tuple[float, ...]] = dict(LEVELS)
         self.constants: dict[str, dict[str, Any]] = {"continuous": {}, "categories": {}, "flags": {}}
 
     @property
@@ -118,6 +120,7 @@ class Normalizer:
             "continuous_mask": mask.astype(np.float32),
             "categories": np.array(categories, dtype=np.int64),
             "flags": np.array([targets.flags[name] for name in self.flags], dtype=np.float32),
+            "levels": np.array([targets.levels[name] for name in self.levels], dtype=np.int64),
         }
 
     def _index(self, name: str, label: str) -> int:
@@ -128,12 +131,14 @@ class Normalizer:
             return 0
 
     def inverse_transform(
-        self, continuous: Any, categories: Any, flags: Any, name: str = "ParticleEmitter",
+        self, continuous: Any, categories: Any, flags: Any, levels: Any,
+        name: str = "ParticleEmitter",
     ) -> dict[str, Any]:
         """Decode one prediction to an emitter node.
 
-        `continuous` is normalized values, `categories` is class indices, and
-        `flags` is probabilities or 0/1 values, each in this normalizer's order.
+        `continuous` is normalized values, `categories` is class indices,
+        `flags` is probabilities or 0/1 values, and `levels` is level indices,
+        each in this normalizer's order.
         """
         continuous = np.asarray(continuous, dtype=float)
         targets = Targets()
@@ -148,6 +153,8 @@ class Normalizer:
         targets.flags.update(self.constants["flags"])
         for field, value in zip(self.flags, np.asarray(flags, dtype=float).tolist()):
             targets.flags[field] = value >= 0.5
+        for field, index in zip(self.levels, np.asarray(levels).tolist()):
+            targets.levels[field] = int(index)
         return decode_emitter(targets, self.k, name)
 
     def to_dict(self) -> dict[str, Any]:
@@ -163,6 +170,7 @@ class Normalizer:
                 for name in self.categories
             ],
             "flags": self.flags,
+            "levels": {name: list(values) for name, values in self.levels.items()},
             "constants": self.constants,
         }
 
@@ -181,6 +189,9 @@ class Normalizer:
             normalizer.classes[entry["name"]] = entry["classes"]
             normalizer.fallback[entry["name"]] = entry["fallback"]
         normalizer.flags = list(data["flags"])
+        saved = {name: tuple(values) for name, values in data["levels"].items()}
+        if saved != normalizer.levels:
+            raise ValueError(f"saved levels {saved} do not match targets.LEVELS")
         normalizer.constants = data["constants"]
         return normalizer
 

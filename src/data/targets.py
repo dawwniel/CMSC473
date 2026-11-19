@@ -23,13 +23,22 @@ BURST = "Burst"
 NUMBERS = {
     "Brightness": ("log1p", 0, None),
     "Drag": ("log1p", 0, None),
-    "LightEmission": ("none", 0, 1),
     "LightInfluence": ("none", 0, 1),
     "Rate": ("log1p", 0, None),
     "ShapePartial": ("log1p", 0, None),
     "TimeScale": ("none", 0, 1),
     "VelocityInheritance": ("none", 0, 1),
     "ZOffset": ("none", None, None),
+}
+# Numbers that take one of a few fixed values. Each value snaps to the nearest
+# level, and a tie goes to the higher one. LightEmission below 1 draws a
+# black-backed texture's black pixels, so the levels are kept coarse.
+LEVELS = {
+    "LightEmission": (0.0, 0.5, 1.0),
+}
+# The level that picking leans toward; see model.pick_level.
+FAVORED = {
+    "LightEmission": 1.0,
 }
 RANGES = {
     "FlipbookFramerate": ("log1p", 0, None),
@@ -78,16 +87,26 @@ class Targets:
     continuous: dict[str, float] = field(default_factory=dict)
     categories: dict[str, str] = field(default_factory=dict)
     flags: dict[str, bool] = field(default_factory=dict)
+    # Index into LEVELS[name].
+    levels: dict[str, int] = field(default_factory=dict)
 
 
 def _check_coverage() -> None:
-    groups = [NUMBERS, RANGES, VECTORS, SEQUENCES, COLORS, CATEGORIES, BOOLEANS]
+    groups = [NUMBERS, LEVELS, RANGES, VECTORS, SEQUENCES, COLORS, CATEGORIES, BOOLEANS]
     names = [name for group in groups for name in group]
     if len(names) != len(set(names)) or set(names) != set(PARTICLE_PROPERTIES):
         raise RuntimeError("targets.py does not cover PARTICLE_PROPERTIES exactly once")
 
 
 _check_coverage()
+
+
+def snap_level(name: str, value: float) -> int:
+    """Index of the level nearest `value`; a tie goes to the higher level."""
+    levels = LEVELS[name]
+    distances = [abs(value - level) for level in levels]
+    best = min(distances)
+    return max(i for i, distance in enumerate(distances) if distance - best <= 1e-9)
 
 
 def continuous_columns(k: int = K) -> list[Column]:
@@ -139,6 +158,8 @@ def encode_targets(emitter: dict[str, Any], k: int = K) -> Targets:
 
     for name in NUMBERS:
         cont[name] = float(properties[name])
+    for name in LEVELS:
+        out.levels[name] = snap_level(name, float(properties[name]))
     if burst:
         cont["Rate"] = math.nan
     cont["EmitCount"] = float(count) if burst else math.nan
@@ -192,6 +213,8 @@ def decode_emitter(targets: Targets, k: int = K, name: str = "ParticleEmitter") 
 
     for prop in NUMBERS:
         properties[prop] = value(prop)
+    for prop, levels in LEVELS.items():
+        properties[prop] = float(levels[targets.levels[prop]])
     if burst:
         properties["Rate"] = BURST_RATE
     for prop in RANGES:

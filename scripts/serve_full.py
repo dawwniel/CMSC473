@@ -16,6 +16,7 @@ from urllib.parse import parse_qs, urlsplit
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from src.models.inference import FullPredictor
+from src.models.levels import add_bias_args
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -126,12 +127,14 @@ def main() -> None:
     parser.add_argument("--port", type=int, default=8765)
     parser.add_argument("--neighbor-texture-threshold", type=float, default=0.6926)
     parser.add_argument("--no-neighbor-texture", action="store_true")
+    add_bias_args(parser)
     args = parser.parse_args()
     if not 1 <= args.port <= 65535:
         parser.error("port must be between 1 and 65535")
     predictor = FullPredictor(
         args.checkpoint,
         None if args.no_neighbor_texture else args.neighbor_texture_threshold,
+        args.base_bias, args.light_bias,
     )
     version = hashlib.sha256()
     for path in (args.checkpoint, ROOT / "src/models/inference.py",
@@ -143,6 +146,7 @@ def main() -> None:
                  ROOT / "data/cix_second_prompt_review.json",
                  ROOT / "data/cix_new_holdout_catalog.json"):
         version.update(path.read_bytes())
+    version.update(f"bias {predictor.base_bias} {predictor.light_bias}".encode())
     model_id = version.hexdigest()[:16]
     server = HTTPServer(("127.0.0.1", args.port), handler_for(predictor, model_id=model_id))
     print(f"Prompt2Particles ready at http://127.0.0.1:{args.port}", flush=True)

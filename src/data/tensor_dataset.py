@@ -9,6 +9,7 @@ import torch
 from torch.utils.data import Dataset
 
 from .dataset import DATA_DIR, load_split
+from .light import is_light_prompt
 from .normalize import Normalizer
 
 
@@ -23,7 +24,8 @@ class ParticleTensorDataset(Dataset):
     """One item per (record, prompt).
 
     Train uses every prompt by default. Other splits use only the main prompt,
-    so each effect is scored once.
+    so each effect is scored once. `light` is 1 when that item's prompt
+    describes a light effect.
     """
 
     def __init__(
@@ -42,14 +44,18 @@ class ParticleTensorDataset(Dataset):
             for record in self.records
         ]
         self.items = []
+        # Parallel to items: 1.0 when that item's prompt is a light prompt.
+        self.light: list[torch.Tensor] = []
         for index, record in enumerate(self.records):
-            count = len(record_prompts(record)) if alternates else 1
+            prompts = record_prompts(record)
+            count = len(prompts) if alternates else 1
             for prompt_index in range(count):
                 self.items.append((index, embeddings[record["row_hash"], prompt_index]))
+                self.light.append(torch.tensor(float(is_light_prompt(prompts[prompt_index]))))
 
     def __len__(self) -> int:
         return len(self.items)
 
     def __getitem__(self, index: int) -> dict[str, torch.Tensor]:
         record_index, embedding = self.items[index]
-        return {"embedding": embedding, **self.targets[record_index]}
+        return {"embedding": embedding, "light": self.light[index], **self.targets[record_index]}

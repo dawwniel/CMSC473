@@ -9,8 +9,8 @@ from src.data.dataset import ParticleDataset
 from src.data.normalize import Normalizer
 from src.data.schema import PARTICLE_PROPERTIES, validate_emitter
 from src.data.targets import (
-    BOOLEANS, CATEGORIES, COLORS, ENUMS, NUMBERS, RANGES, SEQUENCES, UNKNOWN, VECTORS,
-    encode_targets, resample,
+    BOOLEANS, CATEGORIES, COLORS, ENUMS, LEVELS, NUMBERS, RANGES, SEQUENCES, UNKNOWN, VECTORS,
+    encode_targets, resample, snap_level,
 )
 
 
@@ -35,8 +35,28 @@ def continuous_row():
 def decode(normalizer, record):
     encoded = normalizer.transform(record)
     return normalizer.inverse_transform(
-        encoded["continuous"], encoded["categories"], encoded["flags"], record["emitter"]["name"],
+        encoded["continuous"], encoded["categories"], encoded["flags"], encoded["levels"],
+        record["emitter"]["name"],
     )
+
+
+class LevelTests(unittest.TestCase):
+    def test_snaps_to_nearest_and_ties_go_up(self):
+        cases = {0.0: 0, 0.1: 0, 0.25: 1, 0.35: 1, 0.5: 1, 0.7: 1, 0.75: 2, 0.85: 2, 1.0: 2, 3.0: 2}
+        for value, index in cases.items():
+            with self.subTest(value=value):
+                self.assertEqual(snap_level("LightEmission", value), index)
+
+    def test_light_emission_is_a_level_not_a_column(self):
+        self.assertNotIn("LightEmission", NORMALIZER.columns)
+        self.assertEqual(NORMALIZER.levels, {"LightEmission": (0.0, 0.5, 1.0)})
+        self.assertEqual(NORMALIZER.transform(TRAIN[0])["levels"].dtype, np.int64)
+
+    def test_decoded_light_emission_is_a_level(self):
+        for record in TRAIN:
+            value = record["emitter"]["properties"]["LightEmission"]
+            got = decode(NORMALIZER, record)["properties"]["LightEmission"]
+            self.assertEqual(got, LEVELS["LightEmission"][snap_level("LightEmission", value)])
 
 
 class ResampleTests(unittest.TestCase):
@@ -52,14 +72,14 @@ class ResampleTests(unittest.TestCase):
 
 class TargetLayoutTests(unittest.TestCase):
     def test_every_property_is_encoded_once(self):
-        groups = [NUMBERS, RANGES, VECTORS, SEQUENCES, COLORS, CATEGORIES, BOOLEANS]
+        groups = [NUMBERS, LEVELS, RANGES, VECTORS, SEQUENCES, COLORS, CATEGORIES, BOOLEANS]
         names = [name for group in groups for name in group]
         self.assertEqual(len(names), len(set(names)))
         self.assertEqual(set(names), set(PARTICLE_PROPERTIES))
 
     def test_layout_widths(self):
         # K=8: Size, Squash, Transparency have value + envelope, Color has RGB.
-        self.assertEqual(len(NORMALIZER.columns), 9 + 1 + 10 + 5 + 3 * 16 + 24)
+        self.assertEqual(len(NORMALIZER.columns), 8 + 1 + 10 + 5 + 3 * 16 + 24)
         self.assertEqual(NORMALIZER.transform(TRAIN[0])["continuous"].shape, (len(NORMALIZER.continuous),))
 
     def test_constant_fields_are_not_targets(self):
@@ -132,6 +152,9 @@ class RoundTripTests(unittest.TestCase):
             with self.subTest(row=record["id"], property=name):
                 if name in SEQUENCES or name in COLORS:
                     continue
+                if name in LEVELS:
+                    self.assertEqual(got, LEVELS[name][snap_level(name, value)])
+                    continue
                 if name == "Rate" and original["attributes"]["EmitCount"] > 0:
                     self.assertEqual(got, 0.0)
                 elif isinstance(value, dict) and "value" in value and value["_type"] != "Enum":
@@ -182,7 +205,9 @@ class RoundTripTests(unittest.TestCase):
         record = continuous_row()
         encoded = NORMALIZER.transform(record)
         wild = np.full_like(encoded["continuous"], -50.0)
-        decoded = NORMALIZER.inverse_transform(wild, encoded["categories"], encoded["flags"])
+        decoded = NORMALIZER.inverse_transform(
+            wild, encoded["categories"], encoded["flags"], encoded["levels"],
+        )
         validate_emitter(decoded)
         self.assertGreaterEqual(decoded["properties"]["Brightness"], 0)
         self.assertTrue(all(p[2] >= 0 for p in decoded["properties"]["Size"]["keypoints"]))
@@ -193,7 +218,7 @@ class RoundTripTests(unittest.TestCase):
         count = NORMALIZER.continuous.index("EmitCount")
         encoded["continuous"][count] += 0.37
         decoded = NORMALIZER.inverse_transform(
-            encoded["continuous"], encoded["categories"], encoded["flags"],
+            encoded["continuous"], encoded["categories"], encoded["flags"], encoded["levels"],
         )
         self.assertIsInstance(decoded["attributes"]["EmitCount"], int)
         self.assertGreaterEqual(decoded["attributes"]["EmitCount"], 1)

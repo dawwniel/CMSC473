@@ -10,6 +10,7 @@ from torch.nn import functional as F
 
 from ..data.normalize import Normalizer
 from .full import ParticleFull
+from .levels import level_loss
 
 
 def group_setup(records: list[dict], normalizer: Normalizer) -> tuple[list[str], torch.Tensor]:
@@ -52,7 +53,10 @@ class ParticleV2(ParticleFull):
         return output
 
 
-def loss_v2(output: dict, batch: dict[str, torch.Tensor], model: ParticleV2) -> dict:
+def loss_v2(
+    output: dict, batch: dict[str, torch.Tensor], model: ParticleV2,
+    class_weights: dict[str, torch.Tensor] | None = None, light_weight: float = 1.0,
+) -> dict:
     errors = F.smooth_l1_loss(output["continuous"], batch["continuous"], reduction="none")
     mask = batch["continuous_mask"]
 
@@ -86,11 +90,13 @@ def loss_v2(output: dict, batch: dict[str, torch.Tensor], model: ParticleV2) -> 
     categories = torch.stack(category_errors).sum() / weight_sum
     flags = F.binary_cross_entropy_with_logits(output["flags"], batch["flags"])
     groups = F.cross_entropy(output["group"], batch["group"]) / math.log(len(model.group_names))
+    levels = level_loss(output, batch, class_weights, light_weight, normalize=True)
     return {
-        "total": scalars + curves + categories + flags + 0.4 * groups,
+        "total": scalars + curves + categories + flags + 0.4 * groups + levels,
         "scalars": scalars,
         "curves": curves,
         "categories": categories,
         "flags": flags,
         "groups": groups,
+        "levels": levels,
     }
