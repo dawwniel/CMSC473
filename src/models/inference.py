@@ -13,7 +13,11 @@ from ..data.dataset import load_split
 from .color import color_cue, emitter_color_matches, requested_color, tint_emitter_color
 from .encoder import TextEncoder, split_embeddings
 from .full import ParticleFull, decode_full
+<<<<<<< HEAD
 from .full_color import ParticleFullColor
+=======
+from .levels import chosen_biases
+>>>>>>> cd29dd9ab3d073b798e65a26f570d65507c74b5b
 from .model import particle_record
 from .nearest_neighbor import build_bank, nearest
 from .texture_layout import align_flipbook_layouts, texture_layout_index
@@ -80,13 +84,20 @@ def apply_catalog_textures(emitters: list[dict], scores: torch.Tensor,
 
 
 class FullPredictor:
-    def __init__(self, checkpoint: Path, neighbor_texture_threshold: float | None = None):
+    def __init__(self, checkpoint: Path, neighbor_texture_threshold: float | None = None,
+                 base_bias: float | None = None, light_bias: float | None = None):
+        """`base_bias`/`light_bias` override the checkpoint's LightEmission biases."""
         torch.set_num_threads(min(4, torch.get_num_threads()))
         saved = torch.load(checkpoint, map_location="cpu", weights_only=True)
         normalizer = Normalizer.from_dict(saved["normalizer"])
         model = model_from_checkpoint(saved, normalizer)
         self.normalizer = normalizer
         self.model = model
+        self.base_bias, self.light_bias = chosen_biases(saved)
+        if base_bias is not None:
+            self.base_bias = base_bias
+        if light_bias is not None:
+            self.light_bias = light_bias
         self.encoder = TextEncoder(saved["encoder_name"], device="cpu")
         self.neighbor_texture_threshold = neighbor_texture_threshold
         self.train_records = load_split("train")
@@ -125,6 +136,7 @@ class FullPredictor:
             raise ValueError("prompts must be between 1 and 500 characters")
         with torch.no_grad():
             vectors = self.encoder.encode(prompts)
+<<<<<<< HEAD
             if isinstance(self.model, ParticleFullColor):
                 cues = torch.tensor([color_cue(prompt) for prompt in prompts], dtype=vectors.dtype)
                 output = self.model(vectors, cues)
@@ -135,6 +147,13 @@ class FullPredictor:
             request = requested_color(prompt)
             if request is not None and not emitter_color_matches(emitter, request.rgb):
                 emitter["properties"]["Color"] = tint_emitter_color(emitter, request.rgb)["properties"]["Color"]
+=======
+            output = self.model(vectors)
+        emitters = [
+            decode_full(self.normalizer, output, index, prompt, self.base_bias, self.light_bias)
+            for index, prompt in enumerate(prompts)
+        ]
+>>>>>>> cd29dd9ab3d073b798e65a26f570d65507c74b5b
         if self.neighbor_texture_threshold is not None:
             confidence = output["categories"]["Texture"].softmax(dim=1).max(dim=1).values
             indices, similarities = nearest(vectors, self.bank)

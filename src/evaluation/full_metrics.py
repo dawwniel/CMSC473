@@ -7,7 +7,7 @@ from typing import Any
 
 from ..data.normalize import Normalizer
 from ..data.schema import validate_emitter
-from ..data.targets import CATEGORIES, FLAGS, encode_targets
+from ..data.targets import CATEGORIES, FLAGS, LEVELS, encode_targets
 from .metrics import summarize
 
 
@@ -40,13 +40,16 @@ def row_errors(source: dict[str, Any], result: dict[str, Any], normalizer: Norma
             name: truth.categories[name] == guess.categories[name] for name in CATEGORIES
         },
         "flag_correct": {name: truth.flags[name] == guess.flags[name] for name in FLAGS},
+        "level_correct": {name: truth.levels[name] == guess.levels[name] for name in LEVELS},
     }
 
 
 def summarize_full(
     actual: list[dict[str, Any]], predicted: list[dict[str, Any]],
-    normalizer: Normalizer,
+    normalizer: Normalizer, prompts: list[str] | None = None,
 ) -> dict[str, Any]:
+    """Property errors. Level fields (LightEmission) are in
+    seven_value_metrics["levels"], with light-prompt stats when prompts are given."""
     if not actual or len(actual) != len(predicted):
         raise ValueError("actual and predicted must have the same nonzero length")
 
@@ -87,7 +90,7 @@ def summarize_full(
     return {
         "samples": count,
         "valid_emitters": valid_count,
-        "seven_value_metrics": summarize(actual, predicted),
+        "seven_value_metrics": summarize(actual, predicted, prompts),
         "numeric_mae": {
             name: mae[name] for name in sums
             if not name.startswith(("Size.", "Squash.", "Transparency.", "Color."))

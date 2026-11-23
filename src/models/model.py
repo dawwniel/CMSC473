@@ -12,8 +12,12 @@ from torch.nn import functional as F
 
 from ..data.normalize import Normalizer
 from ..data.schema import validate_emitter
+from ..data.light import is_light_prompt
 from ..data.targets import BURST, encode_targets
 from .heads import BaselineHeads
+from .levels import (  # noqa: F401  (re-exported for older imports)
+    level_class_weights, level_loss, pick_level, tune_biases,
+)
 
 
 BASELINE_COLUMNS = (
@@ -46,9 +50,11 @@ def target_indices(normalizer: Normalizer) -> tuple[list[int], int]:
 
 
 def baseline_loss(
-    prediction: dict[str, torch.Tensor], batch: dict[str, torch.Tensor],
+    prediction: dict[str, Any], batch: dict[str, torch.Tensor],
     continuous_indices: list[int], burst_index: int,
-) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
+    class_weights: dict[str, torch.Tensor] | None = None, light_weight: float = 1.0,
+) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
+    """Total, regression, burst, and level losses. See levels.level_loss."""
     actual = batch["continuous"][:, continuous_indices]
     mask = batch["continuous_mask"][:, continuous_indices]
     error = F.smooth_l1_loss(prediction["continuous"], actual, reduction="none")
@@ -56,7 +62,16 @@ def baseline_loss(
     burst = F.binary_cross_entropy_with_logits(
         prediction["burst_logit"], batch["flags"][:, burst_index]
     )
-    return regression + burst, regression, burst
+    level = level_loss(prediction, batch, class_weights, light_weight)
+    return regression + burst + level, regression, burst, level
+
+
+def output_row(output: dict[str, Any], i: int) -> dict[str, Any]:
+    """Row i of a batched output; nested dicts (categories, levels) are sliced too."""
+    return {
+        key: output_row(value, i) if isinstance(value, dict) else value[i]
+        for key, value in output.items()
+    }
 
 
 def train_defaults(normalizer: Normalizer, train_records: list[dict[str, Any]]) -> dict[str, list[float | int]]:
@@ -70,21 +85,34 @@ def train_defaults(normalizer: Normalizer, train_records: list[dict[str, Any]]) 
         float(Counter(row.flags[name] for row in rows).most_common(1)[0][0])
         for name in normalizer.flags
     ]
-    return {"categories": categories, "flags": flags}
+    levels = [
+        Counter(row.levels[name] for row in rows).most_common(1)[0][0]
+        for name in normalizer.levels
+    ]
+    return {"categories": categories, "flags": flags, "levels": levels}
 
 
 def decode_prediction(
-    normalizer: Normalizer, values: torch.Tensor, burst_logit: torch.Tensor,
-    defaults: dict[str, list[float | int]], name: str = "ParticleEmitter",
+    normalizer: Normalizer, prediction: dict[str, torch.Tensor],
+    defaults: dict[str, list[float | int]], prompt: str,
+    base_bias: float = 0.0, light_bias: float = 0.0, name: str = "ParticleEmitter",
 ) -> dict[str, Any]:
-    """Fill unmodeled fields with train defaults and decode one prediction."""
+    """Fill unmodeled fields with train defaults and decode one prediction.
+
+    `prediction` is one row of the model's output (see output_row).
+    """
     continuous_indices, burst_index = target_indices(normalizer)
     continuous = np.zeros(len(normalizer.continuous), dtype=np.float32)
-    continuous[continuous_indices] = values.detach().cpu().numpy()
+    continuous[continuous_indices] = prediction["continuous"].detach().cpu().numpy()
     flags = np.asarray(defaults["flags"], dtype=np.float32).copy()
-    flags[burst_index] = torch.sigmoid(burst_logit.detach()).item()
+    flags[burst_index] = torch.sigmoid(prediction["burst_logit"].detach()).item()
+    light = is_light_prompt(prompt)
+    levels = [
+        pick_level(field, prediction["levels"][field], light, base_bias, light_bias)
+        for field in normalizer.levels
+    ]
     emitter = normalizer.inverse_transform(
-        continuous, defaults["categories"], flags, name,
+        continuous, defaults["categories"], flags, levels, name,
     )
     validate_emitter(emitter)
     return emitter

@@ -49,6 +49,8 @@ class TensorDatasetTests(unittest.TestCase):
         self.assertEqual(batch["continuous_mask"].shape, batch["continuous"].shape)
         self.assertEqual(batch["categories"].dtype, torch.int64)
         self.assertEqual(batch["flags"].shape, (4, len(self.normalizer.flags)))
+        self.assertEqual(batch["levels"].shape, (4, len(self.normalizer.levels)))
+        self.assertEqual(batch["light"].shape, (4,))
 
 
 @SLOW

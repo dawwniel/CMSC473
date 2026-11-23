@@ -16,10 +16,14 @@ from torch.utils.data import ConcatDataset, DataLoader, Dataset
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from src.data.dataset import load_split
+from src.data.light import is_light_prompt
 from src.data.normalize import Normalizer
 from src.data.tensor_dataset import ParticleTensorDataset
 from src.models.encoder import MODEL_NAME, TextEncoder, split_embeddings
 from src.models.full import ParticleFull, full_loss
+from src.models.levels import (
+    add_training_args, check_training_args, level_class_weights, tune_and_choose,
+)
 from src.models.v2 import ParticleV2, group_setup, loss_v2
 from train_full import fingerprint
 
@@ -68,6 +72,7 @@ class ExtraPrompts(Dataset):
                 targets.append({
                     **{key: torch.from_numpy(value) for key, value in normalizer.transform(record).items()},
                     "group": torch.tensor(labels[record["attachment"]["attributes"]["Category"]]),
+                    "light": torch.tensor(float(is_light_prompt(prompt))),
                 })
         self.vectors = TextEncoder().encode(prompts)
         self.targets = targets
@@ -79,14 +84,16 @@ class ExtraPrompts(Dataset):
         return {"embedding": self.vectors[index], **self.targets[index]}
 
 
-def epoch(model, loader, optimizer, mode: str, device: torch.device) -> dict[str, float]:
+def epoch(model, loader, optimizer, mode: str, device: torch.device,
+          class_weights=None, light_weight: float = 1.0) -> dict[str, float]:
     model.train(optimizer is not None)
     totals = {}
     for batch in loader:
         batch = {key: value.to(device) for key, value in batch.items()}
         with torch.set_grad_enabled(optimizer is not None):
             output = model(batch["embedding"])
-            losses = loss_v2(output, batch, model) if mode == "v2" else full_loss(output, batch, model)
+            loss = loss_v2 if mode == "v2" else full_loss
+            losses = loss(output, batch, model, class_weights, light_weight)
             if optimizer is not None:
                 optimizer.zero_grad()
                 losses["total"].backward()
@@ -113,7 +120,9 @@ def main() -> None:
     parser.add_argument("--final-epoch", action="store_true",
                         help="save the last epoch to study late-epoch overfitting")
     parser.add_argument("--checkpoint", type=Path)
+    add_training_args(parser)
     args = parser.parse_args()
+    check_training_args(parser, args)
     if (min(args.epochs, args.patience, args.batch_size, args.hidden_dim) < 1
             or args.lr <= 0 or not 0 <= args.dropout < 1):
         parser.error("training settings must be positive")
@@ -165,14 +174,15 @@ def main() -> None:
     else:
         model = ParticleFull(normalizer, embedding_dim, args.hidden_dim).to(device)
     model.backbone[2].p = args.dropout
+    class_weights = {name: w.to(device) for name, w in level_class_weights(args.favored_weight).items()}
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr)
     best_loss = float("inf")
     stale = 0
     print(f"device={device} mode={args.mode} dev={args.dev} train={len(train_data)} "
           f"validation={len(validation_data)} groups={len(group_names)}", flush=True)
     for step in range(1, args.epochs + 1):
-        train = epoch(model, train_loader, optimizer, args.mode, device)
-        validation = epoch(model, validation_loader, None, args.mode, device)
+        train = epoch(model, train_loader, optimizer, args.mode, device, class_weights, args.light_weight)
+        validation = epoch(model, validation_loader, None, args.mode, device, class_weights, args.light_weight)
         if not np.isfinite(validation["total"]):
             raise RuntimeError("validation loss is not finite")
         if validation["total"] < best_loss - 1e-4:
@@ -193,6 +203,8 @@ def main() -> None:
         best_epoch = step
         best_loss = validation["total"]
 
+    model.load_state_dict(best_state)
+    bias = tune_and_choose(model, validation_loader, device, args)
     checkpoint = args.checkpoint or ROOT / "checkpoints" / (
         f"particle_{args.mode}_dev.pt" if args.dev else f"particle_{args.mode}.pt"
     )
@@ -214,8 +226,10 @@ def main() -> None:
         "validation_loss": best_loss,
         "seed": args.seed,
         "extra_prompts": str(args.extra_prompts) if args.extra_prompts else None,
+        **bias,
     }, checkpoint)
-    print(f"saved {checkpoint}; best_epoch={best_epoch}", flush=True)
+    print(f"saved {checkpoint}; best_epoch={best_epoch}; LightEmission bias "
+          f"base={bias['base_bias']:g} light={bias['light_bias']:g}", flush=True)
 
 
 if __name__ == "__main__":

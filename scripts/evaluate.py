@@ -15,13 +15,17 @@ from src.data.dataset import load_split
 from src.data.normalize import Normalizer
 from src.evaluation.metrics import summarize
 from src.models.encoder import split_embeddings
-from src.models.model import ParticleBaseline, decode_prediction
+from src.data.targets import LEVELS
+from src.models.model import ParticleBaseline, decode_prediction, output_row
 
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def evaluate(split: str, model: ParticleBaseline, saved: dict, normalizer: Normalizer) -> dict:
+def evaluate(
+    split: str, model: ParticleBaseline, saved: dict, normalizer: Normalizer,
+    base_bias: float, light_bias: float,
+) -> dict:
     records = load_split(split)
     embeddings = split_embeddings(split, model_name=saved["encoder_name"])
     keys = [(record["row_hash"], 0) for record in records]
@@ -29,21 +33,27 @@ def evaluate(split: str, model: ParticleBaseline, saved: dict, normalizer: Norma
     with torch.no_grad():
         outputs = model(vectors)
     defaults = saved["defaults"]
+    prompts = [record["prompt"] for record in records]
     predictions = [
-        decode_prediction(normalizer, outputs["continuous"][i], outputs["burst_logit"][i], defaults)
+        decode_prediction(normalizer, output_row(outputs, i), defaults, prompts[i], base_bias, light_bias)
         for i in range(len(records))
     ]
     majority_burst = defaults["flags"][normalizer.flags.index("Burst")] >= 0.5
-    constant = decode_prediction(
-        normalizer,
-        torch.zeros(len(saved["columns"])),
-        torch.tensor(1.0 if majority_burst else -1.0),
-        defaults,
-    )
+    # The constant baseline picks the train majority level with no bias.
+    constant_output = {
+        "continuous": torch.zeros(len(saved["columns"])),
+        "burst_logit": torch.tensor(1.0 if majority_burst else -1.0),
+    }
+    constant_output["levels"] = {}
+    for i, name in enumerate(normalizer.levels):
+        logits = torch.zeros(len(LEVELS[name]))
+        logits[defaults["levels"][i]] = 1.0
+        constant_output["levels"][name] = logits
+    constant = decode_prediction(normalizer, constant_output, defaults, "constant")
     actual = [record["emitter"] for record in records]
     return {
-        "model": summarize(actual, predictions),
-        "train_constant": summarize(actual, [constant] * len(records)),
+        "model": summarize(actual, predictions, prompts),
+        "train_constant": summarize(actual, [constant] * len(records), prompts),
     }
 
 
@@ -53,6 +63,10 @@ def main() -> None:
     parser.add_argument("--output", type=Path, default=ROOT / "checkpoints/evaluation.json")
     parser.add_argument("--splits", nargs="+", choices=("validation", "test", "generalization_test"),
                         default=("test", "generalization_test"))
+    parser.add_argument("--base-bias", type=float, default=None,
+                        help="override the checkpoint's LightEmission bias for non-light prompts")
+    parser.add_argument("--light-bias", type=float, default=None,
+                        help="override the checkpoint's LightEmission bias for light prompts; inf always picks 1")
     args = parser.parse_args()
 
     torch.set_num_threads(min(4, torch.get_num_threads()))
@@ -62,7 +76,12 @@ def main() -> None:
     model.load_state_dict(saved["model"])
     model.eval()
 
-    results = {split: evaluate(split, model, saved, normalizer) for split in args.splits}
+    base_bias = saved["base_bias"] if args.base_bias is None else args.base_bias
+    light_bias = saved["light_bias"] if args.light_bias is None else args.light_bias
+    results = {
+        split: evaluate(split, model, saved, normalizer, base_bias, light_bias) for split in args.splits
+    }
+    print(f"LightEmission bias: base={base_bias:g} light={light_bias:g}")
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(results, indent=2) + "\n", encoding="utf-8")
     for split, scores in results.items():
@@ -75,6 +94,17 @@ def main() -> None:
         for field, error in model_score["active_mae"].items():
             if error is not None:
                 print(f"  {field} when active: MAE={error:.3f}")
+        for field, level in model_score["levels"].items():
+            constant_level = constant_score["levels"][field]
+            rate = level["light_favored_rate"]
+            recall = level["light_favored_recall"]
+            print(
+                f"  {field}: accuracy={level['accuracy']:.3f} constant={constant_level['accuracy']:.3f} "
+                f"light prompts={level['light_prompts']} "
+                f"picked 1={'n/a' if rate is None else f'{rate:.3f}'} "
+                f"recall of true 1={'n/a' if recall is None else f'{recall:.3f}'} "
+                f"confusion={level['confusion']}"
+            )
     print(f"saved {args.output}")
 
 
