@@ -59,6 +59,24 @@ class LevelTests(unittest.TestCase):
             self.assertEqual(got, LEVELS["LightEmission"][snap_level("LightEmission", value)])
 
 
+class LegacyCheckpointTests(unittest.TestCase):
+    def test_version_one_keeps_continuous_light_emission(self):
+        saved = copy.deepcopy(NORMALIZER.to_dict())
+        saved["version"] = 1
+        saved.pop("levels")
+        saved["continuous"].append({"name": "LightEmission", "mean": 0.5, "std": 0.5})
+        normalizer = Normalizer.from_dict(saved)
+        record = continuous_row()
+        encoded = normalizer.transform(record)
+        decoded = normalizer.inverse_transform(
+            encoded["continuous"], encoded["categories"], encoded["flags"], encoded["levels"],
+        )
+        self.assertEqual(normalizer.levels, {})
+        self.assertEqual(normalizer.to_dict(), saved)
+        self.assertAlmostEqual(decoded["properties"]["LightEmission"],
+                               record["emitter"]["properties"]["LightEmission"])
+
+
 class ResampleTests(unittest.TestCase):
     def test_hits_keypoints_and_interpolates(self):
         values = resample([0, 0.5, 1], [0, 1, 0], 5)

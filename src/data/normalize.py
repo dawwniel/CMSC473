@@ -11,7 +11,8 @@ from typing import Any
 import numpy as np
 
 from .targets import (
-    CATEGORIES, FLAGS, K, LEVELS, UNKNOWN, Targets, continuous_columns, decode_emitter, encode_targets,
+    CATEGORIES, FLAGS, K, LEVELS, UNKNOWN, Column, Targets, continuous_columns, decode_emitter,
+    encode_targets,
 )
 
 
@@ -47,6 +48,7 @@ class Normalizer:
 
     def __init__(self, k: int = K):
         self.k = k
+        self.version = SAVE_VERSION
         self.columns = {column.name: column for column in continuous_columns(k)}
         self.continuous: list[str] = []
         self.mean: dict[str, float] = {}
@@ -158,8 +160,8 @@ class Normalizer:
         return decode_emitter(targets, self.k, name)
 
     def to_dict(self) -> dict[str, Any]:
-        return {
-            "version": SAVE_VERSION,
+        data = {
+            "version": self.version,
             "k": self.k,
             "continuous": [
                 {"name": name, "mean": self.mean[name], "std": self.std[name]}
@@ -170,15 +172,22 @@ class Normalizer:
                 for name in self.categories
             ],
             "flags": self.flags,
-            "levels": {name: list(values) for name, values in self.levels.items()},
             "constants": self.constants,
         }
+        if self.version >= 2:
+            data["levels"] = {name: list(values) for name, values in self.levels.items()}
+        return data
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> Normalizer:
-        if data.get("version") != SAVE_VERSION:
-            raise ValueError(f"expected normalizer version {SAVE_VERSION}")
+        version = data.get("version")
+        if version not in (1, SAVE_VERSION):
+            raise ValueError(f"expected normalizer version 1 or {SAVE_VERSION}")
         normalizer = cls(data["k"])
+        normalizer.version = version
+        if version == 1:
+            normalizer.columns["LightEmission"] = Column("LightEmission", "none", 0, 1)
+            normalizer.levels = {}
         for entry in data["continuous"]:
             if entry["name"] not in normalizer.columns:
                 raise ValueError(f"unknown continuous column {entry['name']}")
@@ -189,9 +198,10 @@ class Normalizer:
             normalizer.classes[entry["name"]] = entry["classes"]
             normalizer.fallback[entry["name"]] = entry["fallback"]
         normalizer.flags = list(data["flags"])
-        saved = {name: tuple(values) for name, values in data["levels"].items()}
-        if saved != normalizer.levels:
-            raise ValueError(f"saved levels {saved} do not match targets.LEVELS")
+        if version >= 2:
+            saved = {name: tuple(values) for name, values in data["levels"].items()}
+            if saved != normalizer.levels:
+                raise ValueError(f"saved levels {saved} do not match targets.LEVELS")
         normalizer.constants = data["constants"]
         return normalizer
 

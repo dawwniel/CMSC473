@@ -43,6 +43,7 @@ class ColorControlTests(unittest.TestCase):
             colored["continuous"][0].numpy().clip(-8, 8),
             [colored["categories"][name][0].argmax().item() for name in normalizer.categories],
             colored["flags"][0].sigmoid().numpy(),
+            [colored["levels"][name][0].argmax().item() for name in normalizer.levels],
         )
         for point in decoded["properties"]["Color"]["keypoints"]:
             self.assertGreaterEqual(point[2], point[1])

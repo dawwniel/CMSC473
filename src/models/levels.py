@@ -192,9 +192,9 @@ def tune_and_choose(model, loader, device, args: argparse.Namespace) -> dict[str
 
 
 def chosen_biases(saved: dict[str, Any], args: argparse.Namespace | None = None) -> tuple[float, float]:
-    """Checkpoint biases, with command-line overrides when given."""
-    base = saved["base_bias"]
-    light = saved["light_bias"]
+    """Checkpoint biases, defaulting to unbiased decoding for older checkpoints."""
+    base = saved.get("base_bias", 0.0)
+    light = saved.get("light_bias", 0.0)
     if args is not None and args.base_bias is not None:
         base = args.base_bias
     if args is not None and args.light_bias is not None:

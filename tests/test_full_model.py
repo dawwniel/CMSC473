@@ -5,7 +5,7 @@ import torch
 from src.data.dataset import load_split
 from src.data.normalize import Normalizer
 from src.models.full import ParticleFull, decode_full, full_loss
-from src.models.levels import level_class_weights
+from src.models.levels import chosen_biases, level_class_weights
 from src.data.schema import validate_emitter
 
 
@@ -65,6 +65,9 @@ class FullModelTests(unittest.TestCase):
         other = decode_full(self.normalizer, output, 0, "grey smoke", base_bias=0.0, light_bias=2.0)
         self.assertEqual(other["properties"]["LightEmission"], 0.5)
         validate_emitter(light)
+
+    def test_old_checkpoint_has_unbiased_light_emission(self):
+        self.assertEqual(chosen_biases({}), (0.0, 0.0))
 
 
 if __name__ == "__main__":

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import copy
+import hashlib
 import json
 import random
 import sys
@@ -158,7 +159,12 @@ def main() -> None:
             if stale >= args.patience:
                 break
     model.load_state_dict(best_state)
+    bank_fingerprint = hashlib.sha256(
+        "\n".join(record["row_hash"] for record in train_records).encode()
+    ).hexdigest()
     checkpoint = {**saved, "architecture": "color_v1", "model": best_state,
+                  "neighbor_bank_fingerprint": bank_fingerprint,
+                  "neighbor_bank_size": len(train_records),
                   "color_training": {"base_checkpoint": args.base.name, "best_epoch": best_epoch,
                                      "validation_color_loss": best_loss, "augmented_prompts": augmented}}
     args.checkpoint.parent.mkdir(parents=True, exist_ok=True)

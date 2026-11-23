@@ -158,6 +158,8 @@ def encode_targets(emitter: dict[str, Any], k: int = K) -> Targets:
 
     for name in NUMBERS:
         cont[name] = float(properties[name])
+    # Keep the old continuous target readable by version-1 checkpoints.
+    cont["LightEmission"] = float(properties["LightEmission"])
     for name in LEVELS:
         out.levels[name] = snap_level(name, float(properties[name]))
     if burst:
@@ -214,7 +216,10 @@ def decode_emitter(targets: Targets, k: int = K, name: str = "ParticleEmitter") 
     for prop in NUMBERS:
         properties[prop] = value(prop)
     for prop, levels in LEVELS.items():
-        properties[prop] = float(levels[targets.levels[prop]])
+        if prop in targets.levels:
+            properties[prop] = float(levels[targets.levels[prop]])
+    if "LightEmission" in targets.continuous:
+        properties["LightEmission"] = float(np.clip(targets.continuous["LightEmission"], 0, 1))
     if burst:
         properties["Rate"] = BURST_RATE
     for prop in RANGES:
