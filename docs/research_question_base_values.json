@@ -1,0 +1,42 @@
+{
+  "checkpoint": "particle_full.pt",
+  "description": "Base prompts without the tested size or density word, shown as gray dotted reference markers on the research question slide",
+  "samples": [
+    {
+      "effect": "bubbles",
+      "prompt": "Blue bubbles rising slowly",
+      "measure": "Size.max",
+      "value": 1.2639
+    },
+    {
+      "effect": "flame",
+      "prompt": "An orange flame rising upward",
+      "measure": "Size.max",
+      "value": 4.384898849261648
+    },
+    {
+      "effect": "aura",
+      "prompt": "A blue aura shimmering in place",
+      "measure": "Size.max",
+      "value": 5.79639169332936
+    },
+    {
+      "effect": "sparks",
+      "prompt": "A shower of yellow sparks",
+      "measure": "Density",
+      "value": 17.252077405833788
+    },
+    {
+      "effect": "poison",
+      "prompt": "Green poison particles floating upward",
+      "measure": "Density",
+      "value": 15.95070853769396
+    },
+    {
+      "effect": "rain",
+      "prompt": "Blue rain streaks falling downward",
+      "measure": "Density",
+      "value": 9.8542
+    }
+  ]
+}

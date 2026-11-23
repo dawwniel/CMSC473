@@ -18,7 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("prompt", help="description of the effect")
-    parser.add_argument("--checkpoint", type=Path, default=ROOT / "checkpoints/particle_full.pt")
+    parser.add_argument("--checkpoint", type=Path, default=ROOT / "checkpoints/particle_full_color.pt")
     parser.add_argument("--output", type=Path, default=ROOT / "checkpoints/full_prediction.jsonl")
     parser.add_argument("--neighbor-texture-threshold", type=float, default=0.6926)
     parser.add_argument("--no-neighbor-texture", action="store_true")

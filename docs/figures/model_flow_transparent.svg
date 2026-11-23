@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1700" viewBox="0 0 1600 1700" role="img" aria-labelledby="title description">
+  <title id="title">Prompt to ParticleEmitter model flow</title>
+  <desc id="description">A prompt passes through frozen MiniLM and a color cue, a shared full model, four output groups, decoding, an explicit color check, texture selection, layout matching, validation, and Roblox emitter creation.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="13" markerHeight="13" refX="10" refY="6.5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M 0 0 L 11 6.5 L 0 13 Z" fill="#000000"/>
+    </marker>
+    <style>
+      .box { fill: #000000; }
+      .heading { fill: #ffffff; font: 600 31px Arial, Helvetica, sans-serif; text-anchor: middle; }
+      .detail { fill: #ffffff; font: 400 23px Arial, Helvetica, sans-serif; text-anchor: middle; }
+      .arrow { fill: none; stroke: #000000; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+      .branch { fill: none; stroke: #000000; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+  </defs>
+
+  <rect class="box" x="300" y="30" width="1000" height="130" rx="20"/>
+  <text class="heading" x="800" y="72">Prompt</text>
+  <text class="detail" x="800" y="111">“Create dense green flame embers that rise upward</text>
+  <text class="detail" x="800" y="140">and fade quickly.”</text>
+
+  <path class="arrow" d="M 1250 160 L 1350 205"/>
+  <rect class="box" x="1190" y="215" width="350" height="115" rx="20"/>
+  <text class="heading" x="1365" y="264">Color cue</text>
+  <text class="detail" x="1365" y="302">Named color → RGB</text>
+
+  <path class="arrow" d="M 800 160 L 800 205"/>
+  <rect class="box" x="490" y="215" width="620" height="115" rx="20"/>
+  <text class="heading" x="800" y="264">Frozen MiniLM</text>
+  <text class="detail" x="800" y="302">384-value text embedding</text>
+
+  <path class="arrow" d="M 800 330 L 800 375"/>
+  <rect class="box" x="490" y="385" width="620" height="115" rx="20"/>
+  <text class="heading" x="800" y="434">Full model</text>
+  <text class="detail" x="800" y="472">Shared MLP: 384 → 256 → 128</text>
+  <path class="arrow" d="M 1190 290 L 1140 290 L 1140 440 L 1120 440"/>
+
+  <path class="branch" d="M 800 500 L 800 540 M 215 540 L 1385 540"/>
+  <path class="arrow" d="M 215 540 L 215 570"/>
+  <path class="arrow" d="M 605 540 L 605 570"/>
+  <path class="arrow" d="M 995 540 L 995 570"/>
+  <path class="arrow" d="M 1385 540 L 1385 570"/>
+
+  <rect class="box" x="40" y="580" width="350" height="170" rx="20"/>
+  <text class="heading" x="215" y="628">Numbers</text>
+  <text class="detail" x="215" y="668">25 scalar values</text>
+  <text class="detail" x="215" y="701">Rate, Speed, Lifetime,</text>
+  <text class="detail" x="215" y="730">Brightness, EmitCount…</text>
+
+  <rect class="box" x="430" y="580" width="350" height="170" rx="20"/>
+  <text class="heading" x="605" y="628">Curves</text>
+  <text class="detail" x="605" y="668">71 sampled values</text>
+  <text class="detail" x="605" y="701">Size, Squash,</text>
+  <text class="detail" x="605" y="730">Transparency, Color</text>
+
+  <rect class="box" x="820" y="580" width="350" height="170" rx="20"/>
+  <text class="heading" x="995" y="628">Categories</text>
+  <text class="detail" x="995" y="668">8 output heads</text>
+  <text class="detail" x="995" y="701">Texture, layout,</text>
+  <text class="detail" x="995" y="730">direction, shape…</text>
+
+  <rect class="box" x="1210" y="580" width="350" height="170" rx="20"/>
+  <text class="heading" x="1385" y="628">Flags</text>
+  <text class="detail" x="1385" y="668">3 outputs</text>
+  <text class="detail" x="1385" y="701">Burst, LockedToPart,</text>
+  <text class="detail" x="1385" y="730">FlipbookStartRandom</text>
+
+  <path class="arrow" d="M 215 750 L 550 825"/>
+  <path class="arrow" d="M 605 750 L 710 825"/>
+  <path class="arrow" d="M 995 750 L 890 825"/>
+  <path class="arrow" d="M 1385 750 L 1050 825"/>
+  <rect class="box" x="410" y="835" width="780" height="105" rx="20"/>
+  <text class="heading" x="800" y="881">Decode output</text>
+  <text class="detail" x="800" y="919">Convert predictions into Roblox property values</text>
+
+  <path class="arrow" d="M 800 940 L 800 985"/>
+  <rect class="box" x="410" y="995" width="780" height="105" rx="20"/>
+  <text class="heading" x="800" y="1041">Explicit color check</text>
+  <text class="detail" x="800" y="1079">Preserve brightness; use the requested hue</text>
+
+  <path class="arrow" d="M 800 1100 L 800 1125"/>
+  <rect class="box" x="410" y="1135" width="780" height="105" rx="20"/>
+  <text class="heading" x="800" y="1181">Texture selection</text>
+  <text class="detail" x="800" y="1219">Model prediction with prompt and catalog checks</text>
+
+  <path class="arrow" d="M 800 1240 L 800 1285"/>
+  <rect class="box" x="410" y="1295" width="780" height="105" rx="20"/>
+  <text class="heading" x="800" y="1341">Texture / layout check</text>
+  <text class="detail" x="800" y="1379">Match FlipbookLayout to the selected texture</text>
+
+  <path class="arrow" d="M 800 1400 L 800 1445"/>
+  <rect class="box" x="410" y="1455" width="780" height="105" rx="20"/>
+  <text class="heading" x="800" y="1501">Validation</text>
+  <text class="detail" x="800" y="1539">Check emitter properties against the schema</text>
+
+  <path class="arrow" d="M 800 1560 L 800 1605"/>
+  <rect class="box" x="410" y="1615" width="780" height="65" rx="20"/>
+  <text class="heading" x="800" y="1658">Create Roblox ParticleEmitter</text>
+</svg>

@@ -1,0 +1,18 @@
+{
+  "test": {
+    "n": 211,
+    "texture_accuracy": 0.8293838862559242,
+    "burst_accuracy": 1.0,
+    "size_mae": 1.1736412479627554,
+    "color_mae": 0.05661117784997638,
+    "valid_emitters": 211
+  },
+  "generalization_test": {
+    "n": 260,
+    "texture_accuracy": 0.3384615384615385,
+    "burst_accuracy": 0.9230769230769231,
+    "size_mae": 2.108177961066904,
+    "color_mae": 0.15665739526415567,
+    "valid_emitters": 260
+  }
+}

@@ -163,6 +163,11 @@ in [`docs/texture_evaluation.md`](docs/texture_evaluation.md).
 The November 16 asset-access cleanup, three corrected flipbook sheets,
 texture-to-layout inference rule, and retraining comparison are in
 [`docs/asset_layout_audit.md`](docs/asset_layout_audit.md).
+Explicit prompt colors now use a color-conditioned head trained from the full
+checkpoint. Run `python scripts/train_full_color.py` after training the full
+checkpoint, then `python scripts/evaluate_color_control.py`. Prediction and the
+local Studio server use `checkpoints/particle_full_color.pt` by default. See
+[`docs/color_control.md`](docs/color_control.md) for the color rule and results.
 
 ## Project Structure
 

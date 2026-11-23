@@ -122,7 +122,7 @@ def handler_for(predictor, feedback_path: Path | None = None, model_id: str = "u
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--checkpoint", type=Path, default=ROOT / "checkpoints/particle_full.pt")
+    parser.add_argument("--checkpoint", type=Path, default=ROOT / "checkpoints/particle_full_color.pt")
     parser.add_argument("--port", type=int, default=8765)
     parser.add_argument("--neighbor-texture-threshold", type=float, default=0.6926)
     parser.add_argument("--no-neighbor-texture", action="store_true")

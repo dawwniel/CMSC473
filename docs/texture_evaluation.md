@@ -2,11 +2,16 @@
 
 Exact asset-ID accuracy remains the automatic benchmark. It is 82.9% on the
 211 familiar-base test effects and 33.8% on the 260 held-out-base effects for
-the current plugin. A different image may still be suitable for the same
+the texture selection setup measured here. A different image may still be suitable for the same
 prompt, so the Studio review measures that separately. Do not call the visual
 score exact-ID accuracy.
 
-## Blind visual-fit review
+## Blind visual-fit review (earlier plugin revision)
+
+The current Prompt2Particles panel no longer contains reviewer initials,
+**Next test**, or texture rating controls. The procedure below documents the
+earlier review workflow and its scoring files; repeating it requires that
+earlier plugin revision or a separate manual review sheet.
 
 The 40 prompts in `data/visual_eval_prompts.json` are fixed before rating.
 Each reviewer sees the prompt and the generated effect in Studio, but no
@@ -15,8 +20,8 @@ Do not show one reviewer the other's ratings until both finish.
 
 1. Restart the Python server from `CMSC473` with
    `.\.venv\Scripts\python.exe scripts\serve_full.py`.
-2. Reload the saved local Studio plugin after updating it from
-   `roblox/studio_plugin.lua`. Enter reviewer initials in its panel.
+2. Use the earlier Studio plugin revision with review controls. Enter reviewer
+   initials in its panel.
 3. Click **Next test**, then **Create emitter**. Use **Focus** or **Emit** to
    inspect it. Judge the texture's visible shape, pattern, color, and material
    against the prompt. Judge motion separately; this rating is for texture.

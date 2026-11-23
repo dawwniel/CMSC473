@@ -1,0 +1,30 @@
+{
+  "checkpoint": "particle_full.pt",
+  "note": "Extra slide examples, separate from the 12 checks in data/controlled_prompts.json. Values are model predictions, rounded to four decimals.",
+  "pairs": [
+    {
+      "effect": "bubbles",
+      "measure": "Size.max",
+      "low_prompt": "Small blue bubbles rising slowly",
+      "low_value": 1.1005,
+      "high_prompt": "Large blue bubbles rising slowly",
+      "high_value": 1.4806,
+      "base_prompt": "Blue bubbles rising slowly",
+      "base_value": 1.2639,
+      "minimum_change": 0.5,
+      "passes": false
+    },
+    {
+      "effect": "rain",
+      "measure": "Density",
+      "low_prompt": "Sparse blue rain streaks falling downward",
+      "low_value": 6.0265,
+      "high_prompt": "Dense blue rain streaks falling downward",
+      "high_value": 13.3347,
+      "base_prompt": "Blue rain streaks falling downward",
+      "base_value": 9.8542,
+      "minimum_change": 2.0,
+      "passes": true
+    }
+  ]
+}

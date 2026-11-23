@@ -10,8 +10,10 @@ import torch
 
 from ..data.normalize import Normalizer
 from ..data.dataset import load_split
+from .color import color_cue, emitter_color_matches, requested_color, tint_emitter_color
 from .encoder import TextEncoder, split_embeddings
 from .full import ParticleFull, decode_full
+from .full_color import ParticleFullColor
 from .model import particle_record
 from .nearest_neighbor import build_bank, nearest
 from .texture_layout import align_flipbook_layouts, texture_layout_index
@@ -22,7 +24,9 @@ CIX_TEXTURE_THRESHOLD = 0.65
 
 
 def model_from_checkpoint(saved: dict, normalizer: Normalizer) -> ParticleFull:
-    if saved.get("architecture") == "v2":
+    if saved.get("architecture") == "color_v1":
+        model = ParticleFullColor(normalizer, saved["embedding_dim"], saved["hidden_dim"])
+    elif saved.get("architecture") == "v2":
         model = ParticleV2(
             normalizer,
             saved["group_names"],
@@ -121,8 +125,16 @@ class FullPredictor:
             raise ValueError("prompts must be between 1 and 500 characters")
         with torch.no_grad():
             vectors = self.encoder.encode(prompts)
-            output = self.model(vectors)
+            if isinstance(self.model, ParticleFullColor):
+                cues = torch.tensor([color_cue(prompt) for prompt in prompts], dtype=vectors.dtype)
+                output = self.model(vectors, cues)
+            else:
+                output = self.model(vectors)
         emitters = [decode_full(self.normalizer, output, index) for index in range(len(prompts))]
+        for prompt, emitter in zip(prompts, emitters):
+            request = requested_color(prompt)
+            if request is not None and not emitter_color_matches(emitter, request.rgb):
+                emitter["properties"]["Color"] = tint_emitter_color(emitter, request.rgb)["properties"]["Color"]
         if self.neighbor_texture_threshold is not None:
             confidence = output["categories"]["Texture"].softmax(dim=1).max(dim=1).values
             indices, similarities = nearest(vectors, self.bank)

@@ -1,7 +1,7 @@
 # Studio prompt panel
 
 The plugin sends one prompt to a Python server on your own computer. The server
-loads `checkpoints/particle_full.pt` once and returns an importer record. For
+loads `checkpoints/particle_full_color.pt` once and returns an importer record. For
 uncertain texture predictions, it takes the texture from the closest training
 prompt while keeping the model's other settings.
 An exact match to an unambiguous training prompt uses that prompt's saved
@@ -16,6 +16,10 @@ After the final texture choice, inference sets `FlipbookLayout` to the grid
 recorded for that texture. The two CIX assets that Studio reported as not
 approved are excluded from the available catalog; see
 [`asset_layout_audit.md`](asset_layout_audit.md).
+For a prompt with one explicit color, the color-conditioned head changes a
+conflicting Color sequence while leaving an already matching shade alone.
+The final color check catches remaining conflicts. Details and measured
+color errors are in [`color_control.md`](color_control.md).
 
 ## One-time setup
 
@@ -46,14 +50,8 @@ effect, it emits about one second of particles as a quick preview. Its saved
 `Rate` stays the same. Each click makes one new anchor in
 `Workspace.Prompt2ParticlesGenerated`.
 
-Enter reviewer initials before using **Next test**. Each reviewer gets their
-own cycle through the 40 prompts in `data/visual_eval_prompts.json`. After
-looking at a generated effect, click **Fits**, **Usable**, **Wrong**, or **Skip**
-to rate its texture. The local server writes the prompt, prediction, reviewer,
-model version, and rating to `checkpoints/visual_feedback.jsonl`. These ratings
-do not retrain the model automatically. The scoring rubric and command are in
-[`texture_evaluation.md`](texture_evaluation.md). Save the place if you want to
-keep generated effects.
+The panel contains only the description field, **Create emitter**, **Emit**,
+and **Focus**. Save the place if you want to keep generated effects.
 
 The first HTTP request might ask you to allow this plugin to contact
 `127.0.0.1`. If Studio says HTTP requests are disabled, enable **Allow HTTP

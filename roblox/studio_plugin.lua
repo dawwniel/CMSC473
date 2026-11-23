@@ -7,12 +7,12 @@ local ChangeHistoryService = game:GetService("ChangeHistoryService")
 
 local SERVER = "http://127.0.0.1:8765"
 local toolbar = plugin:CreateToolbar("Prompt2Particles")
-local toggle = toolbar:CreateButton("Prompt2Particles", "Open particle panel", "")
+local toggle = toolbar:CreateButton("Prompt2Particles", "Open Prompt2Particles", "")
 toggle.ClickableWhenViewportHidden = true
 
-local info = DockWidgetPluginGuiInfo.new(Enum.InitialDockState.Float, false, false, 360, 365, 330, 365)
+local info = DockWidgetPluginGuiInfo.new(Enum.InitialDockState.Float, false, false, 380, 380, 340, 380)
 local widget = plugin:CreateDockWidgetPluginGuiAsync("Prompt2ParticlesPanel", info)
-widget.Title = "Particles"
+widget.Title = "Prompt2Particles"
 
 local function add(className, properties, parent)
 	local instance = Instance.new(className)
@@ -27,95 +27,134 @@ local function round(instance, radius)
 	add("UICorner", { CornerRadius = UDim.new(0, radius) }, instance)
 end
 
+local colors = {
+	background = Color3.fromRGB(28, 30, 35),
+	field = Color3.fromRGB(43, 46, 52),
+	button = Color3.fromRGB(52, 56, 63),
+	primary = Color3.fromRGB(72, 113, 177),
+	text = Color3.fromRGB(242, 244, 247),
+	muted = Color3.fromRGB(171, 178, 188),
+	error = Color3.fromRGB(244, 153, 153),
+}
+
 local panel = add("Frame", {
 	Size = UDim2.fromScale(1, 1),
-	BackgroundColor3 = Color3.fromRGB(34, 36, 40),
+	BackgroundColor3 = colors.background,
 	BorderSizePixel = 0,
 }, widget)
 
 add("TextLabel", {
-	Position = UDim2.fromOffset(16, 12),
-	Size = UDim2.new(1, -126, 0, 24),
+	Position = UDim2.fromOffset(16, 16),
+	Size = UDim2.new(1, -32, 0, 27),
 	BackgroundTransparency = 1,
-	Text = "New particle",
-	TextColor3 = Color3.fromRGB(235, 237, 240),
+	Text = "Prompt2Particles",
+	TextColor3 = colors.text,
 	TextXAlignment = Enum.TextXAlignment.Left,
-	TextSize = 18,
+	TextSize = 21,
 	Font = Enum.Font.SourceSansSemibold,
 }, panel)
 
-local nextButton = add("TextButton", {
-	Position = UDim2.new(1, -108, 0, 12),
-	Size = UDim2.fromOffset(92, 24),
-	BackgroundColor3 = Color3.fromRGB(48, 51, 56),
-	BorderSizePixel = 0,
-	Text = "Next test",
-	TextColor3 = Color3.fromRGB(201, 206, 213),
+add("TextLabel", {
+	Position = UDim2.fromOffset(16, 45),
+	Size = UDim2.new(1, -32, 0, 18),
+	BackgroundTransparency = 1,
+	Text = "Describe an effect to create in Studio.",
+	TextColor3 = colors.muted,
+	TextXAlignment = Enum.TextXAlignment.Left,
 	TextSize = 13,
 	Font = Enum.Font.SourceSans,
 }, panel)
-round(nextButton, 4)
+
+add("Frame", {
+	Position = UDim2.fromOffset(16, 76),
+	Size = UDim2.new(1, -32, 0, 1),
+	BackgroundColor3 = Color3.fromRGB(55, 59, 66),
+	BorderSizePixel = 0,
+}, panel)
+
+add("TextLabel", {
+	Position = UDim2.fromOffset(16, 89),
+	Size = UDim2.new(1, -32, 0, 18),
+	BackgroundTransparency = 1,
+	Text = "Description",
+	TextColor3 = colors.text,
+	TextXAlignment = Enum.TextXAlignment.Left,
+	TextSize = 14,
+	Font = Enum.Font.SourceSansSemibold,
+}, panel)
 
 local promptBox = add("TextBox", {
-	Position = UDim2.fromOffset(16, 44),
-	Size = UDim2.new(1, -32, 0, 88),
-	BackgroundColor3 = Color3.fromRGB(49, 52, 57),
+	Position = UDim2.fromOffset(16, 112),
+	Size = UDim2.new(1, -32, 0, 82),
+	BackgroundColor3 = colors.field,
 	BorderSizePixel = 0,
 	ClearTextOnFocus = false,
 	MultiLine = true,
 	TextWrapped = true,
 	TextXAlignment = Enum.TextXAlignment.Left,
 	TextYAlignment = Enum.TextYAlignment.Top,
-	TextColor3 = Color3.fromRGB(240, 242, 245),
-	PlaceholderText = "Small blue sparks that shoot outward and fade",
+	TextColor3 = colors.text,
+	PlaceholderColor3 = colors.muted,
+	PlaceholderText = "Describe the particle effect...",
 	Text = "",
 	TextSize = 15,
 	Font = Enum.Font.SourceSans,
 }, panel)
-round(promptBox, 5)
+round(promptBox, 7)
+add("UIPadding", {
+	PaddingTop = UDim.new(0, 9),
+	PaddingBottom = UDim.new(0, 9),
+	PaddingLeft = UDim.new(0, 11),
+	PaddingRight = UDim.new(0, 11),
+}, promptBox)
+add("UIStroke", {
+	Color = Color3.fromRGB(83, 89, 99),
+	Transparency = 0.55,
+	Thickness = 1,
+}, promptBox)
 
 local createButton = add("TextButton", {
-	Position = UDim2.fromOffset(16, 143),
-	Size = UDim2.new(1, -32, 0, 36),
-	BackgroundColor3 = Color3.fromRGB(58, 109, 177),
+	Position = UDim2.fromOffset(16, 206),
+	Size = UDim2.new(1, -32, 0, 40),
+	BackgroundColor3 = colors.primary,
 	BorderSizePixel = 0,
 	Text = "Create emitter",
-	TextColor3 = Color3.new(1, 1, 1),
+	TextColor3 = colors.text,
 	TextSize = 16,
 	Font = Enum.Font.SourceSansSemibold,
 }, panel)
-round(createButton, 5)
+round(createButton, 7)
 
 local emitButton = add("TextButton", {
-	Position = UDim2.fromOffset(16, 188),
-	Size = UDim2.new(0.5, -22, 0, 30),
-	BackgroundColor3 = Color3.fromRGB(62, 65, 70),
+	Position = UDim2.fromOffset(16, 256),
+	Size = UDim2.new(0.5, -21, 0, 34),
+	BackgroundColor3 = colors.button,
 	BorderSizePixel = 0,
 	Text = "Emit",
-	TextColor3 = Color3.fromRGB(232, 234, 237),
+	TextColor3 = colors.text,
 	TextSize = 15,
 	Font = Enum.Font.SourceSansSemibold,
 }, panel)
-round(emitButton, 4)
+round(emitButton, 7)
 
 local focusButton = add("TextButton", {
-	Position = UDim2.new(0.5, 6, 0, 188),
-	Size = UDim2.new(0.5, -22, 0, 30),
-	BackgroundColor3 = Color3.fromRGB(62, 65, 70),
+	Position = UDim2.new(0.5, 5, 0, 256),
+	Size = UDim2.new(0.5, -21, 0, 34),
+	BackgroundColor3 = colors.button,
 	BorderSizePixel = 0,
 	Text = "Focus",
-	TextColor3 = Color3.fromRGB(232, 234, 237),
+	TextColor3 = colors.text,
 	TextSize = 15,
 	Font = Enum.Font.SourceSansSemibold,
 }, panel)
-round(focusButton, 4)
+round(focusButton, 7)
 
 local status = add("TextLabel", {
-	Position = UDim2.fromOffset(16, 226),
-	Size = UDim2.new(1, -32, 0, 29),
+	Position = UDim2.fromOffset(16, 302),
+	Size = UDim2.new(1, -32, 0, 32),
 	BackgroundTransparency = 1,
 	Text = "Start the local server, then create an emitter.",
-	TextColor3 = Color3.fromRGB(178, 184, 193),
+	TextColor3 = colors.muted,
 	TextXAlignment = Enum.TextXAlignment.Left,
 	TextYAlignment = Enum.TextYAlignment.Top,
 	TextWrapped = true,
@@ -123,79 +162,13 @@ local status = add("TextLabel", {
 	Font = Enum.Font.SourceSans,
 }, panel)
 
-add("TextLabel", {
-	Position = UDim2.fromOffset(16, 260),
-	Size = UDim2.new(1, -32, 0, 18),
-	BackgroundTransparency = 1,
-	Text = "Texture fit?",
-	TextColor3 = Color3.fromRGB(151, 158, 168),
-	TextXAlignment = Enum.TextXAlignment.Left,
-	TextSize = 13,
-	Font = Enum.Font.SourceSans,
-}, panel)
-
-local feedbackFrame = add("Frame", {
-	Position = UDim2.fromOffset(16, 284),
-	Size = UDim2.new(1, -32, 0, 24),
-	BackgroundTransparency = 1,
-}, panel)
-
-local feedbackLabels = {
-	{ "Fits", "texture_fit" },
-	{ "Usable", "texture_usable" },
-	{ "Wrong", "texture_wrong" },
-	{ "Skip", "texture_skip" },
-}
-local feedbackButtons = {}
-for i, item in ipairs(feedbackLabels) do
-	local button = add("TextButton", {
-		Position = UDim2.new((i - 1) / 4, i == 1 and 0 or 4, 0, 0),
-		Size = UDim2.new(0.25, i == 1 and -3 or -4, 0, 24),
-		BackgroundColor3 = Color3.fromRGB(48, 51, 56),
-		BorderSizePixel = 0,
-		Text = item[1],
-		TextColor3 = Color3.fromRGB(201, 206, 213),
-		TextSize = 13,
-		Font = Enum.Font.SourceSans,
-	}, feedbackFrame)
-	round(button, 4)
-	feedbackButtons[item[2]] = button
-end
-
-add("TextLabel", {
-	Position = UDim2.fromOffset(16, 318),
-	Size = UDim2.fromOffset(74, 24),
-	BackgroundTransparency = 1,
-	Text = "Reviewer",
-	TextColor3 = Color3.fromRGB(151, 158, 168),
-	TextXAlignment = Enum.TextXAlignment.Left,
-	TextSize = 13,
-	Font = Enum.Font.SourceSans,
-}, panel)
-
-local reviewerBox = add("TextBox", {
-	Position = UDim2.fromOffset(94, 318),
-	Size = UDim2.new(1, -110, 0, 24),
-	BackgroundColor3 = Color3.fromRGB(49, 52, 57),
-	BorderSizePixel = 0,
-	ClearTextOnFocus = false,
-	Text = "",
-	PlaceholderText = "Your initials",
-	TextColor3 = Color3.fromRGB(240, 242, 245),
-	TextSize = 13,
-	Font = Enum.Font.SourceSans,
-}, panel)
-round(reviewerBox, 4)
-
 local busy = false
 local lastEmitter = nil
 local lastAnchor = nil
-local lastRequestId = nil
-local lastRatedRequestId = nil
 
 local function setStatus(message, isError)
 	status.Text = message
-	status.TextColor3 = isError and Color3.fromRGB(241, 145, 145) or Color3.fromRGB(178, 184, 193)
+	status.TextColor3 = isError and colors.error or colors.muted
 end
 
 local function getImporter()
@@ -222,27 +195,6 @@ local function post(path, body)
 	end
 	return HttpService:JSONDecode(response.Body)
 end
-
-nextButton.MouseButton1Click:Connect(function()
-	local reviewer = reviewerBox.Text:match("^%s*(.-)%s*$")
-	if not reviewer:match("^[%w_-]+$") or #reviewer > 32 then
-		setStatus("Enter reviewer initials using letters or numbers.", true)
-		return
-	end
-	task.spawn(function()
-		local ok, result = pcall(function()
-			local response = HttpService:RequestAsync({ Url = SERVER .. "/next_prompt?reviewer=" .. reviewer, Method = "GET" })
-			assert(response.Success, "local server is unavailable")
-			return HttpService:JSONDecode(response.Body)
-		end)
-		if ok and type(result.prompt) == "string" then
-			promptBox.Text = result.prompt
-			setStatus(string.format("Test prompt %d/%d: %s", result.number, result.total, result.category))
-		else
-			setStatus("Could not load a test prompt. Start the local server.", true)
-		end
-	end)
-end)
 
 local function focus(anchor)
 	local camera = assert(workspace.CurrentCamera, "Studio camera is unavailable")
@@ -327,18 +279,16 @@ createButton.MouseButton1Click:Connect(function()
 	createButton.Text = "Creating..."
 	setStatus("Running the model...")
 	task.spawn(function()
-		local ok, anchor, emitter, count, requestId = pcall(function()
+		local ok, anchor, emitter, count = pcall(function()
 			local Importer = getImporter()
 			local response = post("/predict", { prompt = prompt })
 			assert(type(response.record) == "table", "server sent no emitter")
-			local part, result, emitted = placeRecord(response.record, Importer)
-			return part, result, emitted, response.request_id
+			return placeRecord(response.record, Importer)
 		end)
 		busy = false
 		createButton.Text = "Create emitter"
 		if ok then
-			lastAnchor, lastEmitter, lastRequestId = anchor, emitter, requestId
-			lastRatedRequestId = nil
+			lastAnchor, lastEmitter = anchor, emitter
 			setStatus(count > 0 and ("Placed burst. Emitted " .. count .. ".") or "Placed continuous effect.")
 		else
 			setStatus(tostring(anchor) .. " Check the server window.", true)
@@ -366,34 +316,6 @@ focusButton.MouseButton1Click:Connect(function()
 	end
 	focus(lastAnchor)
 end)
-
-for rating, button in pairs(feedbackButtons) do
-	button.MouseButton1Click:Connect(function()
-		if not lastRequestId then
-			setStatus("Create an emitter before rating it.", true)
-			return
-		end
-		if lastRatedRequestId == lastRequestId then
-			setStatus("This emitter already has a texture rating.", true)
-			return
-		end
-		local reviewer = reviewerBox.Text:match("^%s*(.-)%s*$")
-		if not reviewer:match("^[%w_-]+$") or #reviewer > 32 then
-			setStatus("Enter reviewer initials using letters or numbers.", true)
-			return
-		end
-		local requestId = lastRequestId
-		task.spawn(function()
-			local ok, failure = pcall(function()
-				post("/feedback", { request_id = requestId, rating = rating, reviewer = reviewer })
-			end)
-			if ok then
-				lastRatedRequestId = requestId
-			end
-			setStatus(ok and "Feedback saved." or tostring(failure), not ok)
-		end)
-	end)
-end
 
 toggle.Click:Connect(function()
 	widget.Enabled = not widget.Enabled

@@ -55,12 +55,13 @@ size, density, lifetime, spread, and brightness. The current checkpoint passes
 These checks reveal wording failures, but the
 thresholds are project checks, not physical ground truth for arbitrary text.
 
-The plugin's **Next test** and rating buttons support visual review. Review
-the predictions in Studio, group errors by texture and motion, then correct
-ambiguous or poor training labels before another training run. Keep ratings
-outside the official test data. A useful next model experiment is a texture
-retrieval head or a jointly trained text encoder, chosen on the development
-split before one final held-out evaluation.
+An earlier plugin revision had **Next test** and rating buttons for visual
+review. The current panel is limited to creating and previewing emitters.
+Visual review can still be done separately in Studio. Group errors by texture
+and motion, then correct ambiguous or poor training labels before another
+training run. Keep ratings outside the official test data. A useful next model
+experiment is a texture retrieval head or a jointly trained text encoder,
+chosen on the development split before one final held-out evaluation.
 
 ## Reproduce
 
